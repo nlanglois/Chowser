@@ -2,6 +2,10 @@
 
 $params = require(__DIR__ . '/params.php');
 
+use \yii\web\Request;
+$baseUrl = str_replace('/web', '', (new Request)->getBaseUrl());
+
+
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
@@ -10,6 +14,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'OsyBAGRxlf6sesDgfn3fxg4yTgLk-f0y',
+            'baseUrl' => $baseUrl,
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -38,14 +43,17 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'restaurant/view/<id:\d+>' => 'restaurant/view',
+                'restaurant/edit/<id:\d+>' => 'restaurant/update',
+                'restaurant/delete/<id:\d+>' => 'restaurant/delete',
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];

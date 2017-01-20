@@ -15,7 +15,7 @@ Thumbs.db
 
 
 # hiding config folder
-config
+config/db.php
 
 
 # composer itself is not needed

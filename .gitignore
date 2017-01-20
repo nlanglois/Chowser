@@ -14,7 +14,7 @@ Thumbs.db
 
 
 
-# hiding config folder
+# hiding db connection details in config folder
 config/db.php
 
 

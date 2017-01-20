@@ -15,7 +15,7 @@ Thumbs.db
 
 
 # hiding config folder
-/config
+config
 
 
 # composer itself is not needed

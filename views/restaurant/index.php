@@ -27,7 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'name',
             'street1',
-            'street2',
+            [
+                'attribute' => 'street2',
+                'value' => function($data) {
+                    return !empty($data->street2) ? $data->street2 : '<span class="glyphicon glyphicon-question-sign"></span>';
+                },
+                'format' => 'raw',
+            ],
             'city',
             'state',
             'zip',

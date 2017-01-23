@@ -3,6 +3,10 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+use yii\helpers\ArrayHelper;
+use app\models\Restaurant;
+
+
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel */
@@ -36,6 +40,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'city',
             'state',
+            [
+                'attribute' => 'state',
+                'filter' => ArrayHelper::map(Restaurant::find()->asArray()->all(), 'state', 'state'),
+            ],
             'zip',
 
             ['class' => 'yii\grid\ActionColumn'],

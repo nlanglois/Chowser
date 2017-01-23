@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'template' => function($attribute) {
-            // Hides any row that has an empty value for that attribute
+            // Hides any row whose attribute's value is empty
             if (!empty($attribute['value'])) {
                 return "<tr>
                             <th>{$attribute['label']}</th>

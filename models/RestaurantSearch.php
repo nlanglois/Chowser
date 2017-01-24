@@ -45,6 +45,10 @@ class RestaurantSearch extends Restaurant
 
         // add conditions that should always apply here
 
+        // Setting a default sort order on name attribute
+        $query->orderBy('name ASC');
+
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);

@@ -30,7 +30,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'name',
-            'street1',
+
+            [
+                'attribute' => 'street1',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return $model->street1 . " (" .
+                        Html::a
+                            ("map", "https://www.google.com/maps/place/" . $model->street1 . "," . $model->city . "," . $model->state . "," . $model->zip,
+                                [
+                                    'title'=>'Check out ' . $model->name . '\'s location on Google Maps',
+                                    'target'=>'_blank',
+                                ]
+                            )
+                        . ")";
+                },
+            ],
+
             [
                 'attribute' => 'street2',
                 'value' => function($data) {

@@ -20,7 +20,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'city')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'state')->textInput(['maxlength' => true]) ?>
+    <?//= $form->field($model, 'state')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'state')->dropdownList(
+        \Yii::$app->params['us_states'],
+        ['prompt'=>'Select US state']
+    );
+    ?>
 
     <?= $form->field($model, 'zip')->textInput() ?>
 

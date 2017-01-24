@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\RestaurantSearch;
 use Yii;
 use app\models\Restaurant;
 use yii\data\ActiveDataProvider;
@@ -35,12 +36,19 @@ class RestaurantController extends Controller
      */
     public function actionIndex()
     {
+        $searchModel = new RestaurantSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //  $dataProvider->query->andFilterWhere(['status'=>1]);
+
+        /*
         $dataProvider = new ActiveDataProvider([
             'query' => Restaurant::find(),
         ]);
+        */
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
         ]);
     }
 

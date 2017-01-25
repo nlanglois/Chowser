@@ -16,6 +16,10 @@ use Yii;
  */
 class Meal extends \yii\db\ActiveRecord
 {
+
+    public $RestaurantName;
+    public $MealType;
+
     /**
      * @inheritdoc
      */
@@ -45,12 +49,15 @@ class Meal extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'Name' => 'Name',
+            'Name' => 'Meal name',
             'Description' => 'Description',
             'Price' => 'Price',
-            'restID' => 'Restaurant name',
-            'restaurant.name' => 'Restaurant name',
-            'mealTypeID' => 'Meal type',
+            'restID' => 'Restaurant ID',
+            'RestaurantName' => 'Name of restaurant',
+            'restaurant.name' => 'Name of restaurant',
+            'mealTypeID' => 'Meal type ID',
+            'MealType' => 'Meal type',
+            'mealType.mealTypeName' => 'Meal type',
         ];
     }
 
@@ -61,6 +68,12 @@ class Meal extends \yii\db\ActiveRecord
     public function getRestaurant()
     {
         return $this->hasOne(Restaurant::className(), ['id' => 'restID']);
+    }
+
+
+    public function getMealType()
+    {
+        return $this->hasOne(MealType::className(), ['id' => 'mealTypeID']);
     }
 
 }

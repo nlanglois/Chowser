@@ -9,6 +9,13 @@ use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model app\models\Meal */
 /* @var $form yii\widgets\ActiveForm */
+
+
+/*
+ * Good examples of how to customize ActiveForm elements:
+ * http://tutsnare.com/how-to-create-forms-in-yii-2/
+ * http://www.yiiframework.com/doc-2.0/guide-input-forms.html
+ */
 ?>
 
 <div class="meal-form">
@@ -25,12 +32,12 @@ use yii\helpers\ArrayHelper;
         ArrayHelper::map(Restaurant::find()->asArray()->all(), 'id', 'name'),
             ['prompt' => 'Choose where this meal can be found']
 
-    ); ?>
+    )->label('Restaurant'); ?>
 
     <?= $form->field($model, 'mealTypeID')->dropDownList(
         ArrayHelper::map(MealType::find()->asArray()->all(), 'id', 'mealTypeName'),
             ['prompt' => 'Choose which type of meal this is']
-    ); ?>
+    )->label('Meal type'); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

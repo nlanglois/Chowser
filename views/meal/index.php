@@ -28,12 +28,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'Name',
             'Description',
             'Price',
-            'restaurant.name',  /* required creation of relational getter method in Meal class */
+            //'restaurant.name',  /* required creation of relational getter method in Meal class */
+
             [
-                'attribute' => 'restID',
-                'value' => 'restaurant.name', /* required creation of relational getter method in Meal class */
+                'attribute' => 'RestaurantName',
+                'value' => 'restaurant.name',
             ],
-            // 'mealTypeID',
+            [
+                'attribute' => 'MealType',
+                'value' => 'mealType.mealTypeName',
+            ],
+
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

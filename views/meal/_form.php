@@ -22,13 +22,14 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'Price')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'restID')->dropDownList(
-            ArrayHelper::map(Restaurant::find()->asArray()->all(), 'id', 'name'),
-        ['prompt'=>'Select...']
+        ArrayHelper::map(Restaurant::find()->asArray()->all(), 'id', 'name'),
+            ['prompt' => 'Choose where this meal can be found']
 
     ); ?>
 
     <?= $form->field($model, 'mealTypeID')->dropDownList(
-        ArrayHelper::map(MealType::find()->asArray()->all(), 'id', 'mealTypeName')
+        ArrayHelper::map(MealType::find()->asArray()->all(), 'id', 'mealTypeName'),
+            ['prompt' => 'Choose which type of meal this is']
     ); ?>
 
     <div class="form-group">

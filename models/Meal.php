@@ -48,8 +48,19 @@ class Meal extends \yii\db\ActiveRecord
             'Name' => 'Name',
             'Description' => 'Description',
             'Price' => 'Price',
-            'restID' => 'Restaurant Name',
-            'mealTypeID' => 'Meal Type',
+            'restID' => 'Restaurant name',
+            'restaurant.name' => 'Restaurant name',
+            'mealTypeID' => 'Meal type',
         ];
     }
+
+
+
+    /* Getter to return the name of the restaurant the meal can be found at */
+    /* Essentially this is a relation method for this particular attribute, in this case, restID */
+    public function getRestaurant()
+    {
+        return $this->hasOne(Restaurant::className(), ['id' => 'restID']);
+    }
+
 }

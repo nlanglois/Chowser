@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use app\models\MealType;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MealSearch */
@@ -52,6 +54,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a
                         ($data->mealType->mealTypeName, ['meal-type/view', 'id' => $data->mealTypeID]);
                 },
+                'filter' => Html::activeDropDownList($searchModel, 'MealType', ArrayHelper::map(MealType::find()->asArray()->distinct()->all(), 'mealTypeName', 'mealTypeName'), ['class'=>'form-control','prompt' => 'All']),
+
             ],
 
 

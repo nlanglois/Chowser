@@ -46,7 +46,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'MealType',
-                'value' => 'mealType.mealTypeName',
+                //'value' => 'mealType.mealTypeName',
+                'format' => 'raw',
+                'value' => function($data) {
+                    return Html::a
+                        ($data->mealType->mealTypeName, ['meal-type/view', 'id' => $data->mealTypeID]);
+                },
+
             ],
 
 

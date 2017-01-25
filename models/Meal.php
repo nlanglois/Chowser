@@ -30,9 +30,9 @@ class Meal extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'Name', 'Description', 'Price', 'restID', 'mealTypeID'], 'required'],
-            [['id', 'restID', 'mealTypeID'], 'integer'],
+            [['Name', 'Description', 'Price', 'restID', 'mealTypeID'], 'required'],
             [['Price'], 'number'],
+            [['restID', 'mealTypeID'], 'integer'],
             [['Name'], 'string', 'max' => 100],
             [['Description'], 'string', 'max' => 250],
         ];
@@ -48,7 +48,7 @@ class Meal extends \yii\db\ActiveRecord
             'Name' => 'Name',
             'Description' => 'Description',
             'Price' => 'Price',
-            'restID' => 'Restaurant name',
+            'restID' => 'Rest ID',
             'mealTypeID' => 'Meal Type ID',
         ];
     }

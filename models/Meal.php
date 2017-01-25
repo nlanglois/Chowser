@@ -48,8 +48,8 @@ class Meal extends \yii\db\ActiveRecord
             'Name' => 'Name',
             'Description' => 'Description',
             'Price' => 'Price',
-            'restID' => 'Rest ID',
-            'mealTypeID' => 'Meal Type ID',
+            'restID' => 'Restaurant Name',
+            'mealTypeID' => 'Meal Type',
         ];
     }
 }

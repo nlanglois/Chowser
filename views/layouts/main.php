@@ -38,8 +38,8 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Restaurants', 'url' => ['/restaurant/index']],
             ['label' => 'Meals', 'url' => ['/meal/index']],
-            ['label' => 'Meal Types', 'url' => ['/mealtype/index']],
-            ['label' => 'Location Types', 'url' => ['/locationtype/index']],
+            ['label' => 'Meal Types', 'url' => ['/meal-type/index']],
+            ['label' => 'Location Types', 'url' => ['/location-type/index']],
 
             /*)
             Yii::$app->user->isGuest ? (

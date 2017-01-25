@@ -31,7 +31,18 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'Name',
             'Description',
-            'Price',
+            //'Price',
+            [
+                'attribute' => 'Price',
+                'format' => [
+                    'currency',
+                    'USD',
+                    [
+                        \NumberFormatter::MIN_FRACTION_DIGITS => 2,
+                        \NumberFormatter::MAX_FRACTION_DIGITS => 3,
+                    ]
+                ],
+            ],
             'restaurant.name',
             'mealType.mealTypeName',
         ],

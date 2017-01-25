@@ -33,13 +33,36 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+
+
+    /*
+     * Good examples for how to use Navbar widget in Yii2:
+     * http://www.bsourcecode.com/yiiframework2/menu-widget-in-yii-framework-2-0/
+     */
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Restaurants', 'url' => ['/restaurant/index']],
-            ['label' => 'Meals', 'url' => ['/meal/index']],
-            ['label' => 'Meal Types', 'url' => ['/meal-type/index']],
-            ['label' => 'Location Types', 'url' => ['/location-type/index']],
+            ['label' => 'Manage restaurants', 'url' => ['/restaurant/index'],
+                'options'=>['class'=>'dropdown'],
+                'template' => '<a href="{url}" class="href_class">{label}</a>',
+                'items' => [
+                    ['label' => 'All restaurants', 'url' => ['/restaurant/index']],
+                    ['label' => 'All location types', 'url' => ['location-type/index']],
+                ],
+
+            ],
+
+            ['label' => 'Manage meals', 'url' => ['/meal/index'],
+                'options'=>['class'=>'dropdown'],
+                'template' => '<a href="{url}" class="href_class">{label}</a>',
+                'items' => [
+                    ['label' => 'All meals', 'url' => ['/meal/index']],
+                    ['label' => 'All meal types', 'url' => ['meal-type/index']],
+                ],
+
+
+            ],
+
 
             /*)
             Yii::$app->user->isGuest ? (

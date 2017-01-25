@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Restaurant;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Meal */
@@ -19,6 +21,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'Price')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'restID')->textInput() ?>
+
+    <?= $form->field($model, 'restID')->dropDownList(
+            ArrayHelper::map(Restaurant::find()->asArray()->all(), 'id', 'name')
+    ); ?>
 
     <?= $form->field($model, 'mealTypeID')->textInput() ?>
 

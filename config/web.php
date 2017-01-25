@@ -51,6 +51,9 @@ $config = [
                 'restaurant/view/<id:\d+>' => 'restaurant/view',
                 'restaurant/edit/<id:\d+>' => 'restaurant/update',
                 'restaurant/delete/<id:\d+>' => 'restaurant/delete',
+
+                'meal-type' => 'mealType',
+                'location-type' => 'locationType',
             ],
         ],
 

@@ -21,7 +21,9 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'Price')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'restID')->dropDownList(
-            ArrayHelper::map(Restaurant::find()->asArray()->all(), 'id', 'name')
+            ArrayHelper::map(Restaurant::find()->asArray()->all(), 'id', 'name'),
+        ['prompt'=>'Select...']
+
     ); ?>
 
     <?= $form->field($model, 'mealTypeID')->textInput() ?>

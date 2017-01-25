@@ -52,7 +52,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a
                         ($data->mealType->mealTypeName, ['meal-type/view', 'id' => $data->mealTypeID]);
                 },
-
             ],
 
 

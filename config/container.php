@@ -7,5 +7,18 @@
  */
 
 \Yii::$container->set('yii\grid\ActionColumn', [
-    'contentOptions' => ['style' => ['white-space' => 'nowrap']],
+    'contentOptions' => [
+        'style' => [
+            'white-space' => 'nowrap',
+            'width' => '70px',
+        ]
+    ],
+]);
+
+\Yii::$container->set('yii\grid\SerialColumn', [
+    'contentOptions' => [
+        'style' => [
+            'width' => '20px',
+        ]
+    ],
 ]);

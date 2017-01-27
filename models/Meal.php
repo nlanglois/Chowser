@@ -66,6 +66,9 @@ class Meal extends \yii\db\ActiveRecord
 
 
 
+
+
+
     /* Getter to return the name of the restaurant the meal can be found at */
     /* Essentially this is a relation method for this particular attribute, in this case, restID */
     public function getRestaurant()

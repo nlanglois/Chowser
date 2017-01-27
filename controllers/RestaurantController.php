@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Meal;
+use app\models\MealType;
 use app\models\RestaurantSearch;
 use Yii;
 use app\models\Restaurant;
@@ -15,6 +17,7 @@ use yii\filters\VerbFilter;
  */
 class RestaurantController extends Controller
 {
+
     /**
      * @inheritdoc
      */
@@ -78,6 +81,7 @@ class RestaurantController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'mealTypes' => MealType::getMealTypes(),
             ]);
         }
     }

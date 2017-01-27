@@ -41,4 +41,12 @@ class MealType extends \yii\db\ActiveRecord
             'mealTypeName' => 'Meal Type Name',
         ];
     }
+
+
+
+    /* Getter returns necessary attributes for all MealType records */
+    public static function getMealTypes()
+    {
+        return MealType::find()->select(['id', 'mealTypeName'])->all();
+    }
 }

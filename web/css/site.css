@@ -113,3 +113,14 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+
+
+div.form-group label.control-label::after {
+    content: ":";
+}
+
+
+div#restaurant-mealtypes label {
+    width: 20%;
+}

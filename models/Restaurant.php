@@ -17,6 +17,9 @@ use Yii;
  */
 class Restaurant extends \yii\db\ActiveRecord
 {
+
+    public $mealTypes;
+
     /**
      * @inheritdoc
      */
@@ -51,6 +54,8 @@ class Restaurant extends \yii\db\ActiveRecord
             'city' => 'City',
             'state' => 'State',
             'zip' => 'Zip',
+            'mealTypes' => 'Types of meals served here',
         ];
     }
+
 }

@@ -58,6 +58,7 @@ AppAsset::register($this);
                 'items' => [
                     ['label' => 'All meals', 'url' => ['/meal/index']],
                     ['label' => 'All meal types', 'url' => ['meal-type/index']],
+                    ['label' => 'All meat types', 'url' => ['meat/index']],
                 ],
 
 

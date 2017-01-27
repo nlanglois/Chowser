@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Restaurant;
 use app\models\MealType;
+use app\models\Meat;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
@@ -38,6 +39,11 @@ use yii\helpers\ArrayHelper;
         ArrayHelper::map(MealType::find()->asArray()->all(), 'id', 'mealTypeName'),
             ['prompt' => 'Choose which type of meal this is']
     )->label('Meal type'); ?>
+
+    <?= $form->field($model, 'meatID')->dropDownList(
+            ArrayHelper::map(Meat::find()->asArray()->all(), 'id', 'name'),
+                ['prompt' => 'Choose type of meat this meal is centered around or else choose none']
+    )->label('Meat type'); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

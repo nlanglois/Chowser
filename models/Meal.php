@@ -13,6 +13,7 @@ use Yii;
  * @property string $Price
  * @property integer $restID
  * @property integer $mealTypeID
+ * @property integer $meatID
  */
 class Meal extends \yii\db\ActiveRecord
 {
@@ -34,9 +35,9 @@ class Meal extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Name', 'Description', 'Price', 'restID', 'mealTypeID'], 'required'],
+            [['Name', 'Description', 'Price', 'restID', 'mealTypeID', 'meatID'], 'required'],
             [['Price'], 'number'],
-            [['restID', 'mealTypeID'], 'integer'],
+            [['restID', 'mealTypeID', 'meatID'], 'integer'],
             [['Name'], 'string', 'max' => 100],
             [['Description'], 'string', 'max' => 250],
         ];
@@ -58,6 +59,8 @@ class Meal extends \yii\db\ActiveRecord
             'mealTypeID' => 'Meal type ID',
             'MealType' => 'Meal type',
             'mealType.mealTypeName' => 'Meal type',
+            'meatID' => 'Meat',
+            'meat.name' => 'Meat',
         ];
     }
 
@@ -74,6 +77,14 @@ class Meal extends \yii\db\ActiveRecord
     public function getMealType()
     {
         return $this->hasOne(MealType::className(), ['id' => 'mealTypeID']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMeat()
+    {
+        return $this->hasOne(Meat::className(), ['id' => 'meatID']);
     }
 
 }

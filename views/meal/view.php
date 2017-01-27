@@ -49,7 +49,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => Html::a($model->restaurant->name, ['restaurant/view', 'id' => $model->restID]),
             ],
-            'mealType.mealTypeName',
+            //'mealType.mealTypeName',
+            [
+                'attribute' => 'MealType',
+                'format' => 'raw',
+                'value' => HTML::a($model->mealType->mealTypeName, ['meal-type/view', 'id' => $model->mealTypeID]),
+            ],
+            'meat.name',
         ],
     ]) ?>
 

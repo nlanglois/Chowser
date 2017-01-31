@@ -82,6 +82,7 @@ class Meal extends \yii\db\ActiveRecord
         return $this->hasOne(MealType::className(), ['id' => 'mealTypeID']);
     }
 
+
     /**
      * @return \yii\db\ActiveQuery
      */

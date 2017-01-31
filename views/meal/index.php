@@ -58,6 +58,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ],
 
+            'meat.name',
+
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

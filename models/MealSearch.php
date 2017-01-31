@@ -21,7 +21,7 @@ class MealSearch extends Meal
     public function rules()
     {
         return [
-            [['id', 'restID', 'mealTypeID'], 'integer'],
+            [['id', 'restID', 'mealTypeID', 'meatID'], 'integer'],
             [['Name', 'Description', 'RestaurantName', 'MealType'], 'safe'],
             [['Price'], 'number'],
         ];
@@ -92,7 +92,7 @@ class MealSearch extends Meal
             'id' => $this->id,
             'Price' => $this->Price,
             'restID' => $this->restID,
-            'mealTypeID' => $this->mealType,
+            'mealTypeID' => $this->mealTypeID,
             'meatID' => $this->meatID,
         ]);
 

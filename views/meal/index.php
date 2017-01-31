@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use app\models\MealType;
+use app\models\Meat;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MealSearch */
@@ -54,11 +55,20 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a
                         ($data->mealType->mealTypeName, ['meal-type/view', 'id' => $data->mealTypeID]);
                 },
-                'filter' => Html::activeDropDownList($searchModel, 'MealType', ArrayHelper::map(MealType::find()->asArray()->distinct()->all(), 'mealTypeName', 'mealTypeName'), ['class'=>'form-control','prompt' => 'All']),
+                'filter' => Html::activeDropDownList($searchModel, 'MealType', ArrayHelper::map(MealType::find()->asArray()->distinct()->all(), 'id', 'mealTypeName'), ['class'=>'form-control','prompt' => 'All']),
 
             ],
 
-            'meat.name',
+            //'meat.name',
+            [
+                'attribute' => 'Meat',
+                'format' => 'raw',
+                'value' => function($data) {
+                    return Html::a
+                        ($data->meat->name, ['meat/view', 'id' => $data->meatID]);
+                },
+                'filter' => Html::activeDropDownList($searchModel, 'meat', ArrayHelper::map(Meat::find()->asArray()->distinct()->all(), 'id', 'name'), ['class'=>'form-control', 'prompt' => 'All']),
+            ],
 
 
             ['class' => 'yii\grid\ActionColumn'],

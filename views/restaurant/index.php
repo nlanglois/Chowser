@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
             ],
             'city',
-            'state',
+            //'state',
             [
                 'attribute' => 'state',
                 'filter' => ArrayHelper::map(Restaurant::find()->asArray()->distinct()->all(), 'state', 'state'),

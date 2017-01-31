@@ -48,6 +48,7 @@ class MealSearch extends Meal
         $query = Meal::find();
         $query->joinWith(['restaurant']);
         $query->joinWith(['mealType']);
+        $query->joinWith(['meat']);
 
 
         // add conditions that should always apply here
@@ -71,6 +72,12 @@ class MealSearch extends Meal
             'desc' => ['MealType.mealTypeName' => SORT_DESC],
         ];
 
+        $dataProvider->sort->attributes['Meat'] = [
+            // The tables are the ones our relation are configured to
+            'asc' => ['Meat.name' => SORT_ASC],
+            'desc' => ['Meat.name' => SORT_DESC],
+        ];
+
 
         $this->load($params);
 
@@ -85,13 +92,14 @@ class MealSearch extends Meal
             'id' => $this->id,
             'Price' => $this->Price,
             'restID' => $this->restID,
-            'mealTypeID' => $this->mealTypeID,
+            'mealTypeID' => $this->mealType,
+            'meatID' => $this->meatID,
         ]);
 
         $query->andFilterWhere(['like', 'Name', $this->Name])
             ->andFilterWhere(['like', 'Description', $this->Description])
             ->andFilterWhere(['like', 'Restaurant.name', $this->RestaurantName])
-            ->andFilterWhere(['like', 'MealType.mealTypeName', $this->MealType]);
+        ;
 
 
         return $dataProvider;

@@ -61,6 +61,7 @@ class Meal extends \yii\db\ActiveRecord
             'mealType.mealTypeName' => 'Meal type',
             'meatID' => 'Meat',
             'meat.name' => 'Meat',
+            "Meat" => 'Meat',
         ];
     }
 

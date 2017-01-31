@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1>Details for the restaurant called "<?= Html::encode($this->title) ?>"</h1>
 
     <p>
+        <?= Html::a('Create Restaurant', ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\LocationType */
 
-$this->title = $model->id;
+$this->title = $model->locationTypeName;
 $this->params['breadcrumbs'][] = ['label' => 'Location Types', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -33,6 +33,8 @@ use yii\helpers\ArrayHelper;
 
     <? if (isset($mealTypes)): ?>
     <?= $form->field($model, 'mealTypes')->checkboxlist(ArrayHelper::map($mealTypes, 'id', 'mealTypeName'));?>
+
+    <?= $form->field($model, 'locationTypeID')->textInput() ?>
     <? endif; ?>
 
     <div class="form-group">

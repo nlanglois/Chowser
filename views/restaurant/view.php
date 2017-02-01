@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'city',
             'state',
             'zip',
-            'locationTypeID',
+            'locationType.locationTypeName',
         ],
     ]) ?>
 

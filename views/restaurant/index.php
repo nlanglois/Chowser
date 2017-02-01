@@ -60,8 +60,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => ArrayHelper::map(Restaurant::find()->asArray()->distinct()->all(), 'state', 'state'),
                 'contentOptions' => ['style' => 'width: 70px;'],
             ],
+            'locationType.locationTypeName',
             'zip',
-            'locationTypeID',
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

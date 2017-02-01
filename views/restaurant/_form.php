@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+use app\models\LocationType;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Restaurant */
@@ -34,8 +35,12 @@ use yii\helpers\ArrayHelper;
     <? if (isset($mealTypes)): ?>
     <?= $form->field($model, 'mealTypes')->checkboxlist(ArrayHelper::map($mealTypes, 'id', 'mealTypeName'));?>
 
-    <?= $form->field($model, 'locationTypeID')->textInput() ?>
     <? endif; ?>
+
+    <?= $form->field($model, 'locationTypeID')->dropDownList(
+        ArrayHelper::map(LocationType::find()->asArray()->all(), 'id', 'locationTypeName'),
+        ['prompt' => 'Select the Location Type']
+    )->label('Type of Restaurant'); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -35,7 +35,7 @@ class Restaurant extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'street1', 'city', 'zip'], 'required'],
-            [['zip'], 'integer'],
+            [['zip', 'locationTypeID'], 'integer'],
             [['name', 'street1', 'street2', 'city'], 'string', 'max' => 100],
             [['state'], 'string', 'max' => 2],
         ];
@@ -55,7 +55,15 @@ class Restaurant extends \yii\db\ActiveRecord
             'state' => 'State',
             'zip' => 'Zip',
             'mealTypes' => 'Types of meals served here',
+            'locationTypeID' => 'Type of Location'
         ];
     }
+
+
+    public function getLocationType()
+    {
+        return $this->hasOne(LocationType::className(), ['id' => 'locationTypeID']);
+    }
+
 
 }

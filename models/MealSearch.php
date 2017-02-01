@@ -96,7 +96,7 @@ class MealSearch extends Meal
             'meatID' => $this->meatID,
         ]);
 
-        $query->andFilterWhere(['like', 'Name', $this->Name])
+        $query->andFilterWhere(['like', 'Meal.name', $this->Name])
             ->andFilterWhere(['like', 'Description', $this->Description])
             ->andFilterWhere(['like', 'Restaurant.name', $this->RestaurantName])
         ;

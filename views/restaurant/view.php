@@ -5,6 +5,7 @@ use yii\widgets\DetailView;
 use yii\helpers\ArrayHelper;
 use app\models\Restaurant;
 use app\components\MyHelpers;
+use yii\grid\GridView;
 
 
 /* @var $this yii\web\View */
@@ -69,5 +70,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'locationType.locationTypeName',
         ],
     ]) ?>
+
+    <h3>Meals found at <?= Html::encode($this->title) ?></h3>
+    <?= GridView::widget([
+        'dataProvider' => $mealsInRestaurant,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            //'id',
+            'Name',
+
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'controller' => 'meal',
+            ],
+        ],
+    ]); ?>
 
 </div>

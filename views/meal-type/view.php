@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\MealType */
@@ -33,7 +34,17 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+    <?= GridView::widget([
+        'dataProvider' => $mealsInThisType,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
+            //'id',
+            'Name',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
 
 </div>

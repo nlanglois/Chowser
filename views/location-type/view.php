@@ -2,9 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\LocationType */
+/* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = $model->locationTypeName;
 $this->params['breadcrumbs'][] = ['label' => 'Location Types', 'url' => ['index']];
@@ -33,6 +35,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'locationTypeName',
         ],
     ]) ?>
+
+
+    <?= GridView::widget([
+        'dataProvider' => $queryLocationTypeInRestaurant,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            //'id',
+            'name',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
 </div>
 

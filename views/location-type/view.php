@@ -36,15 +36,13 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-    <h3><?= Html::encode('List of ') ?><?= Html::encode($this->title) ?><?= Html::encode(' restaurants') ?></h3>
+    <h3>List of <?= Html::encode($this->title) ?> restaurants</h3>
     <?= GridView::widget([
         'dataProvider' => $queryLocationTypeInRestaurant,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             //'id',
             'name',
-
             [
                 'class' => 'yii\grid\ActionColumn',
                 'controller' => 'restaurant',

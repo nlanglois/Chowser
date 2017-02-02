@@ -2,9 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\Restaurant;
 use Yii;
 use app\models\LocationType;
 use app\models\LocationTypeSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -38,9 +40,11 @@ class LocationTypeController extends Controller
         $searchModel = new LocationTypeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+
         ]);
     }
 
@@ -51,8 +55,12 @@ class LocationTypeController extends Controller
      */
     public function actionView($id)
     {
+        $queryLocationTypeInRestaurant = new ActiveDataProvider([
+            'query' => Restaurant::find()->where(['locationTypeID' => $id]),
+        ]);
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'queryLocationTypeInRestaurant' => $queryLocationTypeInRestaurant
         ]);
     }
 

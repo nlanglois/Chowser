@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-    <h1><?= Html::encode('Restaurants matching ') ?><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode('List of ') ?><?= Html::encode($this->title) ?><?= Html::encode(' restaurants') ?></h3>
     <?= GridView::widget([
         'dataProvider' => $queryLocationTypeInRestaurant,
         'columns' => [

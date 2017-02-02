@@ -3,11 +3,13 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Meat;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Meal;
+use app\models\Meat;
+
 
 /**
  * MeatController implements the CRUD actions for Meat model.
@@ -51,8 +53,27 @@ class MeatController extends Controller
      */
     public function actionView($id)
     {
+        $mealsQuery = Meal::find()
+            ->where(['meatID' => $id])
+            ->orderBy('Name');
+
+        $mealsProvider = new ActiveDataProvider([
+            'query' => $mealsQuery,
+//            'pagination' => [
+//                'pageSize' => 10,
+//            ],
+//            'sort' => [
+//                'defaultOrder' => [
+//                    'created_at' => SORT_DESC,
+//                    'title' => SORT_ASC,
+//                ]
+//            ],
+        ]);
+
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'mealsModel' => $mealsProvider,
         ]);
     }
 

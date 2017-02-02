@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Meat */
@@ -33,5 +34,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
         ],
     ]) ?>
+
+
+    <!-- Gridview would go here -->
+    <!-- Needs to receive variable FROM Controller containing the query that this GridView is to display -->
+    <?= GridView::widget([
+        'dataProvider' => $mealsModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            //'id',
+            'Name',
+            'Description',
+        ],
+    ]); ?>
+
 
 </div>

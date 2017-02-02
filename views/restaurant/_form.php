@@ -32,15 +32,16 @@ use app\models\LocationType;
 
     <?= $form->field($model, 'zip')->textInput() ?>
 
+
     <? if (isset($mealTypes)): ?>
     <?= $form->field($model, 'mealTypes')->checkboxlist(ArrayHelper::map($mealTypes, 'id', 'mealTypeName'));?>
-
     <? endif; ?>
+
 
     <?= $form->field($model, 'locationTypeID')->dropDownList(
         ArrayHelper::map(LocationType::find()->asArray()->all(), 'id', 'locationTypeName'),
         ['prompt' => 'Select the Location Type']
-    )->label('Type of Restaurant'); ?>
+        )->label('Type of Restaurant'); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

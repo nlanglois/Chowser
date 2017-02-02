@@ -32,18 +32,17 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'restID')->dropDownList(
         ArrayHelper::map(Restaurant::find()->asArray()->all(), 'id', 'name'),
             ['prompt' => 'Choose where this meal can be found']
-
-    )->label('Restaurant'); ?>
+        )->label('Restaurant'); ?>
 
     <?= $form->field($model, 'mealTypeID')->dropDownList(
         ArrayHelper::map(MealType::find()->asArray()->all(), 'id', 'mealTypeName'),
             ['prompt' => 'Choose which type of meal this is']
-    )->label('Meal type'); ?>
+        )->label('Meal type'); ?>
 
     <?= $form->field($model, 'meatID')->dropDownList(
             ArrayHelper::map(Meat::find()->asArray()->all(), 'id', 'name'),
                 ['prompt' => 'Choose type of meat this meal is centered around or else choose none']
-    )->label('Meat type'); ?>
+        )->label('Meat type'); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

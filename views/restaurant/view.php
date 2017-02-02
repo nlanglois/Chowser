@@ -2,6 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\ArrayHelper;
+use app\models\Restaurant;
+use app\components\MyHelpers;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Restaurant */
@@ -12,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="restaurant-view">
 
-    <h1>Details for the restaurant called "<?= Html::encode($this->title) ?>"</h1>
+    <h1>Details for "<?= Html::encode($this->title) ?>"</h1>
 
     <p>
         <?= Html::a('Create Restaurant', ['create'], ['class' => 'btn btn-success']) ?>
@@ -24,6 +28,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+    </p>
+
+    <p><?php
+            $restaurant = \app\models\Restaurant::findOne($model->id);
+            $mealTypes = $restaurant->mealTypes;
+
+            /*
+            print "<pre>";
+                print_r($mealTypes);
+            print "</pre>";
+            */
+
+        ?>
     </p>
 
     <?= DetailView::widget([
@@ -45,6 +62,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'city',
             'state',
             'zip',
+            [
+                'label' => 'Types of meals served here',
+                'value' => MyHelpers::convertM2MobjectsToString(Restaurant::findOne($model->id)->mealTypes, "mealTypeName"),
+            ],
             'locationType.locationTypeName',
         ],
     ]) ?>

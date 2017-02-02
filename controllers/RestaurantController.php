@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Meal;
 use app\models\MealType;
 use app\models\RestaurantSearch;
+use app\models\RestMealTypeLT;
 use Yii;
 use app\models\Restaurant;
 use yii\data\ActiveDataProvider;
@@ -77,6 +78,16 @@ class RestaurantController extends Controller
         $model = new Restaurant();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            //Loop through each selected meal type and write to the RestMealTypeLT
+            foreach ($_POST['Restaurant']['mealTypes'] as $typeId) {
+                $restMealType = new RestMealTypeLT(); // Instantiate new RestMealTypeLT model
+                $restMealType->restID = $model->id;
+                $restMealType->mealTypeID = $typeId;
+                $restMealType->save();
+            }
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

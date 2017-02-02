@@ -8,6 +8,8 @@ use app\models\MealTypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
+use app\models\Meal;
 
 /**
  * MealTypeController implements the CRUD actions for MealType model.
@@ -51,9 +53,15 @@ class MealTypeController extends Controller
      */
     public function actionView($id)
     {
+        $queryMealsInThisType = new ActiveDataProvider([
+            'query' => Meal::find()->where(['mealTypeID' => $id]),
+        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'mealsInThisType' => $queryMealsInThisType,
         ]);
+
     }
 
     /**

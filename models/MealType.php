@@ -26,7 +26,7 @@ class MealType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mealTypeName'], 'required'],
+            [['mealTypeName'], 'required', 'message'=>"Please enter type of meal"],
             [['mealTypeName'], 'string', 'max' => 100],
         ];
     }

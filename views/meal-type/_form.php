@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'mealTypeName')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'mealTypeName')->textInput(['maxlength' => true])->textInput(['placeholder' => "Name of meal type"]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -26,6 +26,7 @@ class Meat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name'], 'required', 'message'=>"Please enter type of meat"],
             [['name'], 'string', 'max' => 25],
         ];
     }

@@ -35,8 +35,13 @@ class Meal extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Name', 'Description', 'Price', 'restID', 'mealTypeID', 'meatID'], 'required'],
+            [['Name'], 'required', 'message' => 'What is the name of the meal?'],
+            [['Description'], 'required', 'message' => 'How would you describe this meal?'],
+            [['Price'], 'required',  'message' => 'How much did you pay for this meal?'],
             [['Price'], 'number'],
+            [['restID'], 'required',  'message' => 'Which restaurant did you eat this meal at?'],
+            [['mealTypeID'], 'required',  'message' => 'What type of meal is this?'],
+            [['meatID'], 'required',  'message' => 'What meat was in this meal?'],
             [['restID', 'mealTypeID', 'meatID'], 'integer'],
             [['Name'], 'string', 'max' => 100],
             [['Description'], 'string', 'max' => 250],

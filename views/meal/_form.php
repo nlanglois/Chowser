@@ -23,15 +23,15 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'Name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Name')->textInput(['maxlength' => true])->textInput(['placeholder' => "Please enter the name of the meal"]) ?>
 
-    <?= $form->field($model, 'Description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Description')->textInput(['maxlength' => true])->textInput(['placeholder' => "Please enter a brief description of the meal"]) ?>
 
-    <?= $form->field($model, 'Price')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Price')->textInput(['maxlength' => true])->textInput(['placeholder' => "Please enter the price of this meal"])  ?>
 
     <?= $form->field($model, 'restID')->dropDownList(
         ArrayHelper::map(Restaurant::find()->asArray()->all(), 'id', 'name'),
-            ['prompt' => 'Choose where this meal can be found']
+            ['prompt' => 'Choose which restaurant this meal comes from']
         )->label('Restaurant'); ?>
 
     <?= $form->field($model, 'mealTypeID')->dropDownList(

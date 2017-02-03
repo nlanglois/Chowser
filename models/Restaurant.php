@@ -39,6 +39,7 @@ class Restaurant extends \yii\db\ActiveRecord
 
             [['name'], 'required', 'message' => 'Please enter the name of this restaurant.'],
             [['locationTypeID'], 'required', 'message' => 'What type of restaurant is this?'],
+            [['mealTypes'], 'required', 'message' => 'You must select at least one type of meal.'],
 
             [['name', 'street1', 'street2', 'city'], 'string', 'max' => 100],
             [['state'], 'string', 'max' => 2],

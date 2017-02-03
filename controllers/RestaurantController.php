@@ -63,8 +63,13 @@ class RestaurantController extends Controller
      */
     public function actionView($id)
     {
+        $queryMealsInRestaurant = new ActiveDataProvider([
+            'query' => Meal::find()->where(['restID' => $id]),
+        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'mealsInRestaurant' => $queryMealsInRestaurant,
         ]);
     }
 

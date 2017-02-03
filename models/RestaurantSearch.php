@@ -18,7 +18,7 @@ class RestaurantSearch extends Restaurant
     public function rules()
     {
         return [
-            [['id', 'zip'], 'integer'],
+            [['id', 'zip', 'locationTypeID'], 'integer'],
             [['name', 'street1', 'street2', 'city', 'state'], 'safe'],
         ];
     }
@@ -65,6 +65,7 @@ class RestaurantSearch extends Restaurant
         $query->andFilterWhere([
             'id' => $this->id,
             'zip' => $this->zip,
+            'locationTypeID' => $this->locationTypeID,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

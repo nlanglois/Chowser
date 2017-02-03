@@ -2,9 +2,9 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
 use yii\helpers\ArrayHelper;
 use app\models\Restaurant;
+use app\models\LocationType;
 
 
 /* @var $this yii\web\View */
@@ -57,10 +57,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'city',
             [
                 'attribute' => 'state',
-                'filter' => ArrayHelper::map(Restaurant::find()->asArray()->distinct()->all(), 'state', 'state'),
+                'filter' => Html::activeDropDownList($searchModel, 'state', ArrayHelper::map(Restaurant::find()->asArray()->distinct()->all(), 'state', 'state'), ['class'=>'form-control','prompt' => 'All']),
                 'contentOptions' => ['style' => 'width: 70px;'],
             ],
-            'locationType.locationTypeName',
+            [
+                'attribute' => 'locationTypeID',
+                'value' => 'locationType.locationTypeName',
+                'filter' => Html::activeDropDownList($searchModel, 'locationTypeID', ArrayHelper::map(LocationType::find()->asArray()->distinct()->all(), 'id', 'locationTypeName'), ['class'=>'form-control','prompt' => 'All']),
+                'contentOptions' => ['style' => 'width: 70px;'],
+            ],
             'zip',
 
             ['class' => 'yii\grid\ActionColumn'],

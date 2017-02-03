@@ -32,11 +32,12 @@ use app\models\LocationType;
 
     <?= $form->field($model, 'zip')->textInput()->textInput(['placeholder' => "Restaurant zip code"]) ?>
 
+    <?//= $form->field($model, 'mealTypes')->checkboxlist(ArrayHelper::map($mealTypes, 'id', 'mealTypeName'));?>
 
-    <? if (isset($mealTypes)): ?>
-    <?= $form->field($model, 'mealTypes')->checkboxlist(ArrayHelper::map($mealTypes, 'id', 'mealTypeName'));?>
-    <? endif; ?>
-
+    <?php
+        $allMealTypes = ArrayHelper::map($mealTypes, 'id', 'mealTypeName');
+        echo $form->field($model, 'mealTypes_field')->checkboxList($allMealTypes, ['unselect' => NULL]);
+    ?>
 
     <?= $form->field($model, 'locationTypeID')->dropDownList(
         ArrayHelper::map(LocationType::find()->asArray()->all(), 'id', 'locationTypeName'),

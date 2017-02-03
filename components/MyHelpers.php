@@ -14,13 +14,14 @@ class MyHelpers
 
     static public function convertM2MobjectsToString($array, $attribute) {
 
-        $string = "";
-        foreach ($array as $itemObject) {
-            $string .= $itemObject->$attribute . ", ";
+        if (!empty($array)) {
+            $string = "";
+            foreach ($array as $itemObject) {
+                $string .= $itemObject->$attribute . ", ";
+            }
+
+            return $string = substr($string, 0, -2);
         }
-
-        return $string = substr($string, 0, -2);
-
     }
 
 }

@@ -2,14 +2,14 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Meal;
 use app\models\MealType;
 use app\models\RestaurantSearch;
-use app\models\RestMealTypeLT;
-use Yii;
 use app\models\Restaurant;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
+use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -81,23 +81,24 @@ class RestaurantController extends Controller
     public function actionCreate()
     {
         $model = new Restaurant();
+        $mealTypes = MealType::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            //Loop through each selected meal type and write to the RestMealTypeLT
-            foreach ($_POST['Restaurant']['mealTypes'] as $typeId) {
-                $restMealType = new RestMealTypeLT(); // Instantiate new RestMealTypeLT model
-                $restMealType->restID = $model->id;
-                $restMealType->mealTypeID = $typeId;
-                $restMealType->save();
-            }
+//            //Loop through each selected meal type and write to the RestMealTypeLT
+//            foreach ($_POST['Restaurant']['mealTypes'] as $typeId) {
+//                $restMealType = new RestMealTypeLT(); // Instantiate new RestMealTypeLT model
+//                $restMealType->restID = $model->id;
+//                $restMealType->mealTypeID = $typeId;
+//                $restMealType->save();
+//            }
 
 
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'mealTypes' => MealType::getMealTypes(),
+                'mealTypes' => $mealTypes,
             ]);
         }
     }
@@ -111,12 +112,21 @@ class RestaurantController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $mealTypes = MealType::find()->all();
+
+        // Retrieve the stored checkboxes
+        $model->mealTypes_field = ArrayHelper::getColumn(
+            $model->getRestaurantMeals()->asArray()->all(),
+            'mealTypeID'
+        );
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'mealTypes' => $mealTypes,
             ]);
         }
     }

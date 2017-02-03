@@ -46,6 +46,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'Name',
             'Description',
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'controller' => 'meal',
+            ]
         ],
     ]); ?>
 

@@ -14,11 +14,11 @@ use app\models\LocationType;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true])->textInput(['placeholder' => "Name of restaurant"]) ?>
 
-    <?= $form->field($model, 'street1')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'street1')->textInput(['maxlength' => true])->textInput(['placeholder' => "First line of street address"]) ?>
 
-    <?= $form->field($model, 'street2')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'street2')->textInput(['maxlength' => true])->textInput(['placeholder' => "Second line of street address (optional)"]) ?>
 
     <?= $form->field($model, 'city')->textInput(['maxlength' => true]) ?>
 
@@ -30,7 +30,7 @@ use app\models\LocationType;
     );
     ?>
 
-    <?= $form->field($model, 'zip')->textInput() ?>
+    <?= $form->field($model, 'zip')->textInput()->textInput(['placeholder' => "Restaurant zip code"]) ?>
 
 
     <? if (isset($mealTypes)): ?>
@@ -40,8 +40,8 @@ use app\models\LocationType;
 
     <?= $form->field($model, 'locationTypeID')->dropDownList(
         ArrayHelper::map(LocationType::find()->asArray()->all(), 'id', 'locationTypeName'),
-        ['prompt' => 'Select the Location Type']
-        )->label('Type of Restaurant'); ?>
+        ['prompt' => 'Choose what type of restaurant this is']
+        )->label('Restaurant type'); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

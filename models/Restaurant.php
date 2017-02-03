@@ -34,8 +34,12 @@ class Restaurant extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'street1', 'city', 'zip'], 'required'],
+            [['street1', 'city', 'state', 'zip'], 'required'],
             [['zip', 'locationTypeID'], 'integer'],
+
+            [['name'], 'required', 'message' => 'Please enter the name of this restaurant.'],
+            [['locationTypeID'], 'required', 'message' => 'What type of restaurant is this?'],
+
             [['name', 'street1', 'street2', 'city'], 'string', 'max' => 100],
             [['state'], 'string', 'max' => 2],
         ];

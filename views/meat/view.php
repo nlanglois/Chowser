@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <!-- Gridview would go here -->
     <!-- Needs to receive variable FROM Controller containing the query that this GridView is to display -->
-    <h3><?= Html::encode('Meals containing ') ?><?= Html::encode($this->title) ?></h3>
+    <?= Html::tag('h4', "Meals containing this meat:") ?>
     <?= GridView::widget([
         'dataProvider' => $mealsModel,
         'columns' => [

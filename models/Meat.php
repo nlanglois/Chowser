@@ -12,6 +12,7 @@ use Yii;
  */
 class Meat extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -41,4 +42,5 @@ class Meat extends \yii\db\ActiveRecord
             'name' => 'Name',
         ];
     }
+
 }

@@ -68,6 +68,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => MyHelpers::convertM2MobjectsToString(Restaurant::findOne($model->id)->mealTypes, "mealTypeName"),
             ],
             'locationType.locationTypeName',
+            [
+                'attribute' => 'photo',
+                'value' => Html::img(Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(), ['width' => '300', 'alt' => 'Primary image for ' . Html::encode($model->name)]),
+            ],
         ],
     ]) ?>
 

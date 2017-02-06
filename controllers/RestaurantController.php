@@ -12,6 +12,8 @@ use yii\web\Controller;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
+
 
 /**
  * RestaurantController implements the CRUD actions for Restaurant model.
@@ -85,13 +87,14 @@ class RestaurantController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-//            //Loop through each selected meal type and write to the RestMealTypeLT
-//            foreach ($_POST['Restaurant']['mealTypes'] as $typeId) {
-//                $restMealType = new RestMealTypeLT(); // Instantiate new RestMealTypeLT model
-//                $restMealType->restID = $model->id;
-//                $restMealType->mealTypeID = $typeId;
-//                $restMealType->save();
-//            }
+            $upload_file = $model->uploadFile();
+
+            if ($upload_file !== false) {
+                $upload_file->saveAs($model->getUploadedFilePath());
+                $model->photo = $model->getUploadedFileName();
+            }
+
+
 
 
             return $this->redirect(['view', 'id' => $model->id]);
@@ -113,6 +116,7 @@ class RestaurantController extends Controller
     {
         $model = $this->findModel($id);
         $mealTypes = MealType::find()->all();
+        $currentRestaurant = $this->findModel($id);
 
         // Retrieve the stored checkboxes
         $model->mealTypes_field = ArrayHelper::getColumn(
@@ -121,7 +125,27 @@ class RestaurantController extends Controller
         );
 
 
+
+        /*
+         * Handle uploading the selected file for this restaurant, if one was selected, and writing its filename to the Restaurant table. If $this already contained a photo, remove that file from filesystem first.
+         */
+        $upload_file = $model->uploadFile();
+
+        if ($upload_file !== false) {
+
+            if (!empty($currentRestaurant->photo)) {
+                unlink(Yii::$app->params['restaurantFileUploadUrl'] . $currentRestaurant->photo);
+            }
+
+            $upload_file->saveAs($model->getUploadedFilePath());
+            $model->photo = $model->getUploadedFileName();
+        }
+
+
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

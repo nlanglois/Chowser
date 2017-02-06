@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\web\UploadedFile;
+
 
 /**
  * This is the model class for table "Restaurant".
@@ -14,11 +16,14 @@ use Yii;
  * @property string $city
  * @property string $state
  * @property integer $zip
+ * @property integer $locationTypeID
+ * @property string $photo
  */
 class Restaurant extends \yii\db\ActiveRecord
 {
 
     public $mealTypes_field;
+    public $upload_file;
 
     /**
      * @inheritdoc
@@ -40,10 +45,11 @@ class Restaurant extends \yii\db\ActiveRecord
             [['name'], 'required', 'message' => 'Please enter the name of this restaurant.'],
             [['locationTypeID'], 'required', 'message' => 'What type of restaurant is this?'],
             [['mealTypes_field'], 'required', 'message' => 'You must select at least one type of meal.'],
+            [['upload_file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg, png', 'mimeTypes' => 'image/jpeg, image/png',],
 
             [['name', 'street1', 'street2', 'city'], 'string', 'max' => 100],
             [['state'], 'string', 'max' => 2],
-            [['mealTypes_field'], 'safe'],
+            [['mealTypes_field', 'upload_file'], 'safe'],
         ];
     }
 
@@ -79,9 +85,57 @@ class Restaurant extends \yii\db\ActiveRecord
             'state' => 'State',
             'zip' => 'Zip code',
             'mealTypes_field' => 'Types of meals served here',
-            'locationTypeID' => 'Type of Location'
+            'locationTypeID' => 'Type of Location',
+            'upload_file' => 'Upload Photo',
         ];
     }
+
+
+    /**
+     * @return bool|UploadedFile
+     * Handles obtaining file object selected in form
+     */
+    public function uploadFile() {
+        // get the uploaded file instance
+        $image = UploadedFile::getInstance($this, 'upload_file');
+
+        // if no image was uploaded abort the upload
+        if (empty($image)) {
+            return false;
+        }
+
+        // generate random name for the file
+        $this->photo = time(). '.' . $image->extension;
+
+        // the uploaded image instance
+        return $image;
+    }
+
+
+
+    /**
+     * @return string
+     * Returns the restaurant's photo url if one is set, else returns default image
+     */
+    public function getUploadedFilePath() {
+        // return a default image placeholder if your restaurant photo is not found
+        $photo = isset($this->photo) ? $this->photo : 'generic.png';
+        return Yii::$app->params['restaurantFileUploadUrl'] . $photo;
+    }
+
+
+    public function getUploadedFileName() {
+        return $this->photo;
+    }
+
+
+
+    public function hasPhoto() {
+        return isset($this->photo) ? true : false;
+    }
+
+
+
 
 
     /*

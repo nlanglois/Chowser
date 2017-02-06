@@ -12,7 +12,9 @@ use app\models\LocationType;
 
 <div class="restaurant-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data']
+    ]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true])->textInput(['placeholder' => "Name of restaurant"])->hint('Please enter the restaurant\'s name') ?>
 
@@ -32,8 +34,6 @@ use app\models\LocationType;
 
     <?= $form->field($model, 'zip')->textInput()->textInput(['placeholder' => "Restaurant zip code"]) ?>
 
-    <?//= $form->field($model, 'mealTypes')->checkboxlist(ArrayHelper::map($mealTypes, 'id', 'mealTypeName'));?>
-
     <?php
         $allMealTypes = ArrayHelper::map($mealTypes, 'id', 'mealTypeName');
         echo $form->field($model, 'mealTypes_field')->checkboxList($allMealTypes, ['unselect' => NULL]);
@@ -43,6 +43,18 @@ use app\models\LocationType;
         ArrayHelper::map(LocationType::find()->asArray()->all(), 'id', 'locationTypeName'),
         ['prompt' => 'Choose what type of restaurant this is']
         )->label('Restaurant type'); ?>
+
+
+    <?php
+        if ($model->hasPhoto()) {
+            echo Html::tag("p", Html::tag("b", "Currently uploaded image:"));
+            echo Html::img(Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(), ['width' => '400']);
+            echo $form->field($model, 'upload_file')->fileInput()->label("Select new photo");
+        } else {
+            echo $form->field($model, 'upload_file')->fileInput();
+        }
+    ?>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

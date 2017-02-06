@@ -55,4 +55,5 @@ return [
         'WY' => 'Wyoming',
         'DC' => 'Washington D.C.'
     ],
+    'restaurantFileUploadUrl' => 'uploads/restaurant/',
 ];

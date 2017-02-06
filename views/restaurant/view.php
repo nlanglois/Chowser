@@ -78,6 +78,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3>Meals found at <?= Html::encode($this->title) ?></h3>
     <?= GridView::widget([
         'dataProvider' => $mealsInRestaurant,
+        'showOnEmpty' => false,
+        'emptyText' => 'No meals in the system for ' . $this->title . ' yet. ' . Html::a('Add one now!', ['meal/create']),
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

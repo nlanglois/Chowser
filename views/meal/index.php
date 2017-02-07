@@ -45,8 +45,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute' => 'RestaurantName',
-                'value' => 'restaurant.name',
                 'label' => 'Restaurant',
+                'format'=> 'raw',
+                'value' => function($data) {
+                    return Html::a
+                    ($data->restaurant->name, ['restaurant/view', 'id' => $data->id]);
+                },
+
             ],
             [
                 'attribute' => 'MealType',
@@ -56,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a
                         ($data->mealType->mealTypeName, ['meal-type/view', 'id' => $data->mealTypeID]);
                 },
-                'filter' => Html::activeDropDownList($searchModel, 'mealTypeID', ArrayHelper::map(MealType::find()->asArray()->distinct()->all(), 'id', 'mealTypeName'), ['class'=>'form-control','prompt' => 'All']),
+                'filter' => Html::activeDropDownList($searchModel, 'mealTypeID', ArrayHelper::map(MealType::find()->asArray()->distinct()->orderBy('mealTypeName')->all(), 'id', 'mealTypeName'), ['class'=>'form-control','prompt' => 'All']),
 
             ],
 
@@ -68,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a
                         ($data->meat->name, ['meat/view', 'id' => $data->meatID]);
                 },
-                'filter' => Html::activeDropDownList($searchModel, 'meatID', ArrayHelper::map(Meat::find()->asArray()->distinct()->all(), 'id', 'name'), ['class'=>'form-control', 'prompt' => 'All']),
+                'filter' => Html::activeDropDownList($searchModel, 'meatID', ArrayHelper::map(Meat::find()->asArray()->orderBy('name')->all(), 'id', 'name'), ['class'=>'form-control', 'prompt' => 'All']),
             ],
 
 

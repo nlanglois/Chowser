@@ -45,7 +45,7 @@ class Restaurant extends \yii\db\ActiveRecord
             [['name'], 'required', 'message' => 'Please enter the name of this restaurant.'],
             [['locationTypeID'], 'required', 'message' => 'What type of restaurant is this?'],
             [['mealTypes_field'], 'required', 'message' => 'You must select at least one type of meal.'],
-            [['upload_file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg, png', 'mimeTypes' => 'image/jpeg, image/png',],
+            [['upload_file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg, png, jpeg', 'mimeTypes' => 'image/jpeg, image/png',],
 
             [['name', 'street1', 'street2', 'city'], 'string', 'max' => 100],
             [['state'], 'string', 'max' => 2],

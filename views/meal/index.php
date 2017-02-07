@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a
                         ($data->mealType->mealTypeName, ['meal-type/view', 'id' => $data->mealTypeID]);
                 },
-                'filter' => Html::activeDropDownList($searchModel, 'mealTypeID', ArrayHelper::map(MealType::find()->asArray()->distinct()->all(), 'id', 'mealTypeName'), ['class'=>'form-control','prompt' => 'All']),
+                'filter' => Html::activeDropDownList($searchModel, 'mealTypeID', ArrayHelper::map(MealType::find()->asArray()->distinct()->orderBy('mealTypeName')->all(), 'id', 'mealTypeName'), ['class'=>'form-control','prompt' => 'All']),
 
             ],
 

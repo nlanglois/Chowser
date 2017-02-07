@@ -62,7 +62,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'locationTypeID',
-                'value' => 'locationType.locationTypeName',
+                //'value' => 'locationType.locationTypeName',
+                'value' => function($data) {
+                    return Html::a
+                    ($data->locationType->locationTypeName, ['location-type/view', 'id' => $data->locationTypeID]);
+                },
                 'filter' => Html::activeDropDownList($searchModel, 'locationTypeID', ArrayHelper::map(LocationType::find()->asArray()->distinct()->all(), 'id', 'locationTypeName'), ['class'=>'form-control','prompt' => 'All']),
                 'contentOptions' => ['style' => 'width: 70px;'],
             ],

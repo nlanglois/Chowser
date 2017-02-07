@@ -85,7 +85,8 @@ class Restaurant extends \yii\db\ActiveRecord
             'state' => 'State',
             'zip' => 'Zip code',
             'mealTypes_field' => 'Types of meals served here',
-            'locationTypeID' => 'Type of Location',
+            'locationTypeID' => 'Location ID',
+            'locationName' => 'Location',
             'upload_file' => 'Upload Photo',
         ];
     }

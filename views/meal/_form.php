@@ -6,6 +6,7 @@ use app\models\Restaurant;
 use app\models\MealType;
 use app\models\Meat;
 use yii\helpers\ArrayHelper;
+use dosamigos\tinymce\TinyMce;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Meal */
@@ -25,7 +26,19 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'Name')->textInput(['maxlength' => true])->textInput(['placeholder' => "Please enter the name of the meal"]) ?>
 
-    <?= $form->field($model, 'Description')->textInput(['maxlength' => true])->textInput(['placeholder' => "Please enter a brief description of the meal"]) ?>
+    <?= $form->field($model, 'Description')->widget(TinyMce::className(), [
+        'options' => ['rows' => 6],
+        'language' => 'en_US',
+        'clientOptions' => [
+            'menubar' => 'false',
+            'plugins' => [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            'toolbar' => 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        ]
+    ])->hint('You can enter HTML text in here if you\'d like') ?>
 
     <?= $form->field($model, 'Price')->textInput(['maxlength' => true])->textInput(['placeholder' => "Please enter the price of this meal"])  ?>
 

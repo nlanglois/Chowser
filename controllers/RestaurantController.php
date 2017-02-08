@@ -156,6 +156,17 @@ class RestaurantController extends Controller
      */
     public function actionDelete($id)
     {
+
+        // If the restaurant has a photo, find it, delete it
+        if ($this->findModel($id)->hasPhoto()) {
+            $photo = $this->findModel($id)->getUploadedFilePath();
+            unlink($photo);
+        }
+
+        // If the restaurant has associations with MealTypes via the junction table, remove them
+        \Yii::$app->db->createCommand()->delete('RestMealTypeLT', 'restID = ' . (int) $id)->execute();
+
+        // Finally, delete the restaurant record from Restaurant table
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

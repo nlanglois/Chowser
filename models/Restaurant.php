@@ -106,8 +106,8 @@ class Restaurant extends \yii\db\ActiveRecord
             return false;
         }
 
-        // generate random name for the file
-        $this->photo = time(). '.' . $image->extension;
+        // generate new name for the file
+        $this->photo = time() . '.' . $image->extension;
 
         // the uploaded image instance
         return $image;

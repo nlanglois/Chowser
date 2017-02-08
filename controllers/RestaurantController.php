@@ -83,7 +83,7 @@ class RestaurantController extends Controller
     public function actionCreate()
     {
         $model = new Restaurant();
-        $mealTypes = MealType::find()->all();
+        $mealTypes = MealType::find()->orderBy('mealTypeName')->all();
 
 
         $upload_file = $model->uploadFile();
@@ -112,7 +112,7 @@ class RestaurantController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $mealTypes = MealType::find()->all();
+        $mealTypes = MealType::find()->orderBy('mealTypeName')->all();
         $currentRestaurant = $this->findModel($id);
 
         // Retrieve the stored checkboxes

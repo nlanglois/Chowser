@@ -28,7 +28,7 @@ use dosamigos\tinymce\TinyMce;
 
     <?= $form->field($model, 'Description')->widget(TinyMce::className(), [
         'options' => ['rows' => 6],
-        'language' => 'en_US',
+        'language' => 'en_CA',
         'clientOptions' => [
             'menubar' => 'false',
             'plugins' => [

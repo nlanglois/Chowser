@@ -82,7 +82,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions' => ['style' => 'width: 70px;'],
             ],
             'zip',
-
+            [
+                'attribute'=>'photo',
+                'format' => 'raw',
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

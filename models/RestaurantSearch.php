@@ -42,6 +42,7 @@ class RestaurantSearch extends Restaurant
     public function search($params)
     {
         $query = Restaurant::find();
+        $query->joinWith(['locationType']);
 
         // add conditions that should always apply here
 
@@ -49,9 +50,16 @@ class RestaurantSearch extends Restaurant
         $query->orderBy('name ASC');
 
 
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes['locationName'] = [
+        //The tables are the ones our relation are configured to
+        'asc' => ['LocationType.locationTypeName' => SORT_ASC],
+        'desc' => ['LocationType.locationTypeName' => SORT_DESC],
+        ];
 
         $this->load($params);
 

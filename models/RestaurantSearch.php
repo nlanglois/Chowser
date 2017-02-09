@@ -63,6 +63,16 @@ class RestaurantSearch extends Restaurant
             'desc' => ['LocationType.locationTypeName' => SORT_DESC],
         ];
 
+        $dataProvider->sort->attributes['Full_Address'] = [
+            'asc' => ['street1' => SORT_ASC],
+            'desc' => ['street1' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['Full_Address'] = [
+            'asc' => ['Restaurant.city' => SORT_ASC],
+            'desc' => ['city' => SORT_DESC],
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {

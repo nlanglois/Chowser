@@ -30,14 +30,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'name',
-
+            [
+                'label'=>'Full Address',
+                'attribute'=>'Full_Address',
+                'format'=>'raw',
+                'value' => function($model){
+        return $model->street1. " " .$model->street2. " " .$model->city. " (" .Html::a("map", "https://www.google.com/maps/place/" . $model->street1 . "," . $model->city . "," . $model->state . "," . $model->zip,
+                [
+                    'title'=>'Check out ' . $model->name . '\'s location on Google Maps',
+                    'target'=>'_blank',
+                ]
+            ). ") ";
+                }
+            ],
             [
                 'attribute' => 'street1',
                 'format' => 'raw',
                 'value' => function($model) {
                     return $model->street1 . " (" .
-                        Html::a
-                            ("map", "https://www.google.com/maps/place/" . $model->street1 . "," . $model->city . "," . $model->state . "," . $model->zip,
+                        Html::a("map", "https://www.google.com/maps/place/" . $model->street1 . "," . $model->city . "," . $model->state . "," . $model->zip,
                                 [
                                     'title'=>'Check out ' . $model->name . '\'s location on Google Maps',
                                     'target'=>'_blank',

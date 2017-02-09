@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'city',
             [
                 'attribute' => 'state',
-                'filter' => Html::activeDropDownList($searchModel, 'state', ArrayHelper::map(Restaurant::find()->asArray()->distinct()->all(), 'state', 'state'), ['class'=>'form-control','prompt' => 'All']),
+                'filter' => Html::activeDropDownList($searchModel, 'state', ArrayHelper::map(Restaurant::find()->asArray()->distinct()->orderBy('state')->all(), 'state', 'state'), ['class'=>'form-control','prompt' => 'All']),
                 'contentOptions' => ['style' => 'width: 70px;'],
             ],
             [

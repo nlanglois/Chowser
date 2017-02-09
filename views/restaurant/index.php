@@ -31,11 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'name',
             [
-                'label'=>'Full Address',
+                'label'=>'Address',
                 'attribute'=>'Full_Address',
                 'format'=>'raw',
                 'value' => function($model){
-        return $model->street1. " " .$model->street2. " " .$model->city. " (" .Html::a("map", "https://www.google.com/maps/place/" . $model->street1 . "," . $model->city . "," . $model->state . "," . $model->zip,
+        return $model->street1. " " .$model->street2. " (" .Html::a("map", "https://www.google.com/maps/place/" . $model->street1 . "," . $model->city . "," . $model->state . "," . $model->zip,
                 [
                     'title'=>'Check out ' . $model->name . '\'s location on Google Maps',
                     'target'=>'_blank',
@@ -43,28 +43,28 @@ $this->params['breadcrumbs'][] = $this->title;
             ). ") ";
                 }
             ],
-            [
-                'attribute' => 'street1',
-                'format' => 'raw',
-                'value' => function($model) {
-                    return $model->street1 . " (" .
-                        Html::a("map", "https://www.google.com/maps/place/" . $model->street1 . "," . $model->city . "," . $model->state . "," . $model->zip,
-                                [
-                                    'title'=>'Check out ' . $model->name . '\'s location on Google Maps',
-                                    'target'=>'_blank',
-                                ]
-                            )
-                        . ")";
-                },
-            ],
+//            [
+//                'attribute' => 'street1',
+//                'format' => 'raw',
+//                'value' => function($model) {
+//                    return $model->street1 . " (" .
+//                        Html::a("map", "https://www.google.com/maps/place/" . $model->street1 . "," . $model->city . "," . $model->state . "," . $model->zip,
+//                                [
+//                                    'title'=>'Check out ' . $model->name . '\'s location on Google Maps',
+//                                    'target'=>'_blank',
+//                                ]
+//                            )
+//                        . ")";
+//                },
+//            ],
 
-            [
-                'attribute' => 'street2',
-                'value' => function($data) {
-                    return !empty($data->street2) ? $data->street2 : '<span class="glyphicon glyphicon-question-sign"></span>';
-                },
-                'format' => 'raw',
-            ],
+//            [
+//                'attribute' => 'street2',
+//                'value' => function($data) {
+//                    return !empty($data->street2) ? $data->street2 : '<span class="glyphicon glyphicon-question-sign"></span>';
+//                },
+//                'format' => 'raw',
+//            ],
             'city',
             [
                 'attribute' => 'state',

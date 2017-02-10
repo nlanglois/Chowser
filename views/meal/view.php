@@ -62,6 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => Html::a($model->meat->name, ['meat/view', 'id' => $model->meatID]),
             ]
+
         ],
     ]) ?>
 

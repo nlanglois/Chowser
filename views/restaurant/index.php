@@ -7,6 +7,7 @@ use app\models\Restaurant;
 use app\models\LocationType;
 
 
+
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel */
@@ -83,8 +84,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'zip',
             [
-                'attribute'=>'photo',
-                'format' => 'raw',
+                'attribute'=>'upload_file',
+                'format'=>'raw',
+                'value' => function ($model){
+                  return Html::img(Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(), ['width' => '100', 'alt' => 'Primary image for ' . Html::encode($model->name)]);
+    },
             ],
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -21,8 +21,9 @@ use dosamigos\tinymce\TinyMce;
 ?>
 
 <div class="meal-form">
-
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data']
+    ]); ?>
 
     <?= $form->field($model, 'Name')->textInput(['maxlength' => true])->textInput(['placeholder' => "Please enter the name of the meal"]) ?>
 
@@ -56,6 +57,16 @@ use dosamigos\tinymce\TinyMce;
             ArrayHelper::map(Meat::find()->asArray()->all(), 'id', 'name'),
                 ['prompt' => 'Choose type of meat this meal is centered around or else choose none']
         )->label('Meat type'); ?>
+
+    <?php
+    if ($model->hasPhoto()) {
+        echo Html::tag("p", Html::tag("b", "Currently uploaded image:"));
+        echo Html::img(Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(), ['width' => '400']);
+        echo $form->field($model, 'upload_file')->fileInput()->label("Select new photo");
+    } else {
+        echo $form->field($model, 'upload_file')->fileInput();
+    }
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

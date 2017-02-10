@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "Meal".
@@ -20,6 +21,7 @@ class Meal extends \yii\db\ActiveRecord
 
     public $RestaurantName;
     public $MealType;
+    public $upload_file;
 
     /**
      * @inheritdoc
@@ -43,6 +45,7 @@ class Meal extends \yii\db\ActiveRecord
             [['mealTypeID'], 'required',  'message' => 'What type of meal is this?'],
             [['meatID'], 'required',  'message' => 'What meat was in this meal?'],
             [['restID', 'mealTypeID', 'meatID'], 'integer'],
+            [['upload_file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg, png, jpeg', 'mimeTypes' => 'image/jpeg, image/png',],
             [['Name'], 'string', 'max' => 100],
             [['Description'], 'string', 'max' => 250],
         ];
@@ -67,11 +70,53 @@ class Meal extends \yii\db\ActiveRecord
             'meatID' => 'Meat',
             'meat.name' => 'Meat',
             "Meat" => 'Meat',
+            'upload_file' => 'Upload photo',
         ];
     }
 
 
+    /**
+     * @return bool|UploadedFile
+     * Handles obtaining file object selected in form
+     */
+    public function uploadFile() {
+        // get the uploaded file instance
+        $image = UploadedFile::getInstance($this, 'upload_file');
 
+        // if no image was uploaded abort the upload
+        if (empty($image)) {
+            return false;
+        }
+
+        // generate new name for the file
+        $this->photo = time() . '.' . $image->extension;
+
+        // the uploaded image instance
+        return $image;
+    }
+
+
+
+    /**
+     * @return string
+     * Returns the restaurant's photo url if one is set, else returns default image
+     */
+    public function getUploadedFilePath() {
+        // return a default image placeholder if your restaurant photo is not found
+        $photo = isset($this->photo) ? $this->photo : 'generic.png';
+        return Yii::$app->params['mealFileUploadUrl'] . $photo;
+    }
+
+
+    public function getUploadedFileName() {
+        return $this->photo;
+    }
+
+
+
+    public function hasPhoto() {
+        return isset($this->photo) ? true : false;
+    }
 
 
 

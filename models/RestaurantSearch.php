@@ -43,7 +43,6 @@ class RestaurantSearch extends Restaurant
     {
         $query = Restaurant::find();
         $query->joinWith(['locationType']);
-
         // add conditions that should always apply here
 
         // Setting a default sort order on name attribute

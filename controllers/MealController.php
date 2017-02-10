@@ -13,11 +13,13 @@ use yii\filters\VerbFilter;
  * MealController implements the CRUD actions for Meal model.
  */
 class MealController extends Controller
+
 {
     /**
      * @inheritdoc
      */
     public function behaviors()
+
     {
         return [
             'verbs' => [
@@ -65,6 +67,12 @@ class MealController extends Controller
     {
         $model = new Meal();
 
+        $upload_file = $model->uploadFile();
+        if ($upload_file !== false) {
+            $upload_file->saveAs($model->getUploadedFilePath());
+            $model->photo = $model->getUploadedFileName();
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -72,6 +80,7 @@ class MealController extends Controller
                 'model' => $model,
             ]);
         }
+
     }
 
     /**
@@ -83,6 +92,17 @@ class MealController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $currentMeal = $this->findModel($id);
+        $upload_file = $model->uploadFile();
+        if ($upload_file !== false) {
+
+            if (!empty($currentMeal->photo)) {
+                unlink(Yii::$app->params['mealFileUploadUrl'] . $currentMeal->photo);
+            }
+
+            $upload_file->saveAs($model->getUploadedFilePath());
+            $model->photo = $model->getUploadedFileName();
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -91,6 +111,8 @@ class MealController extends Controller
                 'model' => $model,
             ]);
         }
+
+
     }
 
     /**
@@ -101,6 +123,10 @@ class MealController extends Controller
      */
     public function actionDelete($id)
     {
+        if ($this->findModel($id)->hasPhoto()) {
+            $photo = $this->findModel($id)->getUploadedFilePath();
+            unlink($photo);
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

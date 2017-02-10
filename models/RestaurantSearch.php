@@ -12,6 +12,8 @@ use app\models\Restaurant;
  */
 class RestaurantSearch extends Restaurant
 {
+
+    public $Full_Address;
     /**
      * @inheritdoc
      */
@@ -19,7 +21,7 @@ class RestaurantSearch extends Restaurant
     {
         return [
             [['id', 'zip', 'locationTypeID'], 'integer'],
-            [['name', 'street1', 'street2', 'city', 'state'], 'safe'],
+            [['name', 'street1', 'street2', 'Full_Address', 'city', 'state'], 'safe'],
         ];
     }
 
@@ -55,9 +57,19 @@ class RestaurantSearch extends Restaurant
         ]);
 
         $dataProvider->sort->attributes['locationName'] = [
-        //The tables are the ones our relation are configured to
-        'asc' => ['LocationType.locationTypeName' => SORT_ASC],
-        'desc' => ['LocationType.locationTypeName' => SORT_DESC],
+            //The tables are the ones our relation are configured to
+            'asc' => ['LocationType.locationTypeName' => SORT_ASC],
+            'desc' => ['LocationType.locationTypeName' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['Full_Address'] = [
+            'asc' => ['street1' => SORT_ASC],
+            'desc' => ['street1' => SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['Full_Address'] = [
+            'asc' => ['Restaurant.city' => SORT_ASC],
+            'desc' => ['city' => SORT_DESC],
         ];
 
         $this->load($params);
@@ -76,7 +88,7 @@ class RestaurantSearch extends Restaurant
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'street1', $this->street1])
+            ->andFilterWhere(['like', 'street1', $this->Full_Address])
             ->andFilterWhere(['like', 'street2', $this->street2])
             ->andFilterWhere(['like', 'city', $this->city])
             ->andFilterWhere(['like', 'state', $this->state]);

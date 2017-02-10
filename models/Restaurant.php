@@ -176,5 +176,4 @@ class Restaurant extends \yii\db\ActiveRecord
         return $this->hasMany(MealType::className(), ['id' => 'mealTypeID'])
             ->via('restaurantMeals');
     }
-
 }

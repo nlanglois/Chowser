@@ -56,4 +56,5 @@ return [
         'DC' => 'Washington D.C.'
     ],
     'restaurantFileUploadUrl' => 'uploads/restaurant/',
+    'mealFileUploadUrl' => 'uploads/meal/',
 ];

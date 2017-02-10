@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@example.com',
+    'adminEmail' => 'kevin@kevinfirmin.com',
     'us_states' => [
         'AL' => 'Alabama',
         'AK' => 'Alaska',

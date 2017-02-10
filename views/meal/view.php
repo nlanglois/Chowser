@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Meal;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Meal */
@@ -61,9 +62,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'meat.name',
                 'format' => 'raw',
                 'value' => Html::a($model->meat->name, ['meat/view', 'id' => $model->meatID]),
-            ]
+            ],
+            [
+            'attribute' => 'photo',
+            'format'=> 'raw',
+            'value' => Html::img(Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(), ['width' => '300', 'alt' => 'Primary image for ' . Html::encode($model->Name)]),
 
-        ],
-    ]) ?>
+        ]
+    ]]) ?>
 
 </div>

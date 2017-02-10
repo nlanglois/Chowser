@@ -13,7 +13,7 @@ use app\models\Restaurant;
 class RestaurantSearch extends Restaurant
 {
 
-    public $Full_Address;
+    public $fullAddress;
     /**
      * @inheritdoc
      */
@@ -21,7 +21,7 @@ class RestaurantSearch extends Restaurant
     {
         return [
             [['id', 'zip', 'locationTypeID'], 'integer'],
-            [['name', 'street1', 'street2', 'Full_Address', 'city', 'state'], 'safe'],
+            [['name', 'street1', 'street2', 'fullAddress', 'city', 'state'], 'safe'],
         ];
     }
 
@@ -46,15 +46,15 @@ class RestaurantSearch extends Restaurant
         $query = Restaurant::find();
         $query->joinWith(['locationType']);
 
-        // add conditions that should always apply here
-
-        // Setting a default sort order on name attribute
-        $query->orderBy('name ASC');
-
 
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'name' => SORT_ASC,
+                ],
+            ],
         ]);
 
         $dataProvider->sort->attributes['locationName'] = [
@@ -63,15 +63,11 @@ class RestaurantSearch extends Restaurant
             'desc' => ['LocationType.locationTypeName' => SORT_DESC],
         ];
 
-        $dataProvider->sort->attributes['Full_Address'] = [
-            'asc' => ['street1' => SORT_ASC],
-            'desc' => ['street1' => SORT_DESC],
+        $dataProvider->sort->attributes['fullAddress'] = [
+            'asc' => ['Restaurant.street1' => SORT_ASC],
+            'desc' => ['Restaurant.street1' => SORT_DESC],
         ];
 
-        $dataProvider->sort->attributes['Full_Address'] = [
-            'asc' => ['Restaurant.city' => SORT_ASC],
-            'desc' => ['city' => SORT_DESC],
-        ];
 
         $this->load($params);
 
@@ -89,7 +85,7 @@ class RestaurantSearch extends Restaurant
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'street1', $this->Full_Address])
+            ->andFilterWhere(['like', 'street1', $this->fullAddress])
             ->andFilterWhere(['like', 'street2', $this->street2])
             ->andFilterWhere(['like', 'city', $this->city])
             ->andFilterWhere(['like', 'state', $this->state]);

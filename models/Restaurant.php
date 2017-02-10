@@ -13,6 +13,7 @@ use yii\web\UploadedFile;
  * @property string $name
  * @property string $street1
  * @property string $street2
+ * @property string $fullAddress
  * @property string $city
  * @property string $state
  * @property integer $zip

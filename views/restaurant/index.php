@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             [
                 'label'=>'Address',
-                'attribute'=>'Full_Address',
+                'attribute'=>'fullAddress',
                 'format'=>'raw',
                 'value' => function($model){
         return $model->street1. " " .$model->street2. " (" .Html::a("map", "https://www.google.com/maps/place/" . $model->street1 . "," . $model->city . "," . $model->state . "," . $model->zip,

@@ -44,6 +44,7 @@ class RestaurantController extends Controller
     {
         $searchModel = new RestaurantSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         //  $dataProvider->query->andFilterWhere(['status'=>1]);
 
         /*

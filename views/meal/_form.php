@@ -7,6 +7,9 @@ use app\models\MealType;
 use app\models\Meat;
 use yii\helpers\ArrayHelper;
 use dosamigos\tinymce\TinyMce;
+use kartik\select2\Select2;
+
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Meal */
@@ -48,10 +51,17 @@ use dosamigos\tinymce\TinyMce;
             ['prompt' => 'Choose which restaurant this meal comes from']
         )->label('Restaurant'); ?>
 
-    <?= $form->field($model, 'mealTypeID')->dropDownList(
-        ArrayHelper::map(MealType::find()->asArray()->all(), 'id', 'mealTypeName'),
-            ['prompt' => 'Choose which type of meal this is']
-        )->label('Meal type'); ?>
+
+    <? // https://github.com/kartik-v/yii2-widget-select2 ?>
+    <?= $form->field($model, 'mealTypeID')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(MealType::find()->asArray()->all(), 'id', 'mealTypeName'),
+        'language' => 'en',
+        'options' => ['placeholder' => 'Choose which type of meal this is'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ])->label('Meal type') ?>
+
 
     <?= $form->field($model, 'meatID')->dropDownList(
             ArrayHelper::map(Meat::find()->asArray()->all(), 'id', 'name'),

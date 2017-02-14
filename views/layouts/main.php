@@ -30,7 +30,7 @@ AppAsset::register($this);
         'brandLabel' => 'Chowser',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'ch-navbar navbar-fixed-top',
         ],
     ]);
 

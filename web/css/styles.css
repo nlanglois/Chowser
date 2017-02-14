@@ -1,0 +1,43 @@
+.ch-navbar {
+    background-color: #3a2b1e;
+}
+
+.navbar-header a, .dropdown a {
+    color: #e9cda5;
+}
+
+.navbar-nav > li > a:hover {
+    background-color: #e9cda5;
+    color: #3a2b1e;
+}
+
+.dropdown-menu {
+    background-color: #e9cda5;
+    color: #3a2b1e;
+}
+
+.nav .open > a, .nav .open > a:focus {
+    background-color: #b62b06;
+    color: #f3d8c7;
+}
+
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > li > a:hover {
+    background-color: #b62b06;
+    color: #f3d8c7;
+}
+
+.footer {
+    background-color: #b62b06;
+    color: #f3d8c7;
+}
+
+.pull-right a {
+    color: #f3d8c7;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:focus {
+    background-color: #3a2b1e;
+    color: #e9cda5;
+}

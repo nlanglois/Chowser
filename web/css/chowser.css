@@ -3,7 +3,13 @@ div.all-restaurants {
     flex-flow: row wrap;
 }
 
-div.all-restaurants div {
-    width: 40%;
+div.all-restaurants a {
+    width: 370px;
     border: 1px solid #000;
+    margin: 0 10px 10px 0;
+    padding: 5px;
+}
+
+div.all-restaurants a img {
+    float: right;
 }

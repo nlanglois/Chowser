@@ -3,13 +3,19 @@ div.all-restaurants {
     flex-flow: row wrap;
 }
 
-div.all-restaurants a {
-    width: 370px;
+div.all-restaurants div {
+    /*width: 25%;*/
     border: 1px solid #000;
-    margin: 0 10px 10px 0;
-    padding: 5px;
 }
 
-div.all-restaurants a img {
-    float: right;
+div.all-restaurants div:hover {
+    background-color: #d6d1b1;
 }
+
+/* Colors */
+/* Red #fe5f55
+Orange #f0b67f
+Light-brown #d6d1b1
+Green #c7efcf
+Light-green #eef5db
+ */

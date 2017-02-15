@@ -2,7 +2,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-use app\models\Restaurant;
+
 
 ?>
 <h1>Find by Restaurant</h1>
@@ -15,22 +15,24 @@ use app\models\Restaurant;
 </p>
 
 <div class="all-restaurants">
-<?php
-    foreach ($dataProvider->getModels() as $model)
-    {
-        print Html::a(
-                Html::img(
-                    Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(),
-                    [
-                        'width' => '150',
-                        'alt' => 'Primary image for ' . Html::encode($model->name)
-                    ]
-                ) . Html::tag('h4', $model->name),
-                ['find/restaurant', 'id' => $model->id]
-        );
+    <?php
+        foreach ($dataProvider->getModels() as $model)
+        {
+            print Html::tag(
+                    'div class="col-md-4 col-sm-12 col-xs-12"',
+                        Html::a(
+                            Html::img(
+                                Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(),
+                                [
+                                    'width' => '100',
+                                    'alt' => 'Primary image for ' . Html::encode($model->name)
+                                ]
+                            ) . Html::tag('p', $model->name)
+                        )
+            );
 
-    }
+        }
 
-?>
+    ?>
 
 </div>

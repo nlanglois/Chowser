@@ -1,0 +1,8 @@
+div.all-restaurants {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+div.all-restaurants div {
+    width: 49%;
+}

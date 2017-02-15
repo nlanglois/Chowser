@@ -18,7 +18,18 @@ use app\models\Restaurant;
 <?php
     foreach ($dataProvider->getModels() as $model)
     {
-        print Html::tag('div', Html::img(Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(), ['width' => '100', 'alt' => 'Primary image for ' . Html::encode($model->name)]));
+        print Html::tag(
+                'div',
+                Html::img(
+                    Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(),
+                    [
+                        'width' => '100',
+                        'alt' => 'Primary image for ' . Html::encode($model->name)
+                    ]
+                )
+        );
+
+
         print Html::tag('p', $model->name);
     }
 

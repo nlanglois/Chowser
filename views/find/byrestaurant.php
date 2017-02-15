@@ -18,7 +18,8 @@ use yii\helpers\Html;
     <?php
         foreach ($dataProvider->getModels() as $model)
         {
-            print Html::tag(
+            print
+                Html::tag(
                     'div class="col-md-4 col-sm-12 col-xs-12"',
                         Html::a(
                             Html::img(
@@ -29,7 +30,7 @@ use yii\helpers\Html;
                                 ]
                             ) . Html::tag('p', $model->name)
                         )
-            );
+                );
 
         }
 

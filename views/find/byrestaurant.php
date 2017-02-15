@@ -26,11 +26,9 @@ use app\models\Restaurant;
                         'width' => '100',
                         'alt' => 'Primary image for ' . Html::encode($model->name)
                     ]
-                )
+                ) . Html::tag('p', $model->name)
         );
 
-
-        print Html::tag('p', $model->name);
     }
 
 ?>

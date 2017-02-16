@@ -11,17 +11,17 @@ use yii\helpers\Html;
 
 <div class="all-restaurants">
     <?php
-        foreach ($dataProvider->getModels() as $model)
+        foreach ($dataProvider->getModels() as $restaurant)
         {
             print Html::a(
-                Html::img(
-                    Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(),
-                    [
-                        'width' => '100',
-                        'alt' => 'Primary image for ' . Html::encode($model->name)
-                    ]
-                ) . Html::tag('p', $model->name)
-            );
+                    Html::img(
+                        Yii::getAlias('@web') . '/' . $restaurant->getUploadedFilePath(),
+                        [
+                            'width' => '100',
+                            'alt' => 'Primary image for ' . Html::encode($restaurant->name)
+                        ]
+                    ) . Html::tag('p', $restaurant->name)
+                , ['find/restaurant', 'id' => $restaurant->id]);
 
         }
 

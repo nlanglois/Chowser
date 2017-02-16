@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\LocationType;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Restaurant */
@@ -37,10 +38,14 @@ use app\models\LocationType;
         echo $form->field($model, 'mealTypes_field')->checkboxList($allMealTypes, ['unselect' => NULL]);
     ?>
 
-    <?= $form->field($model, 'locationTypeID')->dropDownList(
-        ArrayHelper::map(LocationType::find()->asArray()->all(), 'id', 'locationTypeName'),
-        ['prompt' => 'Choose what type of restaurant this is']
-        )->label('Restaurant type'); ?>
+    <?= $form->field($model, 'locationTypeID')->widget(Select2::className(), [
+        'data' => ArrayHelper::map(LocationType::find()->asArray()->all(), 'id', 'locationTypeName'),
+            'language' => 'en',
+            'options' => ['placeholder' => 'Choose which type of restaurant this is'],
+            'pluginOptions' => [
+                'allowClear' => true,
+            ],
+        ])->label('Restaurant type') ?>
 
 
     <?php

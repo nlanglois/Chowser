@@ -1,20 +1,17 @@
-a{
+.navbar-static-top a{
     color: white;
+}
+
+.nav > li > a:hover, .nav > li > a:focus{
+background-color: darkred;
 }
 
 
 .wrapper{
-    margin:0 auto;
     width:100%;
-    min-height: 300px;
-    border: 1px solid black;
 }
-
-.container{
-    min-height: 300px;
-    width: 100%;
+.navbar-static-top {
     background-color: #fe5f55;
-    padding: none;
 }
 
 .headerview{

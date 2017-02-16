@@ -43,9 +43,9 @@ use kartik\select2\Select2;
             'language' => 'en',
             'options' => ['placeholder' => 'Choose which type of restaurant this is'],
             'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ])->label('Restaurant type') ?>
+                'allowClear' => true,
+            ],
+        ])->label('Restaurant type') ?>
 
 
     <?php

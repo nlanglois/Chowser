@@ -1,5 +1,6 @@
 .navbar-static-top a{
     color: white;
+    padding: none;
 }
 
 .nav > li > a:hover, .nav > li > a:focus{

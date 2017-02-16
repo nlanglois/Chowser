@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use app\models\MealType;
 use app\models\Meat;
 
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MealSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -75,7 +76,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'filter' => Html::activeDropDownList($searchModel, 'meatID', ArrayHelper::map(Meat::find()->asArray()->orderBy('name')->all(), 'id', 'name'), ['class'=>'form-control', 'prompt' => 'All']),
             ],
-
+            [
+                'attribute'=>'upload_file',
+                'format'=>'raw',
+                'value' => function ($model){
+                    return Html::img(Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(), ['width' => '100', 'alt' => 'Primary image for ' . Html::encode($model->Name)]);
+                },
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

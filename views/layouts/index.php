@@ -24,9 +24,9 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
+
+<?= Html::img( '@web/images/image1') ?>
 <div class="wrap">
-
-
     <?php
     NavBar::begin([
         'brandLabel' => 'Chowser',
@@ -44,27 +44,17 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Manage restaurants', 'url' => ['/restaurant/index'],
-                'options'=>['class'=>'dropdown'],
+            ['label' => 'Search',
                 'template' => '<a href="{url}" class="href_class">{label}</a>',
                 'items' => [
-                    ['label' => 'All restaurants', 'url' => ['/restaurant/index']],
-                    ['label' => 'All location types', 'url' => ['location-type/index']],
-                ],
+                    ['label' => 'By Location Proximity', 'url' => ['/find/bylocationproximity']],
+                    ['label' => 'By Meal', 'url' => ['find/bymeal']],
+                    ['label' => 'By Restaurant', 'url' => ['find/byrestaurant']],
+                    ['label' => 'By Location Type', 'url' => ['find/bylocationtype']],
+        ],
 
             ],
 
-            ['label' => 'Manage meals', 'url' => ['/meal/index'],
-                'options'=>['class'=>'dropdown'],
-                'template' => '<a href="{url}" class="href_class">{label}</a>',
-                'items' => [
-                    ['label' => 'All meals', 'url' => ['/meal/index']],
-                    ['label' => 'All meal types', 'url' => ['meal-type/index']],
-                    ['label' => 'All meat types', 'url' => ['meat/index']],
-                ],
-
-
-            ],
 
 
             /*)
@@ -86,23 +76,23 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= $content ?>
-    </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; Chowser <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <div class="content">
+
+        </div>
+
+    <div class="botNav">
+        <a href="#">disclaimer</a>
+        <a href="#">text only</a>
+        <a href="#">webmaster</a>
+    </div> <!-- END BOTNAV -->
+
+    </div> <!-- END BODYCONTENT -->
+
+
+    <div class="footer">
     </div>
-</footer>
-
-<?php $this->endBody() ?>
 </body>
 </html>
-<?php $this->endPage() ?>

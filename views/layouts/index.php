@@ -25,7 +25,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 
-
+<?= Html::img( '@web/images/image1') ?>
 <div class="wrap">
     <?php
     NavBar::begin([

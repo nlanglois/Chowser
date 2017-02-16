@@ -18,7 +18,8 @@ class AppAssetFrontEnd extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/layoutstyles.css',
+        'css/frontend-layout.css',
+        'css/frontend-views.css',
     ];
     public $js = [
     ];

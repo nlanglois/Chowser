@@ -21,17 +21,14 @@ AppAssetFrontEnd::register($this);
     <body>
     <?php $this->beginBody() ?>
 
-
-    <?//= Html::img( '@web/images/image1') ?>
-
-
     <div class="wrapper">
+
         <?php
         NavBar::begin([
             'brandLabel' => 'Chowser',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'ch-navbar navbar-fixed-top',
+                'class' => 'ch-navbar navbar-static-top',
             ],
         ]);
 
@@ -43,14 +40,20 @@ AppAssetFrontEnd::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
-                ['label' => 'Search',
+                ['label' => 'Near You','url' => ['/find/bylocationproximity'],
                     'template' => '<a href="{url}" class="href_class">{label}</a>',
-                    'items' => [
-                        ['label' => 'By Location Proximity', 'url' => ['/find/bylocationproximity']],
-                        ['label' => 'By Meal', 'url' => ['find/bymeal']],
-                        ['label' => 'By Restaurant', 'url' => ['find/byrestaurant']],
-                        ['label' => 'By Location Type', 'url' => ['find/bylocationtype']],
-                    ],
+
+                ],
+                ['label' => 'Find Location Type','url' => ['/find/bylocationtype'],
+                    'template' => '<a href="{url}" class="href_class">{label}</a>',
+
+                ],
+                ['label' => 'Find Meal','url' => ['/find/bymeal'],
+                    'template' => '<a href="{url}" class="href_class">{label}</a>',
+
+                ],
+                ['label' => 'Find Restaurant','url' => ['/find/byrestaurant'],
+                    'template' => '<a href="{url}" class="href_class">{label}</a>',
 
                 ],
 
@@ -74,26 +77,17 @@ AppAssetFrontEnd::register($this);
         ]);
         NavBar::end();
         ?>
-
-    </div>
-
-
-
-    <?= $content ?>
-
-
+        <?= $content ?>
 
 
     <footer class="footer">
-        <div class="container">
             <p class="pull-left">&copy; Chowser <?= date('Y') ?></p>
 
             <p class="pull-right"><?= Yii::powered() ?></p>
-        </div>
     </footer>
 
 
-
+</div>
     <?php $this->endBody() ?>
     </body>
     </html>

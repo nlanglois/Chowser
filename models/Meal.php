@@ -15,7 +15,6 @@ use yii\web\UploadedFile;
  * @property integer $restID
  * @property integer $mealTypeID
  * @property integer $meatID
- * @property string $photo
  */
 class Meal extends \yii\db\ActiveRecord
 {

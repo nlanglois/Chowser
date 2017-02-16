@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use Yii;
-use yii\base\Controller;
+use yii\web\Controller;
 use app\models\LocationType;
 use yii\data\ActiveDataProvider;
 use app\models\Restaurant;
@@ -13,11 +13,8 @@ class FindController extends Controller
 
 {
 
-    public function beforeAction($action)
-    {
-        $this->layout = 'frontend'; //your layout name
-        return parent::beforeAction($action);
-    }
+
+    public $layout = "frontend";
 
 
     public function actionBylocationproximity()
@@ -64,11 +61,33 @@ class FindController extends Controller
         ]);
     }
 
+
+
+
     public function actionRestaurant($id)
     {
         return $this->render('restaurantDetail', [
-            'restaurant' => Yii::$app->runAction('RestaurantController/findModel', $id),
+            //'restaurant' => Yii::$app->runAction('RestaurantController/findModel', $id),
+            'restaurant' => $this->findRestaurant($id),
         ]);
+    }
+
+
+
+    /**
+     * Finds the Restaurant model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Restaurant the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findRestaurant($id)
+    {
+        if (($model = Restaurant::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 
 }

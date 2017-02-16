@@ -47,6 +47,11 @@ class MealTypeSearch extends MealType
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'mealTypeName' => SORT_ASC,
+                ],
+            ],
         ]);
 
         $this->load($params);

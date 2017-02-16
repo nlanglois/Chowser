@@ -47,6 +47,11 @@ class LocationTypeSearch extends LocationType
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'locationTypeName' => SORT_ASC,
+                ],
+            ],
         ]);
 
         $this->load($params);

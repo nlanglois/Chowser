@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Yii;
 use yii\base\Controller;
 use app\models\LocationType;
 use yii\data\ActiveDataProvider;
@@ -26,7 +27,7 @@ class FindController extends Controller
 
 
 
-
+// Search by Type of Restaurant //
     public function actionBylocationtype()
     {
         $dataProvider = new ActiveDataProvider([
@@ -38,7 +39,7 @@ class FindController extends Controller
 
 
 
-
+// Search by Meal//
     public function actionBymeal()
     {
         $dataProvider = new ActiveDataProvider([
@@ -51,7 +52,7 @@ class FindController extends Controller
 
 
 
-
+// Search by Restaurant //
     public function actionByrestaurant()
     {
         $dataProvider = new ActiveDataProvider([
@@ -60,6 +61,13 @@ class FindController extends Controller
 
         return $this->render('byrestaurant', [
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionRestaurant($id)
+    {
+        return $this->render('restaurantDetail', [
+            'restaurant' => Yii::$app->runAction('RestaurantController/findModel', $id),
         ]);
     }
 

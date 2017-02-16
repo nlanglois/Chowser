@@ -6,9 +6,9 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use app\assets\AppAsset;
+use app\assets\AppAssetFrontEnd;
 
-AppAsset::register($this);
+AppAssetFrontEnd::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -24,8 +24,8 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 
-<?= Html::img( '@web/images/image1') ?>
-<div class="wrap">
+<?//= Html::img( '@web/images/image1') ?>
+<div class="wrapper">
     <?php
     NavBar::begin([
         'brandLabel' => 'Chowser',

@@ -8,7 +8,11 @@ use app\models\Restaurant;
 use app\models\Meal;
 
 class FindController extends \yii\web\Controller
+
 {
+    public $layout ='frontend';
+
+
     public function actionBylocationproximity()
     {
         return $this->render('bylocationproximity');

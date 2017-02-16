@@ -3,13 +3,32 @@ div.all-restaurants {
     flex-flow: row wrap;
 }
 
-div.all-restaurants div {
-    /*width: 25%;*/
-    border: 1px solid #000;
+div.all-restaurants a {
+    width: 20%;
+    margin: 0.5em;
+    padding: 1em;
 }
 
-div.all-restaurants div:hover {
+div.all-restaurants a:hover {
     background-color: #d6d1b1;
+}
+
+@media all and (max-width: 1024px){
+    div.all-restaurants a {
+        width: 30%;
+    }
+}
+
+@media all and (max-width: 800px){
+    div.all-restaurants a {
+        width: 45%;
+    }
+}
+
+@media all and (max-width: 600px){
+    div.all-restaurants a {
+        width: 100%;
+    }
 }
 
 /* Colors */

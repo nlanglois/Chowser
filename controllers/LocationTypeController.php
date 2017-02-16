@@ -57,6 +57,11 @@ class LocationTypeController extends Controller
     {
         $queryLocationTypeInRestaurant = new ActiveDataProvider([
             'query' => Restaurant::find()->where(['locationTypeID' => $id]),
+            'sort' => [
+                'defaultOrder' => [
+                    'name' => SORT_ASC,
+                ],
+            ],
         ]);
         return $this->render('view', [
             'model' => $this->findModel($id),

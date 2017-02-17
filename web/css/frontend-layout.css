@@ -1,19 +1,44 @@
+/*.chowserhead{
+    height: 200px;
+    background-color: #fe5f55;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}*/
+
+.chowserhead img{
+    width: 100%;
+}
+
+.chowserhead h2{
+}
+
+.navbar-brand{
+    font-size: 25px;
+}
+
 .navbar-static-top a{
     color: white;
-    padding: none;
 }
 
-.nav > li > a:hover, .nav > li > a:focus{
-background-color: darkred;
+.nav > li > a:hover,
+.nav > li > a:focus{
+background-color: #fe5f55;
 }
-
-
 
 .wrapper{
     width:100%;
 }
+
+.wrapper .content{
+    margin: 0 auto;
+    width: 80%;
+}
+
 .navbar-static-top {
-    background-color: #fe5f55;
+    background-color: #5B0001;
+    font-family: "Dosis";
+    font-size: 15px;
 }
 
 .headerview{
@@ -46,6 +71,3 @@ background-color: darkred;
     background-color: #fe5f55
 }
 
-.content {
-    height: 300px;
-}

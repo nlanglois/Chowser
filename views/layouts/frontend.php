@@ -13,6 +13,7 @@ AppAssetFrontEnd::register($this);
     <!DOCTYPE html>
     <html lang="en">
     <head>
+        <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Dosis" rel="stylesheet">
         <meta charset="UTF-8"/>
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
@@ -22,10 +23,11 @@ AppAssetFrontEnd::register($this);
     <?php $this->beginBody() ?>
 
     <div class="wrapper">
-
+    <div class="chowserhead">
+    <?=Html::img('@web/images/chowser1.jpg')?>
+    </div>
         <?php
         NavBar::begin([
-            'brandLabel' => 'Chowser',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'ch-navbar navbar-static-top',
@@ -38,7 +40,7 @@ AppAssetFrontEnd::register($this);
          * http://www.bsourcecode.com/yiiframework2/menu-widget-in-yii-framework-2-0/
          */
         echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-right'],
+            'options' => ['class' => 'navbar-nav navbar-center'],
             'items' => [
                 ['label' => 'Near You','url' => ['/find/bylocationproximity'],
                     'template' => '<a href="{url}" class="href_class">{label}</a>',

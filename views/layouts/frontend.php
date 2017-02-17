@@ -77,7 +77,11 @@ AppAssetFrontEnd::register($this);
         ]);
         NavBar::end();
         ?>
-        <?= $content ?>
+
+
+        <div class="content">
+            <?= $content ?>
+        </div>
 
 
     <footer class="footer">

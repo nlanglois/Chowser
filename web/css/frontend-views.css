@@ -4,7 +4,6 @@ div.all-restaurants {
     width: 90%;
     margin: 0 auto;
     justify-content: space-around;
-
 }
 
 div.all-restaurants a {
@@ -14,31 +13,33 @@ div.all-restaurants a {
     border: 1px solid black;
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: transparent;
     background-size: 400px;
     position: relative;
-}
-
-div.all-restaurants a:hover div.name span {
-    color: #ffffff;
-    opacity: 1.0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: rbga(0, 0, 0, 0.5);
 }
 
 div.all-restaurants a div.name {
     height: 50px;
-    /*opacity: 0.5;*/
-    background-color: #000;
-
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     position: absolute;
     bottom: 0;
     display: block;
     width: 100%;
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+div.all-restaurants a:hover {
+    background-color: rbga(0, 0, 0, 0.5);
 }
 
 div.name span {
     color: white;
-    opacity: 1.0;
 }
 
 /*@media all and (max-width: 1024px){*/

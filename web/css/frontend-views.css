@@ -1,6 +1,10 @@
 div.all-restaurants {
     display: flex;
     flex-flow: row wrap;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-around;
+
 }
 
 div.all-restaurants a {

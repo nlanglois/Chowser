@@ -81,9 +81,9 @@ AppAssetFrontEnd::register($this);
         ?>
 
 
-        <div class="content">
-            <?= $content ?>
-        </div>
+    <div class="content">
+        <?= $content ?>
+    </div>
 
 
     <footer class="footer">

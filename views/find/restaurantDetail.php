@@ -1,7 +1,7 @@
 <?php
 
-echo $restaurant->photo;
+use yii\helpers\Html;
 
-echo $restaurant->name;
+echo Html::tag('h1', $restaurant->name);
 
-?>
+echo Html::img(Yii::getAlias('@web') . '/' . $restaurant->getUploadedFilePath());

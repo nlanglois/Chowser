@@ -42,19 +42,19 @@ AppAssetFrontEnd::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-center'],
             'items' => [
-                ['label' => 'Near You','url' => ['/find/bylocationproximity'],
+                ['label' => 'Near You','url' => ['find/locationproximity'],
                     'template' => '<a href="{url}" class="href_class">{label}</a>',
 
                 ],
-                ['label' => 'Find Location Type','url' => ['/find/bylocationtype'],
+                ['label' => 'Find Location Type','url' => ['find/locationtype'],
                     'template' => '<a href="{url}" class="href_class">{label}</a>',
 
                 ],
-                ['label' => 'Find Meal','url' => ['/find/bymeal'],
+                ['label' => 'Find Meal','url' => ['find/meal'],
                     'template' => '<a href="{url}" class="href_class">{label}</a>',
 
                 ],
-                ['label' => 'Find Restaurant','url' => ['/find/byrestaurant'],
+                ['label' => 'Find Restaurant','url' => ['find/restaurant'],
                     'template' => '<a href="{url}" class="href_class">{label}</a>',
 
                 ],

@@ -17,7 +17,7 @@ class FindController extends Controller
     public $layout = "frontend";
 
 
-    public function actionBylocationproximity()
+    public function actionLocationproximity()
     {
         return $this->render('bylocationproximity');
     }
@@ -25,7 +25,7 @@ class FindController extends Controller
 
 
 // Search by Type of Restaurant //
-    public function actionBylocationtype()
+    public function actionLocationtype()
     {
         $dataProvider = new ActiveDataProvider([
             'query' => LocationType::find(),
@@ -37,7 +37,7 @@ class FindController extends Controller
 
 
 // Search by Meal//
-    public function actionBymeal()
+    public function actionMeal()
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Meal::find(),
@@ -50,7 +50,7 @@ class FindController extends Controller
 
 
 // Search by Restaurant //
-    public function actionByrestaurant()
+    public function actionRestaurant()
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Restaurant::find(),
@@ -64,7 +64,7 @@ class FindController extends Controller
 
 
 
-    public function actionRestaurant($id)
+    public function actionRestaurantdetail($id)
     {
         return $this->render('restaurantDetail', [
             //'restaurant' => Yii::$app->runAction('RestaurantController/findModel', $id),

@@ -52,8 +52,14 @@ $config = [
                 'restaurant/edit/<id:\d+>' => 'restaurant/update',
                 'restaurant/delete/<id:\d+>' => 'restaurant/delete',
 
-                'find/by/restaurant' => 'find/byrestaurant',
-                'find/restaurant/details/<id:\d+>' => 'find/restaurant',
+                //'<controller:(find)>/by/<action:\w+>/try<id:\d+>' => '<controller>/<action>',
+                '<controller:(find)>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:(find)>/by/<action:\w+>' => '<controller>/<action>',
+                //'find/restaurant/details/<id:\d+>' => 'find/restaurantDetail',
+
+                'admin/<controller:(restaurant|meal|location-type|meal-type|meat)>/<action:\w+>' => '<controller>/<action>',
+
+
 
                 'meal-type' => 'mealType',
                 'location-type' => 'locationType',

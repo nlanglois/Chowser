@@ -15,7 +15,7 @@ use yii\helpers\Html;
         {
             print Html::a(
                     Html::tag('div', Html::tag('span', $restaurant->name), ['class' => 'name'])
-                    , ['find/restaurant', 'id' => $restaurant->id], ['style' => 'background-image: url(' . Yii::getAlias('@web') . '/' . $restaurant->getUploadedFilePath() .')']
+                    , ['restaurantdetail', 'id' => $restaurant->id], ['style' => 'background-image: url(' . Yii::getAlias('@web') . '/' . $restaurant->getUploadedFilePath() .')']
             );
 
         }

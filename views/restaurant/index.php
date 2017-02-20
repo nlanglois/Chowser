@@ -90,6 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
                   return Html::img(Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(), ['width' => '100', 'alt' => 'Primary image for ' . Html::encode($model->name)]);
     },
             ],
+            'description',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

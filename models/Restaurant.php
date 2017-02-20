@@ -51,6 +51,7 @@ class Restaurant extends \yii\db\ActiveRecord
             [['name', 'street1', 'street2', 'city'], 'string', 'max' => 100],
             [['state'], 'string', 'max' => 2],
             [['mealTypes_field', 'upload_file'], 'safe'],
+            [['description'], 'string', 'max' => 255, 'skipOnEmpty' => true,]
         ];
     }
 
@@ -90,6 +91,7 @@ class Restaurant extends \yii\db\ActiveRecord
             'locationType.locationTypeName' => 'Location type',
             'locationName' => 'Type',
             'upload_file' => 'Upload photo',
+            'description' => 'Description',
         ];
     }
 
@@ -136,9 +138,6 @@ class Restaurant extends \yii\db\ActiveRecord
     public function hasPhoto() {
         return isset($this->photo) ? true : false;
     }
-
-
-
 
 
     /*

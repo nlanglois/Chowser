@@ -29,11 +29,6 @@ class ComposerStaticInit530cee7900b6bf94bc117e7db4f68cae
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'k' => 
-        array (
-            'kartik\\select2\\' => 15,
-            'kartik\\base\\' => 12,
-        ),
         'd' => 
         array (
             'dosamigos\\tinymce\\' => 18,
@@ -117,14 +112,6 @@ class ComposerStaticInit530cee7900b6bf94bc117e7db4f68cae
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-        ),
-        'kartik\\select2\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2',
-        ),
-        'kartik\\base\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-krajee-base',
         ),
         'dosamigos\\tinymce\\' => 
         array (

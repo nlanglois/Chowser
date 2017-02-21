@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\LocationType;
+use dosamigos\tinymce\TinyMce;
 use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
@@ -47,6 +48,20 @@ use kartik\select2\Select2;
             ],
         ])->label('Restaurant type') ?>
 
+    <?= $form->field($model, 'description')->widget(TinyMce::className(), [
+        'options' => ['rows' => 6],
+        'language' => 'en_CA',
+        'clientOptions' => [
+            'menubar' => 'false',
+            'plugins' => [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            'toolbar' => 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        ]
+    ])->hint('You can enter HTML text in here if you\'d like') ?>
+
 
     <?php
         if ($model->hasPhoto()) {
@@ -58,7 +73,6 @@ use kartik\select2\Select2;
         }
     ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
 
     <div class="form-group">

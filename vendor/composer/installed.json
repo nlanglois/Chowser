@@ -3242,30 +3242,30 @@
     },
     {
         "name": "kartik-v/yii2-krajee-base",
-        "version": "v1.8.7",
-        "version_normalized": "1.8.7.0",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/kartik-v/yii2-krajee-base.git",
-            "reference": "8f558809e6093c8f4f4599b7b9fd64b366b22a60"
+            "reference": "52e623e54d06b853fda01a6529ccca93ed2a7f66"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/8f558809e6093c8f4f4599b7b9fd64b366b22a60",
-            "reference": "8f558809e6093c8f4f4599b7b9fd64b366b22a60",
+            "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/52e623e54d06b853fda01a6529ccca93ed2a7f66",
+            "reference": "52e623e54d06b853fda01a6529ccca93ed2a7f66",
             "shasum": ""
         },
         "require": {
             "yiisoft/yii2-bootstrap": "@dev"
         },
-        "time": "2016-09-04T09:25:29+00:00",
+        "time": "2016-11-26T09:53:44+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
                 "dev-master": "1.8.x-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "kartik\\base\\": ""

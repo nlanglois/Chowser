@@ -1,3 +1,4 @@
+/* Find by Restaurant styles */
 div.all-restaurants {
     display: flex;
     flex-flow: row wrap;
@@ -44,23 +45,42 @@ div.name span {
     color: white;
 }
 
-/*@media all and (max-width: 1024px){*/
-    /*div.all-restaurants a {*/
-        /*width: 30%;*/
-    /*}*/
-/*}*/
+/* Find by Restaurant Detail styles */
+div.restaurantDetail {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #d6d1b1;
+    border-radius: 10px;
+}
 
-/*@media all and (max-width: 800px){*/
-    /*div.all-restaurants a {*/
-        /*width: 45%;*/
-    /*}*/
-/*}*/
+div.restaurantDetail div.image {
+    text-align: center;
+}
 
-/*@media all and (max-width: 600px){*/
-    /*div.all-restaurants a {*/
-        /*width: 100%;*/
-    /*}*/
-/*}*/
+div.restaurantDetail div.image img {
+    width: 100%;
+    padding: 1em;
+}
+
+div.restaurantDetail h1 {
+    text-align: center;
+}
+
+div.details {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1em;
+}
+
+div.address, div.description {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
 
 /* Colors */
 /* Red #fe5f55

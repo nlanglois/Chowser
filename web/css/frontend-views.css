@@ -76,7 +76,7 @@ div.details {
     padding: 1em;
 }
 
-div.address, div.description {
+div.description {
     display: flex;
     flex-direction: row;
     align-items: baseline;

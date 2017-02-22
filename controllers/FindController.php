@@ -59,6 +59,7 @@ class FindController extends Controller
         return $this->render('byrestaurant', [
             'dataProvider' => $dataProvider,
         ]);
+
     }
 
 
@@ -66,9 +67,16 @@ class FindController extends Controller
 
     public function actionRestaurantdetail($id)
     {
+
+        $restaurantMeals = new ActiveDataProvider([
+            'query' => Meal::find()
+                        ->where(['restID' => $id])
+        ]);
+
         return $this->render('restaurantDetail', [
             //'restaurant' => Yii::$app->runAction('RestaurantController/findModel', $id),
             'restaurant' => $this->findRestaurant($id),
+            'meals' => $restaurantMeals,
         ]);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-use app\controllers\MealController;
+use yii\helpers\Html;
 
 ?>
 
@@ -14,7 +14,7 @@ use app\controllers\MealController;
 
     <div class="details">
         <div class="address">
-            <h3>Location: </h3><p>&nbsp;<?= $restaurant->street1. " " .$restaurant->street2. " " .$restaurant->city. " " .$restaurant->state. " " .$restaurant->zip ?></p>
+            <h3>Location: </h3><p>&nbsp;<?= $restaurant->street1. "," .$restaurant->street2. " " .$restaurant->city. "," .$restaurant->state. " " .$restaurant->zip ?></p>
         </div>
 
         <div class="description">
@@ -23,16 +23,23 @@ use app\controllers\MealController;
 
         <div class="meals">
             <h3>Meals served at <?= $restaurant->name ?>:</h3>
-            <img src="<?= (Yii::getAlias('@web') . '/' . $meal->getUploadedFilePath()); ?>" />
+
+            <?php
+
+            $allMeals = $meals->getModels();
+
+            if (count($allMeals) == 0) {
+                echo "This restaurant has no meals.";
+            } else {
+                foreach ($allMeals as $restaurantMeal)
+                    print Html::tag('div', Html::tag('span', $restaurantMeal->Name), ['class' => 'name']);
+            }
+
+            ?>
         </div>
 
     </div>
 
-    <!--    --><?php
-//    echo Html::tag('h1', $restaurant->name);
-//
-//    echo Html::img(Yii::getAlias('@web') . '/' . $restaurant->getUploadedFilePath());
-//    ?>
 </div>
 
 

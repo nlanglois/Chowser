@@ -160,6 +160,7 @@ class Restaurant extends \yii\db\ActiveRecord
             'locationName' => 'Type',
             'upload_file' => 'Upload photo',
             'description' => 'Description',
+            'status' => 'Live?',
         ];
     }
 

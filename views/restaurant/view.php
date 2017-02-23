@@ -55,6 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </tr>";
             }
         },
+
         'attributes' => [
             //'id',
             'name',
@@ -72,9 +73,22 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'photo',
                 'value' => Html::img(Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(), ['width' => '300', 'alt' => 'Primary image for ' . Html::encode($model->name)]),
-        ],
+            ],
+
+
+            [
+                'attribute' => 'status',
+                'value' => \Yii::$app->params['yesNoArray'][$model->status],
+            ]
+
         ],
     ]) ?>
+
+
+
+
+
+
 
     <h3>Meals found at <?= Html::encode($this->title) ?></h3>
     <?= GridView::widget([
@@ -91,6 +105,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
                 'controller' => 'meal',
             ],
+
         ],
     ]); ?>
 

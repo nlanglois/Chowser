@@ -26,6 +26,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
 
+        'rowOptions' => function ($model, $index, $widget, $grid){
+            if ($model->status == "N") {
+                return ['class' => 'hasntPaidUp'];
+            } else {
+                return [];
+            }
+        },
+
+
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

@@ -124,3 +124,10 @@ div.form-group label.control-label::after {
 div#restaurant-mealtypes_field label {
     width: 20%;
 }
+
+
+
+.hasntPaidUp {
+    color: #ccc;
+    font-style: italic;
+}

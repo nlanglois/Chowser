@@ -55,6 +55,10 @@ return [
         'WY' => 'Wyoming',
         'DC' => 'Washington D.C.'
     ],
+    'yesNoArray' => [
+        'Y' => 'Yes',
+        'N' => 'No',
+    ],
     'restaurantFileUploadUrl' => 'uploads/restaurant/',
     'mealFileUploadUrl' => 'uploads/meal/',
 ];

@@ -19,6 +19,7 @@ use yii\web\UploadedFile;
  * @property integer $zip
  * @property integer $locationTypeID
  * @property string $photo
+ * @property string $status
  */
 class Restaurant extends \yii\db\ActiveRecord
 {
@@ -40,18 +41,85 @@ class Restaurant extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['street1', 'city', 'state', 'zip'], 'required'],
-            [['zip', 'locationTypeID'], 'integer'],
+            [
+                [
+                    'description',
+                    'street1',
+                    'city',
+                    'state',
+                    'status',
+                ], 'required',
+            ],
 
-            [['name'], 'required', 'message' => 'Please enter the name of this restaurant.'],
-            [['locationTypeID'], 'required', 'message' => 'What type of restaurant is this?'],
-            [['mealTypes_field'], 'required', 'message' => 'You must select at least one type of meal.'],
-            [['upload_file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg, png, jpeg', 'mimeTypes' => 'image/jpeg, image/png',],
+            [
+                [
+                    'zip',
+                    'locationTypeID',
+                ], 'integer',
+            ],
 
-            [['name', 'street1', 'street2', 'city'], 'string', 'max' => 100],
-            [['state'], 'string', 'max' => 2],
-            [['mealTypes_field', 'upload_file'], 'safe'],
-            [['description'], 'string', 'max' => 255, 'skipOnEmpty' => true,]
+            [
+                [
+                    'name',
+                ], 'required',
+                'message' => 'Please enter the name of this restaurant.',
+            ],
+
+            [
+                [
+                    'locationTypeID',
+                ], 'required',
+                'message' => 'What type of restaurant is this?',
+            ],
+
+            [
+                [
+                    'mealTypes_field',
+                ], 'required',
+                'message' => 'You must select at least one type of meal.',
+            ],
+
+            [
+                [
+                    'upload_file'
+                ], 'file',
+                'skipOnEmpty' => true,
+                'extensions' => 'jpg, png, jpeg',
+                'mimeTypes' => 'image/jpeg, image/png',
+            ],
+
+            [
+                [
+                    'name',
+                    'street1',
+                    'street2',
+                    'city',
+                ], 'string',
+                'max' => 100,
+            ],
+
+            [
+                [
+                    'state',
+                ], 'string',
+                'max' => 2,
+            ],
+
+            [
+                [
+                    'mealTypes_field',
+                    'upload_file',
+                ], 'safe',
+            ],
+
+            [
+                [
+                    'description',
+                ], 'string',
+                'max' => 255,
+                'skipOnEmpty' => true,
+            ]
+
         ];
     }
 

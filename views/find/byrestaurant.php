@@ -6,8 +6,11 @@ use yii\helpers\Html;
 
 ?>
 <h1>Find by Restaurant</h1>
-
 <h3>Where would you like to eat?</h3>
+<div class="bgheader" style="text-align: center; margin-bottom: -20px">
+    <?=Html::img('@web/images/bgheader.png')?>
+</div>
+<hr>
 
 <div class="all-restaurants">
     <?php

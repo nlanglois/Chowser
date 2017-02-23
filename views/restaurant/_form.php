@@ -20,6 +20,22 @@ use kartik\select2\Select2;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true])->textInput(['placeholder' => "Name of restaurant"])->hint('Please enter the restaurant\'s name') ?>
 
+
+    <?= $form->field($model, 'description')->widget(TinyMce::className(), [
+        'options' => ['rows' => 6],
+        'language' => 'en_CA',
+        'clientOptions' => [
+            'menubar' => 'false',
+            'plugins' => [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            'toolbar' => 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        ]
+    ])->hint('You can enter HTML text in here if you\'d like') ?>
+
+
     <?= $form->field($model, 'street1')->textInput(['maxlength' => true])->textInput(['placeholder' => "First line of street address"]) ?>
 
     <?= $form->field($model, 'street2')->textInput(['maxlength' => true])->textInput(['placeholder' => "Second line of street address (optional)"]) ?>
@@ -47,20 +63,6 @@ use kartik\select2\Select2;
                 'allowClear' => true,
             ],
         ])->label('Restaurant type') ?>
-
-    <?= $form->field($model, 'description')->widget(TinyMce::className(), [
-        'options' => ['rows' => 6],
-        'language' => 'en_CA',
-        'clientOptions' => [
-            'menubar' => 'false',
-            'plugins' => [
-                'advlist autolink lists link image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table contextmenu paste code'
-            ],
-            'toolbar' => 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-        ]
-    ])->hint('You can enter HTML text in here if you\'d like') ?>
 
 
     <?php

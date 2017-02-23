@@ -33,7 +33,12 @@ use yii\helpers\Html;
                 echo "This restaurant has no meals.";
             } else {
                 foreach ($allMeals as $restaurantMeal)
-                    print Html::tag('div', Html::tag('span', $restaurantMeal->Name), ['class' => 'name']);
+                    print Html::a(
+                            Html::tag('div', Html::tag('span', $restaurantMeal->Name), ['class' => 'name']),
+                            ['meal', 'id' => $restaurantMeal->id],
+                            ['style' => 'background-image: url(' . Yii::getAlias('@web') . '/' . $restaurantMeal->getUploadedFilePath() .')']
+                    );
+
             }
 
             ?>

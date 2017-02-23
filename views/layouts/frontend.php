@@ -24,7 +24,7 @@ AppAssetFrontEnd::register($this);
 
     <div class="wrapper">
     <div class="chowserhead">
-    <?=Html::img('@web/images/chowser1.jpg')?>
+    <?=Html::img('@web/images/chowser1.png')?>
     </div>
         <?php
         NavBar::begin([

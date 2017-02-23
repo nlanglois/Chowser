@@ -1,5 +1,6 @@
 /* Find by Restaurant styles */
-div.all-restaurants {
+div.all-restaurants,
+div.meals {
     display: flex;
     flex-flow: row wrap;
     width: 90%;
@@ -7,7 +8,8 @@ div.all-restaurants {
     justify-content: space-around;
 }
 
-div.all-restaurants a {
+div.all-restaurants a,
+div.meals a {
     width: 250px;
     height: 150px;
     margin: 0.5em;
@@ -23,7 +25,8 @@ div.all-restaurants a {
     opacity: 1;
 }
 
-div.all-restaurants a div.name {
+div.all-restaurants a div.name,
+div.meals a div.name {
     height: 25px;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5px 10px;
@@ -36,7 +39,8 @@ div.all-restaurants a div.name {
     border-radius: 0 0 10px 10px;
 }
 
-div.all-restaurants a:hover {
+div.all-restaurants a:hover,
+div.meals a:hover {
     background-color: rbga(0, 0, 0, 0.5);
     opacity: 0.6;
 }

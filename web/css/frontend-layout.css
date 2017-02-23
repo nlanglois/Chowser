@@ -1,3 +1,7 @@
+body {
+    font-family: Dosis;
+}
+
 /*.chowserhead{
     height: 200px;
     background-color: #fe5f55;
@@ -20,10 +24,10 @@
 .navbar-static-top a {
     color: white;
 }
-
 .nav > li > a:hover,
 .nav > li > a:focus{
-background-color:#d6d1b1 ;
+background-color: #F7FAED;
+    color:#fe5f55 ;
 
 }
 
@@ -52,11 +56,13 @@ background-color:#d6d1b1 ;
 .container {
     display: flex;
     justify-content: center;
+    margin-bottom: -1px
 }
 
 .content {
     padding-top: 25px;
-    background-color: rgba(238,245,219,0.3);
+    background-color: rgba(238,245,219,0.5);
+    padding-bottom: 60px;
 
 }
 
@@ -64,6 +70,7 @@ background-color:#d6d1b1 ;
 .content > h3{
     text-align: center;
     font-family: Dosis;
+    margin-bottom: 25px;
 }
 
 .content > h3 {
@@ -72,4 +79,27 @@ background-color:#d6d1b1 ;
 
 .content > h1 {
     font-size: 40px;
+}
+
+.footer {
+    background-color: #fe5f55;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer > p {
+    color: white;
+}
+
+li.active {
+    background-color: #F7FAED;
+
+}
+
+li.active a {
+    color: #fe5f55;
+}
+
+.icon-bar {
+    background-color: white;
 }

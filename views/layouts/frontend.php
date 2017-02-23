@@ -40,7 +40,7 @@ AppAssetFrontEnd::register($this);
          * http://www.bsourcecode.com/yiiframework2/menu-widget-in-yii-framework-2-0/
          */
         echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-center'],
+            'options' => ['class' => 'navbar-nav navbar-center active'],
             'items' => [
                 ['label' => 'Near You','url' => ['find/locationproximity'],
                     'template' => '<a href="{url}" class="href_class">{label}</a>',
@@ -54,9 +54,8 @@ AppAssetFrontEnd::register($this);
                     'template' => '<a href="{url}" class="href_class">{label}</a>',
 
                 ],
-                ['label' => 'Find Restaurant','url' => ['find/restaurant'],
+                ['label' => 'Find Restaurant','url'  => ['find/restaurant'],
                     'template' => '<a href="{url}" class="href_class">{label}</a>',
-
                 ],
 
 
@@ -86,11 +85,10 @@ AppAssetFrontEnd::register($this);
     </div>
 
 
-    <footer class="footer">
-            <p class="pull-left">&copy; Chowser <?= date('Y') ?></p>
-
-            <p class="pull-right"><?= Yii::powered() ?></p>
-    </footer>
+    <div class="footer">
+            <p>&copy; Chowser <?= date('Y') ?></p>
+            <p><?= Yii::powered() ?></p>
+    </div>
 
 
 </div>

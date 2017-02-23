@@ -50,13 +50,19 @@ div.name span {
 }
 
 /* Find by Restaurant Detail styles */
+div.restaurantDetail h1{
+    color: white;
+    text-align: center;
+    background-color: #fe5f55;
+}
+
 div.restaurantDetail {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-    background-color: #d6d1b1;
+    /*background-color: #d6d1b1;*/
     border-radius: 10px;
 }
 

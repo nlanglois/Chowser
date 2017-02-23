@@ -14,7 +14,6 @@ use yii\helpers\Html;
 
     <div class="details">
         <div class="address">
-            <h3>Location:</h3>
             <iframe width="100%" height="480" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://maps.google.it/maps?q=<?php echo $restaurant->street1. "," .$restaurant->street2. " " .$restaurant->city. "," .$restaurant->state. " " .$restaurant->zip ?>&output=embed"></iframe>
         </div>
 

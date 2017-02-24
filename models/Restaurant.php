@@ -116,7 +116,6 @@ class Restaurant extends \yii\db\ActiveRecord
                 [
                     'description',
                 ], 'string',
-                'max' => 255,
                 'skipOnEmpty' => true,
             ]
 

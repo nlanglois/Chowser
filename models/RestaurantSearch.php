@@ -55,6 +55,9 @@ class RestaurantSearch extends Restaurant
                     'name' => SORT_ASC,
                 ],
             ],
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
         $dataProvider->sort->attributes['locationName'] = [

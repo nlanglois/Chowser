@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\tinymce\TinyMce;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\RestaurantReview */
@@ -23,7 +24,20 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-lg-12">
-            <?= $form->field($model, 'review') ?>
+            <?= $form->field($model, 'review')->widget(TinyMce::className(), [
+                'options' => ['rows' => 6],
+                'language' => 'en_CA',
+                'clientOptions' => [
+                    'menubar' => 'false',
+                    'plugins' => [
+                        'advlist autolink lists link image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table contextmenu paste code'
+                    ],
+                    'toolbar' => 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                ]
+            ])->hint('You can enter HTML text in here if you\'d like') ?>
+
         </div>
     </div>
 

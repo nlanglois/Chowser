@@ -3,6 +3,8 @@
 
 use yii\helpers\Html;
 
+$this->title = 'Find by Restaurant';
+
 ?>
 <h1>Find by Restaurant</h1>
 <h3>Where would you like to eat?</h3>

@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\bootstrap\Tabs;
 use app\models\RestaurantReview;
 
+$this->title = $restaurant->name;
+
 ?>
 
 <div class="restaurantDetail">

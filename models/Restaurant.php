@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\web\UploadedFile;
+use yii\db\ActiveRecord;
 
 
 /**
@@ -21,7 +22,7 @@ use yii\web\UploadedFile;
  * @property string $photo
  * @property string $status
  */
-class Restaurant extends \yii\db\ActiveRecord
+class Restaurant extends ActiveRecord
 {
 
     public $mealTypes_field;
@@ -116,7 +117,6 @@ class Restaurant extends \yii\db\ActiveRecord
                 [
                     'description',
                 ], 'string',
-                'max' => 255,
                 'skipOnEmpty' => true,
             ]
 

@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "RestaurantReview".
@@ -24,6 +27,29 @@ class RestaurantReview extends \yii\db\ActiveRecord
     {
         return 'RestaurantReview';
     }
+
+
+
+
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['dateCreated', 'lastModified'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['lastModified'],
+                ],
+                'value' => new Expression("NOW()"),
+            ],
+        ];
+    }
+
+
+
+
+
 
     /**
      * @inheritdoc

@@ -57,7 +57,7 @@ class RestaurantReview extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['dateCreated', 'lastModified', 'title', 'review', 'rating', 'restaurantId'], 'required'],
+            [['title', 'review', 'rating', 'restaurantId'], 'required'],
             [['dateCreated', 'lastModified'], 'safe'],
             [['review'], 'string'],
             [['rating'], 'number'],
@@ -73,8 +73,8 @@ class RestaurantReview extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'dateCreated' => 'Date Created',
-            'lastModified' => 'Last Modified',
+            'dateCreated' => 'Date created',
+            'lastModified' => 'Last modified',
             'title' => 'Title',
             'review' => 'Review',
             'rating' => 'Rating',

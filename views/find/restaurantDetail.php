@@ -23,8 +23,9 @@ use app\models\RestaurantReview;
             <h3>Description: </h3><p>&nbsp; <?= $restaurant->description ?></p>
         </div>
 
+        <h3>Meals served at <?= $restaurant->name ?>:</h3>
+
         <div class="meals">
-            <h3>Meals served at <?= $restaurant->name ?>:</h3>
 
             <?php
 
@@ -58,7 +59,9 @@ use app\models\RestaurantReview;
                     [
                         'label' => 'Tab one',
                         'content' => $this->render('//restaurantReview/new', [
-                            'model' => $restaurantReview]),
+                            'model' => $restaurantReview,
+                            'restaurantID' => $restaurant->id,
+                        ]),
                     ],
                     [
                         'label' => 'Tab two',

@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use yii\bootstrap\Tabs;
+use app\models\RestaurantReview;
 
 ?>
 
@@ -38,10 +40,47 @@ use yii\helpers\Html;
                             ['style' => 'background-image: url(' . Yii::getAlias('@web') . '/' . $restaurantMeal->getUploadedFilePath() .')']
                     );
 
-            }
+            };
+            ?>
+
+
+
+            </div>
+
+
+
+        <?php
+
+
+            $restaurantReview = new RestaurantReview();
+            echo Tabs::widget([
+                'items' => [
+                    [
+                        'label' => 'Tab one',
+                        'content' => $this->render('//restaurantReview/new', [
+                            'model' => $restaurantReview]),
+                    ],
+                    [
+                        'label' => 'Tab two',
+                        'content' => 'Sed non urna. Phasellus eu ligula. Vestibulum sit amet purus...',
+                        'options' => ['tag' => 'div'],
+                        'headerOptions' => ['class' => 'my-class'],
+                    ],
+                    [
+                        'label' => 'Tab with custom id',
+                        'content' => 'Morbi tincidunt, dui sit amet facilisis feugiat...',
+                        'options' => ['id' => 'my-tab'],
+                    ],
+                ],
+                'options' => ['tag' => 'div'],
+                'itemOptions' => ['tag' => 'div'],
+                'headerOptions' => ['class' => 'my-class'],
+                'clientOptions' => ['collapsible' => false],
+            ]);
+
 
             ?>
-        </div>
+
 
     </div>
 

@@ -3,7 +3,6 @@
 
 use yii\helpers\Html;
 
-
 ?>
 <h1>Find by Restaurant</h1>
 <h3>Where would you like to eat?</h3>

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\tinymce\TinyMce;
+use kartik\rating\StarRating;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\RestaurantReview */
@@ -18,7 +19,14 @@ use dosamigos\tinymce\TinyMce;
         </div>
 
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <?= $form->field($model, 'rating') ?>
+            <?php echo $form->field($model, 'rating')->widget(StarRating::className(), [
+                    'pluginOptions' => [
+                            'min' => 0,
+                            'max' => 5,
+                            'step' => 0.5,
+                            'size' => 'md',
+                    ]
+            ]); ?>
         </div>
     </div>
 

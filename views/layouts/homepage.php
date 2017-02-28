@@ -41,6 +41,8 @@ AppAsset::register($this);
      * Good examples for how to use Navbar widget in Yii2:
      * http://www.bsourcecode.com/yiiframework2/menu-widget-in-yii-framework-2-0/
      */
+
+    /*
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
@@ -81,8 +83,11 @@ AppAsset::register($this);
                 . '</li>'
             )
             */
-        ],
-    ]);
+    //    ],
+    //]);
+
+
+
     NavBar::end();
     ?>
 

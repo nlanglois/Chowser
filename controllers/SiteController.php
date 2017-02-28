@@ -13,9 +13,6 @@ class SiteController extends Controller
 {
 
 
-    public $layout = "homepage";
-
-
     /**
      * @inheritdoc
      */
@@ -77,6 +74,9 @@ class SiteController extends Controller
      */
     public function actionWelcome()
     {
+
+        $this->layout = 'homepage';
+
         return $this->render('chowserWelcome');
     }
 

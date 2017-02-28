@@ -11,6 +11,11 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+
+
+    public $layout = "homepage";
+
+
     /**
      * @inheritdoc
      */
@@ -62,6 +67,21 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+
+
+
+    /**
+     * Displays Chowser homepage.
+     *
+     * @return string
+     */
+    public function actionWelcome()
+    {
+        return $this->render('chowserWelcome');
+    }
+
+
+
 
     /**
      * Login action.

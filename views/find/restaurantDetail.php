@@ -54,7 +54,6 @@ $this->title = $restaurant->name;
 
         <?php
 
-
             $restaurantReview = new RestaurantReview();
             echo Tabs::widget([
                 'items' => [
@@ -77,7 +76,6 @@ $this->title = $restaurant->name;
                 'headerOptions' => ['class' => 'my-class'],
                 'clientOptions' => ['collapsible' => false],
             ]);
-
 
             ?>
 

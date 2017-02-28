@@ -59,10 +59,7 @@ $this->title = $restaurant->name;
                 'items' => [
                     [
                         'label' => 'Your Review',
-                        'content' => $this->render('//restaurantReview/new', [
-                            'model' => $restaurantReview,
-                            'restaurantID' => $restaurant->id,
-                        ]),
+                        'url' => 'http://www.cnn.com',
                     ],
                     [
                         'label' => 'Read Reviews',

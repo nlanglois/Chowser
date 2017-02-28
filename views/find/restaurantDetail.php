@@ -59,22 +59,17 @@ $this->title = $restaurant->name;
             echo Tabs::widget([
                 'items' => [
                     [
-                        'label' => 'Tab one',
+                        'label' => 'Your Review',
                         'content' => $this->render('//restaurantReview/new', [
                             'model' => $restaurantReview,
                             'restaurantID' => $restaurant->id,
                         ]),
                     ],
                     [
-                        'label' => 'Tab two',
+                        'label' => 'Read Reviews',
                         'content' => 'Sed non urna. Phasellus eu ligula. Vestibulum sit amet purus...',
                         'options' => ['tag' => 'div'],
                         'headerOptions' => ['class' => 'my-class'],
-                    ],
-                    [
-                        'label' => 'Tab with custom id',
-                        'content' => 'Morbi tincidunt, dui sit amet facilisis feugiat...',
-                        'options' => ['id' => 'my-tab'],
                     ],
                 ],
                 'options' => ['tag' => 'div'],

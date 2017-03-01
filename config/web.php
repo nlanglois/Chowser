@@ -64,6 +64,7 @@ $config = [
 
                 'meal-type' => 'mealType',
                 'location-type' => 'locationType',
+                'show-all' => 'showAll',
             ],
         ],
 

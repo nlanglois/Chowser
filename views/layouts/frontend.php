@@ -23,12 +23,11 @@ AppAssetFrontEnd::register($this);
     <?php $this->beginBody() ?>
 
     <div class="wrapper">
-    <div class="chowserhead">
-    <?=Html::img('@web/images/chowser1.png')?>
-    </div>
         <?php
         NavBar::begin([
-            'brandUrl' => Yii::$app->homeUrl,
+            'brandLabel' => Html::img('@web/images/chowserlogo.png', ['alt'=>Yii::$app->name]),
+            'brandUrl' => ['site/welcome'],
+            'brandOptions' => ['class' => 'logochowser'],
             'options' => [
                 'class' => 'ch-navbar navbar-static-top',
             ],
@@ -60,20 +59,6 @@ AppAssetFrontEnd::register($this);
 
 
 
-                /*)
-                Yii::$app->user->isGuest ? (
-                    ['label' => 'Login', 'url' => ['/site/login']]
-                ) : (
-                    '<li>'
-                    . Html::beginForm(['/site/logout'], 'post')
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>'
-                )
-                */
             ],
         ]);
         NavBar::end();

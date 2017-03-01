@@ -7,16 +7,16 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
+use app\assets\AppAssetFrontEnd;
 
-AppAsset::register($this);
+AppAssetFrontEnd::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="en">
 <head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Dosis" rel="stylesheet">
+    <meta charset="UTF-8"/>
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -24,15 +24,39 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
-
-
+<div class="wrapper">
+    <div class="chowserhead">
+        <?=Html::img('@web/images/chowser1.png')?>
+    </div>
     <?php
     NavBar::begin([
-        'brandLabel' => 'Chowser HOMEPAGE!',
-        'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'ch-navbar navbar-fixed-top',
+            'class' => 'ch-navbar navbar-static-top',
+        ],
+
+
+    ]);
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-center active'],
+        'items' => [
+            ['label' => 'Near You','url' => ['find/locationproximity'],
+                'template' => '<a href="{url}" class="href_class">{label}</a>',
+
+            ],
+            ['label' => 'Find Location Type','url' => ['find/locationtype'],
+                'template' => '<a href="{url}" class="href_class">{label}</a>',
+
+            ],
+            ['label' => 'Find Meal','url' => ['find/meal'],
+                'template' => '<a href="{url}" class="href_class">{label}</a>',
+
+            ],
+            ['label' => 'Find Restaurant','url'  => ['find/restaurant'],
+                'template' => '<a href="{url}" class="href_class">{label}</a>',
+            ],
+
+
+
         ],
     ]);
 
@@ -100,7 +124,7 @@ AppAsset::register($this);
 </div>
 
 <footer class="footer">
-    <div class="container">
+    <div class="container" style="color: white">
         <p class="pull-left">&copy; Chowser <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>

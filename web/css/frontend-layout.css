@@ -103,3 +103,18 @@ li.active a {
 .icon-bar {
     background-color: white;
 }
+
+.navbar-brand img{
+   margin-top: -65px;
+   margin-right: -20px;
+}
+
+.jumbotron{
+    text-align: center;
+    background-color: #F7FAED;
+    -webkit-box-shadow:1px 5px 20px #fe5f55 ;
+}
+
+.body-content p{
+    margin-bottom: 40px;
+}

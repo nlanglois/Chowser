@@ -13,7 +13,7 @@ use kartik\rating\StarRating;
 
 <?//= Html::tag('h3', 'Please review ' . $model->name . ':') ?>
 
-<div class="restaurantReview-new">
+<div class="restaurantReview-new" style="width: 90%">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -24,12 +24,12 @@ use kartik\rating\StarRating;
 
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <?php echo $form->field($model, 'rating')->widget(StarRating::className(), [
-                    'pluginOptions' => [
-                            'min' => 0,
-                            'max' => 5,
-                            'step' => 0.5,
-                            'size' => 'md',
-                    ]
+                'pluginOptions' => [
+                    'min' => 0,
+                    'max' => 5,
+                    'step' => 0.5,
+                    'size' => 'md',
+                ]
             ]); ?>
         </div>
     </div>

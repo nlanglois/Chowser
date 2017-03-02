@@ -18,7 +18,7 @@ class RestaurantReviewController extends Controller
 
 
 
-    public function actionNew($restaurantId)
+    public function actionNew($restaurantId, $ajax = "false")
     {
 
         $restaurant = Restaurant::findOne($restaurantId);
@@ -32,13 +32,23 @@ class RestaurantReviewController extends Controller
             return "Thank you for your restaurant review!";
 
         } else {
+            if ($ajax == "false") {
+                return $this->render('new', [
+                    'model' => $restaurantReview,
+                    'restaurant' => $restaurant,
+                    'restaurantID' => $restaurantId,
+                ]);
 
-            return $this->render('new', [
-                'model' => $restaurantReview,
-                'restaurant' => $restaurant,
-                'restaurantID' => $restaurantId,
-            ]);
+            } else {
+                return Json::encode(
+                    $this->render('new', [
+                        'model' => $restaurantReview,
+                        'restaurant' => $restaurant,
+                        'restaurantID' => $restaurantId,
+                    ])
+                );
 
+            }
         }
 
     }
@@ -47,7 +57,7 @@ class RestaurantReviewController extends Controller
 
 
 
-    public function actionShowAll($restaurantId, $ajax = false)
+    public function actionShowAll($restaurantId, $ajax = "false")
     {
         $queryRestaurantReviews = new ActiveDataProvider([
             'query' => RestaurantReview::find()->where(['restaurantId' => $restaurantId]),

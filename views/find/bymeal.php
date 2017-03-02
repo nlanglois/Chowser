@@ -1,9 +1,30 @@
 <?php
 /* @var $this yii\web\View */
-?>
-<h1>find/bymeal</h1>
 
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+use yii\helpers\Html;
+
+$this->title = 'Find by Meal';
+
+?>
+<h1>Find by Meal</h1>
+<h3>What would you like to eat?</h3>
+
+<div class="bgheader" style="text-align: center; margin-bottom: 10px">
+    <?=Html::img('@web/images/bgheader.png')?>
+</div>
+<br>
+
+<div class="all-meals">
+    <?php
+        foreach ($dataProvider->getModels() as $meal)
+        {
+            print Html::a(
+                    Html::tag('div', Html::tag('span', $meal->Name), ['class' => 'name'])
+                    , ['mealdetail', 'id' => $meal->id], ['style' => 'background-image: url(' . Yii::getAlias('@web') . '/' . $meal->getUploadedFilePath() .')']
+            );
+
+        }
+
+    ?>
+
+</div>

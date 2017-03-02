@@ -18,6 +18,7 @@ use yii\db\ActiveRecord;
  * @property string $city
  * @property string $state
  * @property integer $zip
+ * @property string $coordinates
  * @property integer $locationTypeID
  * @property string $photo
  * @property string $status
@@ -27,6 +28,7 @@ class Restaurant extends ActiveRecord
 
     public $mealTypes_field;
     public $upload_file;
+    //public $coordinates;
 
     /**
      * @inheritdoc
@@ -110,6 +112,7 @@ class Restaurant extends ActiveRecord
                 [
                     'mealTypes_field',
                     'upload_file',
+                    'coordinates',
                 ], 'safe',
             ],
 
@@ -154,6 +157,7 @@ class Restaurant extends ActiveRecord
             'city' => 'City',
             'state' => 'State',
             'zip' => 'Zip code',
+            'coordinates' => 'Coordinates',
             'mealTypes_field' => 'Types of meals served here',
             'locationTypeID' => 'Location ID',
             'locationType.locationTypeName' => 'Location type',

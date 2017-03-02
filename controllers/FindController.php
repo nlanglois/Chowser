@@ -54,6 +54,11 @@ class FindController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Restaurant::find(),
+            'sort' => [
+                'defaultOrder' => [
+                    'name' => SORT_ASC,
+                ],
+            ],
         ]);
 
         return $this->render('byrestaurant', [

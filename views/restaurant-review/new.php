@@ -16,12 +16,12 @@ use kartik\rating\StarRating;
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
             <?= Html::tag('h3', 'Please review ' . $restaurant->name . ':') ?>
             <?= $form->field($model, 'title') ?>
         </div>
 
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
             <?php echo $form->field($model, 'rating')
                 ->widget(StarRating::className(), [
                 'pluginOptions' =>

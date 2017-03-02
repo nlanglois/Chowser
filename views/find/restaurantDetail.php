@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\Tabs;
+use kartik\tabs\TabsX;
+use yii\helpers\Url;
 use app\models\RestaurantReview;
 
 $this->title = $restaurant->name;
@@ -55,23 +56,48 @@ $this->title = $restaurant->name;
         <?php
 
             $restaurantReview = new RestaurantReview();
-            echo Tabs::widget([
+
+            echo TabsX::widget([
                 'items' => [
                     [
                         'label' => 'Your Review',
-                        'url' => 'http://www.cnn.com',
+                        'content' => 'Sample content here',
+                        'active' => true,
+                        'encode' => true,
+                        'linkOptions' => [
+                            'data-url' => Url::to([
+                                'restaurant-review/new',
+                                'tab' => 1,
+                                'restaurantId' => $restaurant->id,
+                                'ajax' => 'true',
+                            ])
+                        ]
                     ],
                     [
                         'label' => 'Read Reviews',
                         'content' => 'Sed non urna. Phasellus eu ligula. Vestibulum sit amet purus...',
                         'options' => ['tag' => 'div'],
+                        'linkOptions' => [
+                            'data-url' => Url::to([
+                                'restaurant-review/show-all',
+                                'restaurantId' => $restaurant->id,
+                                'ajax' => 'true',
+                            ])
+                        ],
                         'headerOptions' => ['class' => 'my-class'],
                     ],
                 ],
+                'position' => TabsX::POS_ABOVE,
+                'align' => TabsX::ALIGN_LEFT,
+                'encodeLabels' => false,
+                'bordered' => true,
+
+                /*
                 'options' => ['tag' => 'div'],
                 'itemOptions' => ['tag' => 'div'],
                 'headerOptions' => ['class' => 'my-class'],
                 'clientOptions' => ['collapsible' => false],
+                */
             ]);
 
             ?>

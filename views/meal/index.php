@@ -78,6 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute'=>'upload_file',
+                'label' => 'Photo',
                 'format'=>'raw',
                 'value' => function ($model){
                     return Html::img(Yii::getAlias('@web') . '/' . $model->getUploadedFilePath(), ['width' => '100', 'alt' => 'Primary image for ' . Html::encode($model->Name)]);

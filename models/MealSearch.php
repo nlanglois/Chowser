@@ -60,6 +60,9 @@ class MealSearch extends Meal
                     'Name' => SORT_ASC,
                 ],
             ],
+            'pagination' => [
+                'pageSize' => 10,
+            ],
         ]);
 
 

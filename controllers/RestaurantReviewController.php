@@ -8,6 +8,7 @@ use yii\web\Controller;
 use app\models\RestaurantReview;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
+use yii\helpers\Json;
 
 class RestaurantReviewController extends Controller
 {
@@ -46,16 +47,27 @@ class RestaurantReviewController extends Controller
 
 
 
-    public function actionShowAll($restaurantId)
+    public function actionShowAll($restaurantId, $ajax = false)
     {
         $queryRestaurantReviews = new ActiveDataProvider([
             'query' => RestaurantReview::find()->where(['restaurantId' => $restaurantId]),
         ]);
-        return $this->render('show-all', [
-            'model' => $this->findModel($restaurantId),
-            'restaurantReview' => $queryRestaurantReviews,
-        ]);
 
+
+        if ($ajax == "false") {
+            return $this->render('show-all', [
+                'model' => $this->findModel($restaurantId),
+                'restaurantReview' => $queryRestaurantReviews,
+            ]);
+
+        } else {
+            return Json::encode(
+                $this->render('show-all', [
+                    'model' => $this->findModel($restaurantId),
+                    'restaurantReview' => $queryRestaurantReviews,
+                ])
+            );
+        }
 
     }
 

@@ -46,13 +46,13 @@ class RestaurantReviewController extends Controller
 
 
 
-    public function actionShowAll($id)
+    public function actionShowAll($restaurantId)
     {
         $queryRestaurantReviews = new ActiveDataProvider([
-            'query' => RestaurantReview::find()->where(['restaurantId' => $id]),
+            'query' => RestaurantReview::find()->where(['restaurantId' => $restaurantId]),
         ]);
         return $this->render('show-all', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($restaurantId),
             'restaurantReview' => $queryRestaurantReviews,
         ]);
 

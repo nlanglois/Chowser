@@ -118,3 +118,8 @@ li.active a {
 .body-content p{
     margin-bottom: 40px;
 }
+
+.bgheader > img{
+    max-width: 100%;
+    height: auto;
+}

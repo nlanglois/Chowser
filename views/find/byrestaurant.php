@@ -8,8 +8,8 @@ $this->title = 'Find by Restaurant';
 ?>
 <h1>Find by Restaurant</h1>
 <h3>Where would you like to eat?</h3>
-<div class="bgheader" style="text-align: center; margin-bottom: 10px">
-    <?=Html::img('@web/images/bgheader.png')?>
+<div class="bgheader responsive" style="text-align: center; margin-bottom: 10px">
+    <?=Html::img('@web/images/bgheader.png',['style' => 'img-fluid'])?>
 </div>
 <br>
 

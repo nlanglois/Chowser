@@ -20,9 +20,7 @@ class RestaurantReviewController extends Controller
     public function actionNew($restaurantId)
     {
 
-        //return $this->render('new');
-
-
+        $restaurant = Restaurant::findOne($restaurantId);
         $restaurantReview = new RestaurantReview();
 
 
@@ -36,6 +34,7 @@ class RestaurantReviewController extends Controller
 
             return $this->render('new', [
                 'model' => $restaurantReview,
+                'restaurant' => $restaurant,
                 'restaurantID' => $restaurantId,
             ]);
 

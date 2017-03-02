@@ -27,6 +27,7 @@ class ComposerStaticInit530cee7900b6bf94bc117e7db4f68cae
         ),
         'p' => 
         array (
+            'pigolab\\locationpicker\\' => 23,
             'phpDocumentor\\Reflection\\' => 25,
         ),
         'k' => 
@@ -114,6 +115,10 @@ class ComposerStaticInit530cee7900b6bf94bc117e7db4f68cae
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'pigolab\\locationpicker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pigochu/yii2-jquery-locationpicker',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (

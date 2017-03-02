@@ -93,4 +93,13 @@ return array (
       '@kartik/tabs' => $vendorDir . '/kartik-v/yii2-tabs-x',
     ),
   ),
+  'pigochu/yii2-jquery-locationpicker' => 
+  array (
+    'name' => 'pigochu/yii2-jquery-locationpicker',
+    'version' => '0.2.2.0',
+    'alias' => 
+    array (
+      '@pigolab/locationpicker' => $vendorDir . '/pigochu/yii2-jquery-locationpicker',
+    ),
+  ),
 );

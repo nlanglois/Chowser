@@ -8,6 +8,7 @@ use yii\web\Controller;
 use app\models\RestaurantReview;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
+use yii\helpers\Json;
 
 class RestaurantReviewController extends Controller
 {
@@ -17,12 +18,10 @@ class RestaurantReviewController extends Controller
 
 
 
-    public function actionNew($restaurantId)
+    public function actionNew($restaurantId, $ajax = "false")
     {
 
-        //return $this->render('new');
-
-
+        $restaurant = Restaurant::findOne($restaurantId);
         $restaurantReview = new RestaurantReview();
 
 
@@ -33,12 +32,23 @@ class RestaurantReviewController extends Controller
             return "Thank you for your restaurant review!";
 
         } else {
+            if ($ajax == "false") {
+                return $this->render('new', [
+                    'model' => $restaurantReview,
+                    'restaurant' => $restaurant,
+                    'restaurantID' => $restaurantId,
+                ]);
 
-            return $this->render('new', [
-                'model' => $restaurantReview,
-                'restaurantID' => $restaurantId,
-            ]);
+            } else {
+                return Json::encode(
+                    $this->render('new', [
+                        'model' => $restaurantReview,
+                        'restaurant' => $restaurant,
+                        'restaurantID' => $restaurantId,
+                    ])
+                );
 
+            }
         }
 
     }
@@ -47,16 +57,27 @@ class RestaurantReviewController extends Controller
 
 
 
-    public function actionShowAll($id)
+    public function actionShowAll($restaurantId, $ajax = "false")
     {
         $queryRestaurantReviews = new ActiveDataProvider([
-            'query' => RestaurantReview::find()->where(['restaurantId' => $id]),
-        ]);
-        return $this->render('show-all', [
-            'model' => $this->findModel($id),
-            'restaurantReview' => $queryRestaurantReviews,
+            'query' => RestaurantReview::find()->where(['restaurantId' => $restaurantId]),
         ]);
 
+
+        if ($ajax == "false") {
+            return $this->render('show-all', [
+                'model' => $this->findModel($restaurantId),
+                'restaurantReview' => $queryRestaurantReviews,
+            ]);
+
+        } else {
+            return Json::encode(
+                $this->render('show-all', [
+                    'model' => $this->findModel($restaurantId),
+                    'restaurantReview' => $queryRestaurantReviews,
+                ])
+            );
+        }
 
     }
 

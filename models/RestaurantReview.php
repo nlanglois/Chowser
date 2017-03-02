@@ -60,7 +60,7 @@ class RestaurantReview extends \yii\db\ActiveRecord
             [['title', 'review', 'rating', 'restaurantId'], 'required'],
             [['dateCreated', 'lastModified'], 'safe'],
             [['review'], 'string'],
-            [['rating'], 'number'],
+            [['rating'], 'double', 'min' => '0.1', 'message' => 'Please rate this restaurant'],
             [['restaurantId'], 'integer'],
             [['title'], 'string', 'max' => 255],
         ];

@@ -4,9 +4,9 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use app\assets\AppAsset;
+use app\assets\AppAssetFrontEnd;
 
-AppAsset::register($this);
+AppAssetFrontEnd::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

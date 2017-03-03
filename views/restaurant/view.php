@@ -65,6 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'city',
             'state',
             'zip',
+            'coordinates',
             [
                 'label' => 'Types of meals served here',
                 'value' => MyHelpers::convertM2MobjectsToString(Restaurant::findOne($model->id)->mealTypes, "mealTypeName"),

@@ -40,7 +40,7 @@ $this->title = $restaurant->name;
                 foreach ($allMeals as $restaurantMeal)
                     print Html::a(
                             Html::tag('div', Html::tag('span', $restaurantMeal->Name), ['class' => 'name']),
-                            ['meal', 'id' => $restaurantMeal->id],
+                            ['mealdetail', 'id' => $restaurantMeal->id],
                             ['style' => 'background-image: url(' . Yii::getAlias('@web') . '/' . $restaurantMeal->getUploadedFilePath() .')']
                     );
 

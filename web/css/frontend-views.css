@@ -83,6 +83,10 @@ div.restaurantDetail div.image img {
     padding: 1em;
 }
 
+div.mealDetail div.image img {
+    width: 50%;
+}
+
 div.restaurantDetail h1,
 div.mealDetail h1 {
     text-align: center;

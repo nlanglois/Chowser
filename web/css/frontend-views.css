@@ -1,4 +1,4 @@
-/* Find by Restaurant styles */
+/* Find by Restaurant and Find by Meal styles */
 div.all-restaurants,
 div.meals,
 div.all-meals {
@@ -53,14 +53,17 @@ div.name span {
     color: white;
 }
 
-/* Find by Restaurant Detail styles */
-div.restaurantDetail h1{
+/* Find by Restaurant Detail and Meal Detail styles */
+div.restaurantDetail h1,
+div.mealDetail h1 {
     color: white;
     text-align: center;
     background-color: #fe5f55;
+    padding: 0.25em;
 }
 
-div.restaurantDetail {
+div.restaurantDetail,
+div.mealDetail {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -70,7 +73,8 @@ div.restaurantDetail {
     border-radius: 10px;
 }
 
-div.restaurantDetail div.image {
+div.restaurantDetail div.image,
+div.mealDetail div.image {
     text-align: center;
 }
 
@@ -79,7 +83,8 @@ div.restaurantDetail div.image img {
     padding: 1em;
 }
 
-div.restaurantDetail h1 {
+div.restaurantDetail h1,
+div.mealDetail h1 {
     text-align: center;
 }
 

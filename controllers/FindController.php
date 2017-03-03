@@ -8,6 +8,7 @@ use app\models\LocationType;
 use yii\data\ActiveDataProvider;
 use app\models\Restaurant;
 use app\models\Meal;
+use yii\web\NotFoundHttpException;
 
 class FindController extends Controller
 
@@ -47,13 +48,26 @@ class FindController extends Controller
                 ],
             ],
         ]);
+
         return $this->render('bymeal', [
             'dataProvider' => $dataProvider,
         ]);
+
     }
 
 
+    public function actionMealdetail($id)
+    {
+        $mealAtRestaurant = new ActiveDataProvider([
+           'query' => Meal::find()
+                        ->where(['restID' => $id])
+        ]);
 
+        return $this->render('mealDetail', [
+            'meal' => $this->findMeal($id),
+            'restaurant' => $mealAtRestaurant,
+        ]);
+    }
 
 
 // Search by Restaurant //
@@ -104,6 +118,15 @@ class FindController extends Controller
     protected function findRestaurant($id)
     {
         if (($model = Restaurant::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    protected function findMeal($id)
+    {
+        if (($model = Meal::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

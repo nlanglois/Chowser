@@ -4,6 +4,7 @@
 use yii\helpers\Html;
 use app\models\Restaurant;
 use yii\helpers\VarDumper;
+use yii\helpers\Json;
 
 
 $this->title = 'Find by Location proximity';
@@ -18,45 +19,41 @@ $this->title = 'Find by Location proximity';
 
 <h3>Where would you like to eat?</h3>
 
-<div class="bgheader responsive" style="text-align: center; margin-bottom: 10px">
-    <?=Html::img('@web/images/bgheader.png',['style' => 'img-fluid'])?>
+<div class="bgheader responsive" style="margin: 0 auto 30px;">
+    <?= Html::img('@web/images/bgheader.png', ['style' => 'img-fluid']) ?>
 </div>
 
-<br>
 
-<div id="map" style="width: 100%; height: 600px;"></div>
+<?php
 
-<?  $restaurantLocations= Restaurant::find()
-    ->select('name, coordinates, id')
-    ->asArray()
-    ->all();
+    $restaurantLocations = Restaurant::find()
+        ->select('name, coordinates')
+        ->asArray()
+        ->all();
 
-    foreach ($restaurantLocations as $Restaurant){
-        $Locations[]= [$Restaurant['name']];
-    }
-
-
-    echo "<pre>";
-    $restaurantLocations = json_encode($restaurantLocations);
-    VarDumper::dump($restaurantLocations);
-    echo "</pre>";
-
+    //echo VarDumper::dumpAsString($restaurantLocations, 10, true);
 ?>
 
 
-<script type="text/javascript">
-    var locations = [
-        ['Bondi Beach', -33.890542, 151.274856, 4],
-        ['Coogee Beach', -33.923036, 151.259052, 5],
-        ['Cronulla Beach', -34.028249, 151.157507, 3],
-        ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-        ['Maroubra Beach', -33.950198, 151.259302, 1]
-    ];
 
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+
+<script type="text/javascript">
+    // This drops an array of jSON objects into the JS locations variable from PHP
+    var locations = <?= Json::encode($restaurantLocations) ?>;
+
+//        var locations = [
+//            ['Bondi Beach', -33.890542, 151.274856, 4],
+//            ['Coogee Beach', -33.923036, 151.259052, 5],
+//            ['Cronulla Beach', -34.028249, 151.157507, 3],
+//            ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+//            ['Maroubra Beach', -33.950198, 151.259302, 1]
+//        ];
 
 
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
+        zoom: 12,
         center: new google.maps.LatLng(44.986656, -93.258133),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
@@ -66,14 +63,19 @@ $this->title = 'Find by Location proximity';
     var marker, i;
 
     for (i = 0; i < locations.length; i++) {
+
+        var coordinates = locations[i].coordinates.split(',');
+        var lat = coordinates[0];
+        var lon = coordinates[1];
+
         marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            position: new google.maps.LatLng(lat, lon),
             map: map
         });
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent(locations[i][0]);
+                infowindow.setContent(locations[i].name);
                 infowindow.open(map, marker);
             }
         })(marker, i));

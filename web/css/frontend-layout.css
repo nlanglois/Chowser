@@ -104,7 +104,7 @@ li.active a {
     background-color: white;
 }
 
-.navbar-brand img{
+.navbar-brand img {
    margin-top: -65px;
    margin-right: -20px;
 }
@@ -112,14 +112,19 @@ li.active a {
 .jumbotron{
     text-align: center;
     background-color: #F7FAED;
-    -webkit-box-shadow:1px 5px 20px #fe5f55 ;
+    -webkit-box-shadow: 1px 5px 20px #fe5f55 ;
 }
 
-.body-content p{
+.body-content p {
     margin-bottom: 40px;
 }
 
-.bgheader > img{
+
+.bgheader {
+    text-align: center;
+}
+
+.bgheader > img {
     max-width: 100%;
     height: auto;
 }

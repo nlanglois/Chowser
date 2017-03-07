@@ -27,12 +27,13 @@ $this->title = 'Find by Location proximity';
 <?php
 
     $restaurantLocations = Restaurant::find()
-        ->select('name, coordinates')
+        ->select('name, coordinates, photo')
+        ->Where(['status' => 'Y'])
         ->asArray()
         ->all();
     // SELECT name, coordinates FROM Restaurant WHERE status = 'Y'
 
-    //echo VarDumper::dumpAsString($restaurantLocations, 10, true);
+   // echo VarDumper::dumpAsString($restaurantLocations, 10, true);
 ?>
 
 
@@ -71,12 +72,13 @@ $this->title = 'Find by Location proximity';
 
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lon),
-            map: map
+            map: map,
+            animation: google.maps.Animation.DROP
         });
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent(locations[i].name);
+                infowindow.setContent("<img style='width: 200px' src='/uploads/restaurant/" + locations[i].photo + "'/> <br>" + locations[i].name );
                 infowindow.open(map, marker);
             }
         })(marker, i));

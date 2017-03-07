@@ -67,7 +67,7 @@ AppAssetFrontEnd::register($this);
     </div>
 
 
-    <div class="footer">
+    <div class="footer" style="padding: 20px 30px 5px;">
         <p class="pull-left">&copy; Chowser <?= date('Y') ?></p>
         <p class="pull-right"><?= Yii::powered() ?></p>
         <div class="clearfix"></div>

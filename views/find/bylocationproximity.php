@@ -78,7 +78,7 @@ $this->title = 'Find by Location proximity';
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent("<img style='width: 200px' src='/uploads/restaurant/" + locations[i].photo + "'/> <br>" + locations[i].name );
+                infowindow.setContent("<img style='width: 200px' src='<?= Yii::getAlias('@web') ?>/uploads/restaurant/" + locations[i].photo + "'/> <br>" + locations[i].name );
                 infowindow.open(map, marker);
             }
         })(marker, i));

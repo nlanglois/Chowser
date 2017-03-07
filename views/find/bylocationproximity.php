@@ -30,6 +30,7 @@ $this->title = 'Find by Location proximity';
         ->select('name, coordinates')
         ->asArray()
         ->all();
+    // SELECT name, coordinates FROM Restaurant WHERE status = 'Y'
 
     //echo VarDumper::dumpAsString($restaurantLocations, 10, true);
 ?>

@@ -28,6 +28,7 @@ $this->title = 'Find by Location proximity';
 
     $restaurantLocations = Restaurant::find()
         ->select('name, coordinates')
+        ->where(['status' => 'Y'])
         ->asArray()
         ->all();
 

@@ -56,9 +56,6 @@ AppAssetFrontEnd::register($this);
                 ['label' => 'Find Restaurant','url'  => ['find/restaurant'],
                     'template' => '<a href="{url}" class="href_class">{label}</a>',
                 ],
-
-
-
             ],
         ]);
         NavBar::end();
@@ -71,13 +68,14 @@ AppAssetFrontEnd::register($this);
 
 
     <div class="footer">
-            <p>&copy; Chowser <?= date('Y') ?></p>
-            <p><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy; Chowser <?= date('Y') ?></p>
+        <p class="pull-right"><?= Yii::powered() ?></p>
+        <div class="clearfix"></div>
     </div>
 
 
 </div>
-    <?php $this->endBody() ?>
-    </body>
-    </html>
+<?php $this->endBody() ?>
+</body>
+</html>
 <?php $this->endPage() ?>

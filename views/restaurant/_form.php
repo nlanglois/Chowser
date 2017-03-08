@@ -37,6 +37,23 @@ use yii\web\JsExpression;
         ]
     ])->hint('You can enter HTML text in here if you\'d like') ?>
 
+    <div class="form-group">
+        <label class="control-label">Hours of Operation</label>
+
+        <div class="row">
+            <?php
+
+            foreach (\Yii::$app->params['daysOfWeek'] as $day) {
+
+                print '<div class="col-lg-1 col-md-1 col-sm-1">';
+                print $day;
+                print '</div>';
+            }
+
+            ?>
+        </div>
+    </div>
+
 
     <?= $form->field($model, 'street1')->textInput(['maxlength' => true])->textInput(['placeholder' => "First line of street address"]) ?>
 

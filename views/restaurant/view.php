@@ -67,6 +67,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'zip',
             'coordinates',
             [
+                'label' => 'Restaurant Location',
+                'value' => '<iframe width="50%" height="250" frameborder="0" style="border:0" src="https://maps.google.com/maps?q=' .  $restaurant->street1. "," .$restaurant->street2. "," . $restaurant->city. "," . $restaurant->state . "," . $restaurant->zip . '&output=embed"></iframe>',
+            ],
+            [
                 'label' => 'Types of meals served here',
                 'value' => MyHelpers::convertM2MobjectsToString(Restaurant::findOne($model->id)->mealTypes, "mealTypeName"),
             ],

@@ -73,7 +73,8 @@ $this->title = 'Find by Location proximity';
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lon),
             map: map,
-            animation: google.maps.Animation.DROP
+            animation: google.maps.Animation.DROP,
+            icon: 'http://maps.google.com/mapfiles/ms/icons/restaurant.png'
         });
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {

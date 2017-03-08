@@ -61,4 +61,14 @@ return [
     ],
     'restaurantFileUploadUrl' => 'uploads/restaurant/',
     'mealFileUploadUrl' => 'uploads/meal/',
+
+    'daysOfWeek' => [
+        'Mon' => 'Monday',
+        'Tues' => 'Tuesday',
+        'Wed' => 'Wednesday',
+        'Thur' => 'Thursday',
+        'Fri' => 'Friday',
+        'Sat' => 'Saturday',
+        'Sun' => 'Sunday'
+    ],
 ];

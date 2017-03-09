@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\RestaurantHours;
 use Yii;
 use app\models\Meal;
 use app\models\MealType;
@@ -86,6 +87,8 @@ class RestaurantController extends Controller
         $model = new Restaurant();
         $mealTypes = MealType::find()->orderBy('mealTypeName')->all();
 
+        $restaurantHours = new RestaurantHours();
+
 
         $upload_file = $model->uploadFile();
         if ($upload_file !== false) {
@@ -95,11 +98,16 @@ class RestaurantController extends Controller
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $restaurantHours->restId = $model->id;
+            $restaurantHours->save();
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
                 'mealTypes' => $mealTypes,
+                'restaurantHours' => $restaurantHours,
             ]);
         }
     }

@@ -7,6 +7,7 @@ use app\models\LocationType;
 use dosamigos\tinymce\TinyMce;
 use kartik\select2\Select2;
 use yii\web\JsExpression;
+use app\models\RestaurantHours;
 
 
 /* @var $this yii\web\View */
@@ -40,17 +41,41 @@ use yii\web\JsExpression;
     <div class="form-group">
         <label class="control-label">Hours of Operation</label>
 
-        <div class="row">
+        <div class="row seven-cols">
             <?php
 
+            $count = 0;
             foreach (\Yii::$app->params['daysOfWeek'] as $day) {
 
                 print '<div class="col-lg-1 col-md-1 col-sm-1">';
-                print $day;
-                print '</div>';
-            }
 
+                    echo $form->field($restaurantHours, 'restId[' . $count . ']')->hiddenInput(['value'=> $restaurantHours['restId']])->label(false);
+                    echo $form->field($restaurantHours, 'dayOfWeek[' . $count . ']')->hiddenInput(['value'=> $day])->label(false);
+
+                    print $day;
+
+                    print $form->field($restaurantHours, 'open[' . $count . ']')->dropDownList(
+                        \Yii::$app->params['openHours'],
+                        [
+                                'style' => 'width:10em !important',
+                                'prompt'=>'Select time']
+                    );
+
+                    print $form->field($restaurantHours, 'close[' . $count . ']')->dropDownList(
+                        \Yii::$app->params['closedHours'],
+                        [
+                            'style' => 'width:10em !important',
+                            'prompt'=>'Select time']
+                    );
+
+                print '</div>';
+
+                $count++;
+
+            }
             ?>
+
+
         </div>
     </div>
 

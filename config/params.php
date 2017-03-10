@@ -2,6 +2,10 @@
 
 return [
     'adminEmail' => 'kevin@kevinfirmin.com',
+
+    'restaurantFileUploadUrl' => 'uploads/restaurant/',
+    'mealFileUploadUrl' => 'uploads/meal/',
+
     'us_states' => [
         'AL' => 'Alabama',
         'AK' => 'Alaska',
@@ -55,12 +59,11 @@ return [
         'WY' => 'Wyoming',
         'DC' => 'Washington D.C.'
     ],
+
     'yesNoArray' => [
         'Y' => 'Yes',
         'N' => 'No',
     ],
-    'restaurantFileUploadUrl' => 'uploads/restaurant/',
-    'mealFileUploadUrl' => 'uploads/meal/',
 
     'daysOfWeek' => [
         'Mon' => 'Monday',

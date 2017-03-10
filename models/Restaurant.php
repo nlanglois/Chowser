@@ -5,6 +5,8 @@ namespace app\models;
 use Yii;
 use yii\web\UploadedFile;
 use yii\db\ActiveRecord;
+use yii\helpers\VarDumper;
+
 
 
 /**
@@ -28,7 +30,6 @@ class Restaurant extends ActiveRecord
 
     public $mealTypes_field;
     public $upload_file;
-    //public $coordinates;
 
     /**
      * @inheritdoc
@@ -57,10 +58,15 @@ class Restaurant extends ActiveRecord
 
             [
                 [
-                    'zip',
                     'locationTypeID',
                 ], 'integer',
-                'max' => 5,
+            ],
+
+            [
+                [
+                    'zip',
+                ], 'match',
+                'pattern' => '/^\d{5}?$/',
                 'message' => 'Please enter a 5 digit numerical zip code.'
             ],
 
@@ -116,6 +122,12 @@ class Restaurant extends ActiveRecord
                     'mealTypes_field',
                     'upload_file',
                     'coordinates',
+
+                    'restId',
+                    'dayOfWeek',
+                    'open',
+                    'close',
+
                 ], 'safe',
             ],
 
@@ -131,10 +143,15 @@ class Restaurant extends ActiveRecord
 
 
 
-    public function afterSave($insert, $changedAttributes){
+    public function afterSave($insert, $changedAttributes)
+    {
 
+        /* Handles the M2M relationships between Restaurant and MealTypes */
         // Delete existing relationships
-        \Yii::$app->db->createCommand()->delete('RestMealTypeLT', 'restID = ' . (int) $this->id)->execute();
+        \Yii::$app->db
+            ->createCommand()
+            ->delete('RestMealTypeLT', 'restID = ' . (int)$this->id)
+            ->execute();
 
         // Now write each relationship defined by the checked checkboxes back to the linking table
         foreach ($this->mealTypes_field as $id) { // Write new values
@@ -143,7 +160,38 @@ class Restaurant extends ActiveRecord
             $restMealType->mealTypeID = $id;
             $restMealType->save();
         }
+
+
+
+        /* Handles the One2M relationships between Restaurant and RestaurantHours */
+        // Delete existing relationships
+        \Yii::$app->db
+            ->createCommand()
+            ->delete('RestaurantHours', 'restId = ' . (int)$this->id)
+            ->execute();
+
+        // Now, create each of the new rows in RestaurantHours as defined by drop-down menus on views/restaurant/_form
+        $count = 0;
+
+        //echo VarDumper::dumpAsString($_POST['RestaurantHours'], 10, true);
+        //die("There are " . count($_POST['RestaurantHours']) . " restaurant hours records.");
+
+        //foreach($_POST['RestaurantHours'] as $key => $array)
+        for($r=0; $r < count($_POST['RestaurantHours']['restId']); $r++)
+        {
+            $restaurantHours = new RestaurantHours();
+            $restaurantHours->restId = $this->id;
+            $restaurantHours->dayOfWeek = $_POST['RestaurantHours']['dayOfWeek'][$count];
+            $restaurantHours->open = $_POST['RestaurantHours']['open'][$count];
+            $restaurantHours->close = $_POST['RestaurantHours']['close'][$count];
+            $restaurantHours->save();
+
+            $count++;
+        }
+
     }
+
+
 
 
 

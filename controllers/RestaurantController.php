@@ -14,6 +14,7 @@ use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\helpers\VarDumper;
 
 
 /**
@@ -90,6 +91,14 @@ class RestaurantController extends Controller
         $restaurantHours = new RestaurantHours();
 
 
+        //echo VarDumper::dumpAsString($_POST['RestaurantHours'], 10, true);
+        //die("Paused");
+
+
+
+
+
+
         $upload_file = $model->uploadFile();
         if ($upload_file !== false) {
             $upload_file->saveAs($model->getUploadedFilePath());
@@ -97,10 +106,29 @@ class RestaurantController extends Controller
         }
 
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) &&
+            $restaurantHours->load(Yii::$app->request->post()) &&
+            $model->save()) {
 
-            $restaurantHours->restId = $model->id;
-            $restaurantHours->save();
+//
+//            $count = 0;
+//            foreach($_POST['RestaurantHours'] as $key => $data)
+//            {
+//                $restaurantHours = new RestaurantHours();
+//                $restaurantHours->restId = $model->id;
+//                $restaurantHours->dayOfWeek = $_POST['RestaurantHours']['dayOfWeek'][$count];
+//                $restaurantHours->save();
+//
+//                //print $data['dayOfWeek'];
+//                //echo VarDumper::dumpAsString($_POST['RestaurantHours'], 10, true);
+//
+//                $count++;
+//            }
+//
+//            die("paused...");
+
+
+
 
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -123,6 +151,9 @@ class RestaurantController extends Controller
         $model = $this->findModel($id);
         $mealTypes = MealType::find()->orderBy('mealTypeName')->all();
         $currentRestaurant = $this->findModel($id);
+
+        $restaurantHours = new RestaurantHours();
+
 
         // Retrieve the stored checkboxes
         $model->mealTypes_field = ArrayHelper::getColumn(
@@ -155,6 +186,7 @@ class RestaurantController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'mealTypes' => $mealTypes,
+                'restaurantHours' => $restaurantHours,
             ]);
         }
     }
@@ -175,10 +207,20 @@ class RestaurantController extends Controller
         }
 
         // If the restaurant has associations with MealTypes via the junction table, remove them
-        \Yii::$app->db->createCommand()->delete('RestMealTypeLT', 'restID = ' . (int) $id)->execute();
+        \Yii::$app->db
+            ->createCommand()
+            ->delete('RestMealTypeLT', 'restID = ' . (int) $id)
+            ->execute();
+
+        // If the restaurant has associations with RestaurantHours, remove them
+        \Yii::$app->db
+            ->createCommand()
+            ->delete('RestaurantHours', 'restId = ' . (int) $id)
+            ->execute();
 
         // Finally, delete the restaurant record from Restaurant table
-        $this->findModel($id)->delete();
+        $this->findModel($id)
+            ->delete();
 
         return $this->redirect(['index']);
     }

@@ -69,16 +69,18 @@ use yii\widgets\MaskedInput;
                         ->dropDownList(
                             \Yii::$app->params['openHours'],
                             [
-                                'style' => 'width:10em !important',
-                                'prompt'=>'Select time']
+                                'style' => 'width: 10em !important',
+                                'prompt' => 'Select...',
+                            ]
                         );
 
                     print $form->field($restaurantHours, 'close[' . $count . ']')
                         ->dropDownList(
                             \Yii::$app->params['closedHours'],
                             [
-                                'style' => 'width:10em !important',
-                                'prompt'=>'Select time']
+                                'style' => 'width: 10em !important',
+                                'prompt' => 'Select...',
+                            ]
                         );
 
                 print '</div>';

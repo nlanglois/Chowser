@@ -30,8 +30,9 @@ class RestaurantHours extends ActiveRecord
     public function rules()
     {
         return [
-            [['restId', 'dayOfWeek', 'open', 'close'], 'required'],
+            [['dayOfWeek', 'open', 'close'], 'required', 'message' => 'Required'],
             [['restId'], 'integer'],
+            [['restId'], 'safe'],
             [['dayOfWeek', 'open', 'close'], 'string', 'max' => 255],
         ];
     }
@@ -45,8 +46,8 @@ class RestaurantHours extends ActiveRecord
             'id' => 'ID',
             'restId' => 'Rest ID',
             'dayOfWeek' => 'Day Of Week',
-            'open' => 'Open',
-            'close' => 'Close',
+            'open' => 'Opens',
+            'close' => 'Closes',
         ];
     }
 }

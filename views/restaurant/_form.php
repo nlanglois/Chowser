@@ -7,7 +7,7 @@ use app\models\LocationType;
 use dosamigos\tinymce\TinyMce;
 use kartik\select2\Select2;
 use yii\web\JsExpression;
-use app\models\RestaurantHours;
+use yii\widgets\MaskedInput;
 
 
 /* @var $this yii\web\View */
@@ -92,7 +92,7 @@ use app\models\RestaurantHours;
     )->hint('Please choose the state that this restaurant is located in');
     ?>
 
-    <?= $form->field($model, 'zip')->textInput()->textInput(['placeholder' => "Restaurant zip code"]) ?>
+    <?= $form->field($model, 'zip')->widget(MaskedInput::className(), ['mask' => '99999'])->input('zip', ['placeholder' => "Restaurant zip code"]) ?>
 
 
 

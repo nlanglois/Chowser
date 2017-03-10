@@ -50,6 +50,7 @@ class Restaurant extends ActiveRecord
                     'street1',
                     'city',
                     'state',
+                    'zip',
                     'status',
                 ], 'required',
             ],
@@ -59,6 +60,8 @@ class Restaurant extends ActiveRecord
                     'zip',
                     'locationTypeID',
                 ], 'integer',
+                'max' => 5,
+                'message' => 'Please enter a 5 digit numerical zip code.'
             ],
 
             [

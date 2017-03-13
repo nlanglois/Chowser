@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use kartik\tabs\TabsX;
+use yii\jui\Tabs;
 use yii\helpers\Url;
 use app\models\RestaurantReview;
 
@@ -102,6 +103,39 @@ $this->title = $restaurant->name;
             ]);
 
             ?>
+
+
+
+
+        <?php
+        echo Tabs::widget([
+            'items' => [
+                [
+                    'label' => 'Tab one',
+                    'content' => 'Mauris mauris ante, blandit et, ultrices a, suscipit eget...',
+                ],
+                [
+                    'label' => 'Tab two',
+                    'content' => 'Sed non urna. Phasellus eu ligula. Vestibulum sit amet purus...',
+                    'options' => ['tag' => 'div'],
+                    'headerOptions' => ['class' => 'my-class'],
+                ],
+                [
+                    'label' => 'Tab with custom id',
+                    'content' => 'Morbi tincidunt, dui sit amet facilisis feugiat...',
+                    'options' => ['id' => 'my-tab'],
+                ],
+                [
+                    'label' => 'Ajax tab',
+                    'url' => ['ajax/content'],
+                ],
+            ],
+            'options' => ['tag' => 'div'],
+            'itemOptions' => ['tag' => 'div'],
+            'headerOptions' => ['class' => 'my-class'],
+            'clientOptions' => ['collapsible' => false],
+        ]);
+        ?>
 
 
     </div>

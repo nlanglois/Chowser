@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             //'id',
             'Name',
-            'Description',
+            'Description:html',
             [
                 'class' => 'yii\grid\ActionColumn',
                 'controller' => 'meal',

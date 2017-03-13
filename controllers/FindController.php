@@ -20,7 +20,7 @@ class FindController extends Controller
 
     public function actionLocationproximity()
     {
-        return $this->render('bylocationproximity');
+        return $this->render('byLocationProximity');
     }
 
 
@@ -31,7 +31,7 @@ class FindController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => LocationType::find(),
         ]);
-        return $this->render('bylocationtype');
+        return $this->render('byLocationType');
     }
 
 
@@ -49,7 +49,7 @@ class FindController extends Controller
             ],
         ]);
 
-        return $this->render('bymeal', [
+        return $this->render('byMeal', [
             'dataProvider' => $dataProvider,
         ]);
 
@@ -82,7 +82,7 @@ class FindController extends Controller
             ],
         ]);
 
-        return $this->render('byrestaurant', [
+        return $this->render('byRestaurant', [
             'dataProvider' => $dataProvider,
         ]);
 

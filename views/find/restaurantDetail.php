@@ -55,79 +55,15 @@ $this->title = $restaurant->name;
 
 
         <?php
-
-            $restaurantReview = new RestaurantReview();
-
-            echo TabsX::widget([
-                'items' => [
-                    [
-                        'label' => 'Your Review',
-                        //'content' => 'Sample content here',
-                        'active' => false,
-                        'encode' => true,
-                        'linkOptions' => [
-                            'data-url' => Url::to([
-                                'restaurant-review/new',
-                                'tab' => 1,
-                                'restaurantId' => $restaurant->id,
-                                'ajax' => 'true',
-                            ])
-                        ]
-                    ],
-                    [
-                        'label' => 'Read Reviews',
-                        'content' => 'Sed non urna. Phasellus eu ligula. Vestibulum sit amet purus...',
-                        'options' => ['tag' => 'div'],
-                        'linkOptions' => [
-                            'data-url' => Url::to([
-                                'restaurant-review/show-all',
-                                'tab' => 2,
-                                'restaurantId' => $restaurant->id,
-                                'ajax' => 'true',
-                            ])
-                        ],
-                        'headerOptions' => ['class' => 'my-class'],
-                    ],
-                ],
-                'position' => TabsX::POS_ABOVE,
-                'align' => TabsX::ALIGN_LEFT,
-                'encodeLabels' => false,
-                'bordered' => true,
-
-                /*
-                'options' => ['tag' => 'div'],
-                'itemOptions' => ['tag' => 'div'],
-                'headerOptions' => ['class' => 'my-class'],
-                'clientOptions' => ['collapsible' => false],
-                */
-            ]);
-
-            ?>
-
-
-
-
-        <?php
         echo Tabs::widget([
             'items' => [
                 [
-                    'label' => 'Tab one',
-                    'content' => 'Mauris mauris ante, blandit et, ultrices a, suscipit eget...',
+                    'label' => 'Your Review',
+                    'url' => ['restaurant-review/new?restaurantId=' . $restaurant->id],
                 ],
                 [
-                    'label' => 'Tab two',
-                    'content' => 'Sed non urna. Phasellus eu ligula. Vestibulum sit amet purus...',
-                    'options' => ['tag' => 'div'],
-                    'headerOptions' => ['class' => 'my-class'],
-                ],
-                [
-                    'label' => 'Tab with custom id',
-                    'content' => 'Morbi tincidunt, dui sit amet facilisis feugiat...',
-                    'options' => ['id' => 'my-tab'],
-                ],
-                [
-                    'label' => 'Ajax tab',
-                    'url' => ['ajax/content'],
+                    'label' => 'Read Reviews',
+                    'url' => ['restaurant-review/show-all?restaurantId=' . $restaurant->id],
                 ],
             ],
             'options' => ['tag' => 'div'],

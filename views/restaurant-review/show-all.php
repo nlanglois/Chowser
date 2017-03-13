@@ -11,6 +11,7 @@ use yii\helpers\Html;
     if (count($reviews) > 0) {
         foreach($reviews as $review)
         {
+            echo Html::tag('strong', $review->title) . "<br />";
             echo $review->review;
         }
 

@@ -18,7 +18,7 @@ class RestaurantReviewController extends Controller
 
 
 
-    public function actionNew($restaurantId, $ajax = "false")
+    public function actionNew($restaurantId)
     {
 
         $restaurant = Restaurant::findOne($restaurantId);
@@ -28,38 +28,17 @@ class RestaurantReviewController extends Controller
         if ($restaurantReview->load(Yii::$app->request->post()) && $restaurantReview->save()) {
 
             //redirect to some sort of like thank you or success page for when the RR is logged
-
-            if ($ajax == "false") {
-                return $this->render('thank-you', [
-                    'restaurant' => $restaurant,
-                ]);
-
-            } else {
-                return Json::encode($this->render('thank-you', [
-                    'restaurant' => $restaurant,
-                ]));
-
-            }
-
+            return $this->render('thank-you', [
+                'restaurant' => $restaurant,
+            ]);
 
         } else {
-            if ($ajax == "false") {
-                return $this->render('new', [
-                    'model' => $restaurantReview,
-                    'restaurant' => $restaurant,
-                    'restaurantID' => $restaurantId,
-                ]);
+            return $this->render('new', [
+                'model' => $restaurantReview,
+                'restaurant' => $restaurant,
+                'restaurantID' => $restaurantId,
+            ]);
 
-            } else {
-                return Json::encode(
-                    $this->render('new', [
-                        'model' => $restaurantReview,
-                        'restaurant' => $restaurant,
-                        'restaurantID' => $restaurantId,
-                    ])
-                );
-
-            }
         }
 
     }
@@ -68,7 +47,7 @@ class RestaurantReviewController extends Controller
 
 
 
-    public function actionShowAll($restaurantId, $ajax = "false")
+    public function actionShowAll($restaurantId)
     {
         $allRestaurantReviews = RestaurantReview::find()
             ->where(['restaurantId' => $restaurantId])
@@ -79,20 +58,11 @@ class RestaurantReviewController extends Controller
             ->one();
 
 
-        if ($ajax == "false") {
-            return $this->render('show-all', [
-                'restaurant' => $restaurantDetails,
-                'reviews' => $allRestaurantReviews,
-            ]);
+        return $this->render('show-all', [
+            'restaurant' => $restaurantDetails,
+            'reviews' => $allRestaurantReviews,
+        ]);
 
-        } else {
-            return Json::encode(
-                $this->render('show-all', [
-                    'restaurant' => $restaurantDetails,
-                    'reviews' => $allRestaurantReviews,
-                ])
-            );
-        }
 
     }
 

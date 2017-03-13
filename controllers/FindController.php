@@ -18,7 +18,7 @@ class FindController extends Controller
     public $layout = "frontend";
 
 
-    public function actionLocationproximity()
+    public function actionProximity()
     {
         return $this->render('byLocationProximity');
     }

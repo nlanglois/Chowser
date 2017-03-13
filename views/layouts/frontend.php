@@ -41,7 +41,7 @@ AppAssetFrontEnd::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-center active'],
             'items' => [
-                ['label' => 'Near You','url' => ['find/locationproximity'],
+                ['label' => 'Near You','url' => ['find/proximity'],
                     'template' => '<a href="{url}" class="href_class">{label}</a>',
 
                 ],

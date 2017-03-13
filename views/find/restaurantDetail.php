@@ -61,8 +61,8 @@ $this->title = $restaurant->name;
                 'items' => [
                     [
                         'label' => 'Your Review',
-                        'content' => 'Sample content here',
-                        'active' => true,
+                        //'content' => 'Sample content here',
+                        'active' => false,
                         'encode' => true,
                         'linkOptions' => [
                             'data-url' => Url::to([
@@ -80,6 +80,7 @@ $this->title = $restaurant->name;
                         'linkOptions' => [
                             'data-url' => Url::to([
                                 'restaurant-review/show-all',
+                                'tab' => 2,
                                 'restaurantId' => $restaurant->id,
                                 'ajax' => 'true',
                             ])

@@ -294,6 +294,10 @@ class Restaurant extends ActiveRecord
         return $this->hasMany(RestMealTypeLT::className(), ['restID' => 'id']);
     }
 
+
+
+
+
     public function getMealTypes()
     {
         return $this->hasMany(MealType::className(), ['id' => 'mealTypeID'])

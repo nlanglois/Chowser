@@ -1,8 +1,21 @@
 <?php
 /* @var $this yii\web\View */
-?>
-<h1>restaurant-review/show-all</h1>
 
-<p>
-    Displaying all reviews for the restaurant we're on!
-</p>
+use yii\helpers\Html;
+
+?>
+<h3>Reviews for <?= $restaurant->name; ?></h3>
+
+
+<?php
+    if (count($reviews) > 0) {
+        foreach($reviews as $review)
+        {
+            echo $review->review;
+        }
+
+    } else {
+        echo Html::tag('p', 'Sorry, no reviews have been posted for this restaurant.');
+    }
+
+?>

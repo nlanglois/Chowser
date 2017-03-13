@@ -70,22 +70,26 @@ class RestaurantReviewController extends Controller
 
     public function actionShowAll($restaurantId, $ajax = "false")
     {
-        $queryRestaurantReviews = new ActiveDataProvider([
-            'query' => RestaurantReview::find()->where(['restaurantId' => $restaurantId]),
-        ]);
+        $allRestaurantReviews = RestaurantReview::find()
+            ->where(['restaurantId' => $restaurantId])
+            ->all();
+
+        $restaurantDetails = Restaurant::find()
+            ->where(['id' => $restaurantId])
+            ->one();
 
 
         if ($ajax == "false") {
             return $this->render('show-all', [
-                'model' => $this->findModel($restaurantId),
-                'restaurantReview' => $queryRestaurantReviews,
+                'restaurant' => $restaurantDetails,
+                'reviews' => $allRestaurantReviews,
             ]);
 
         } else {
             return Json::encode(
                 $this->render('show-all', [
-                    'model' => $this->findModel($restaurantId),
-                    'restaurantReview' => $queryRestaurantReviews,
+                    'restaurant' => $restaurantDetails,
+                    'reviews' => $allRestaurantReviews,
                 ])
             );
         }

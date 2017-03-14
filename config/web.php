@@ -61,11 +61,10 @@ $config = [
                 'admin/<controller:(restaurant|meal|location-type|meal-type|meat)>/<action:\w+>' => '<controller>/<action>',
 
 
-
                 'meal-type' => 'mealType',
                 'location-type' => 'locationType',
+                'location-type' => 'locationtype',
                 'show-all' => 'showAll',
-                'location-proximity' => 'bylocationproximity'
             ],
         ],
 

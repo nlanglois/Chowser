@@ -178,15 +178,18 @@ class RestaurantController extends Controller
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
             return $this->redirect(['view', 'id' => $model->id]);
 
         } else {
+            $existingRestaurantHours = RestaurantHours::find()
+                ->where(['restId' => $id])
+                ->all();
 
             return $this->render('update', [
                 'model' => $model,
                 'mealTypes' => $mealTypes,
                 'restaurantHours' => $restaurantHours,
+                'existingRestaurantHours' => $existingRestaurantHours,
             ]);
         }
     }

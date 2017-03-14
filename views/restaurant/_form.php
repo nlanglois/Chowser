@@ -56,7 +56,7 @@ use yii\widgets\MaskedInput;
                 print '<div class="col-lg-1 col-md-1 col-sm-1">';
 
                     echo $form->field($restaurantHours, 'restId[' . $count . ']')
-                        ->hiddenInput(['value'=> $restaurantHours['restId']])
+                        ->hiddenInput(['value'=> $restaurantHours['restId'][$count]])
                         ->label(false);
 
                     echo $form->field($restaurantHours, 'dayOfWeek[' . $count . ']')

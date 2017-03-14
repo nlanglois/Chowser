@@ -26,7 +26,6 @@ class RestaurantReviewController extends Controller
 
 
         if ($restaurantReview->load(Yii::$app->request->post()) && $restaurantReview->save()) {
-
             //redirect to some sort of like thank you or success page for when the RR is logged
             return $this->render('thank-you', [
                 'restaurant' => $restaurant,

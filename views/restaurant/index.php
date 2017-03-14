@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'city',
             [
                 'attribute' => 'state',
-                'filter' => Html::activeDropDownList($searchModel, 'state', ArrayHelper::map(Restaurant::find()->asArray()->distinct()->orderBy('state')->all(), 'state', 'state'), ['class'=>'form-control','prompt' => 'All']),
+                'filter' => Html::activeDropDownList($searchModel, 'state', ArrayHelper::map(Restaurant::find()->asArray()->distinct()->orderBy('state')->all(), 'state', 'state'), ['class'=>'form-control','prompt' => 'All','style' => 'width: 5em !important']),
                 'contentOptions' => ['style' => 'width: 70px;'],
             ],
             [
@@ -88,7 +88,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a
                         ($data->locationType->locationTypeName, ['location-type/view', 'id' => $data->locationTypeID]);
                 },
-                'filter' => Html::activeDropDownList($searchModel, 'locationTypeID', ArrayHelper::map(LocationType::find()->asArray()->distinct()->orderBy('locationTypeName')->all(), 'id', 'locationTypeName'), ['class'=>'form-control','prompt' => 'All']),
+                'filter' => Html::activeDropDownList($searchModel,
+                    'locationTypeID', ArrayHelper::map(LocationType::find()->asArray()->distinct()->orderBy('locationTypeName')->all(),
+                        'id', 'locationTypeName'), ['class'=>'form-control','prompt' => 'All','style' => 'width: 5em !important']),
                 'contentOptions' => ['style' => 'width: 70px;'],
             ],
             'zip',

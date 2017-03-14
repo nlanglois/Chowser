@@ -12,19 +12,23 @@ $this->title = $restaurant->name;
 
 <div class="restaurantDetail">
 
-    <div class="image">
-        <img src="<?= (Yii::getAlias('@web') . '/' . $restaurant->getUploadedFilePath()); ?>" />
-    </div>
-
     <h1><?= $restaurant->name ?></h1>
 
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="<?= (Yii::getAlias('@web') . '/' . $restaurant->getUploadedFilePath()); ?>"class="img-responsive" />
+        </div>
+        <div class="col-sm-6">
+            <div class="description">
+                    <h2>Description: </h2>
+                    <p><?= $restaurant->description ?></p>
+                <iframe width="100%" height="200" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://maps.google.it/maps?q=<?php echo $restaurant->street1. "," .$restaurant->street2. " " .$restaurant->city. "," .$restaurant->state. " " .$restaurant->zip ?>&output=embed"></iframe>
+            </div>
+        </div>
+    </div>
     <div class="details">
         <div class="address">
-            <iframe width="100%" height="480" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://maps.google.it/maps?q=<?php echo $restaurant->street1. "," .$restaurant->street2. " " .$restaurant->city. "," .$restaurant->state. " " .$restaurant->zip ?>&output=embed"></iframe>
-        </div>
 
-        <div class="description">
-            <h3>Description: </h3><p>&nbsp; <?= $restaurant->description ?></p>
         </div>
 
         <h3>Meals served at <?= $restaurant->name ?>:</h3>

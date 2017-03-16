@@ -29,7 +29,7 @@ use kartik\rating\StarRating;
                         'min' => 0,
                         'max' => 5,
                         'step' => 0.5,
-                        'size' => 'md',
+                        'size' => 'sm',
                     ]
                 ])
                 ->label(false)

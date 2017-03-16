@@ -19,7 +19,8 @@ use yii\helpers\Html;
     </div>
 
 <?php elseif(Yii::$app->session->hasFlash('email-send-success')): ?>
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success alert-dismissable" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         We have alerted the site admins about your new review!
     </div>
 

@@ -2,6 +2,7 @@
 
 return [
     'adminEmail' => 'kevin@kevinfirmin.com',
+    'devEmails' => ['kevin@kevinfirmin.com', 'srw1267@gmail.com', 'nlanglois@mac.com'],
 
     'restaurantFileUploadUrl' => 'uploads/restaurant/',
     'mealFileUploadUrl' => 'uploads/meal/',

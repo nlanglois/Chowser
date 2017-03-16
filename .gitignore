@@ -17,6 +17,9 @@ Thumbs.db
 # hiding db connection details in config folder
 config/db.php
 
+# hiding mailer connection details in config folder
+config/mail.php
+
 
 # composer itself is not needed
 composer.phar

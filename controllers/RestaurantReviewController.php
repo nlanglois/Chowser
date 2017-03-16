@@ -26,6 +26,31 @@ class RestaurantReviewController extends Controller
 
 
         if ($restaurantReview->load(Yii::$app->request->post()) && $restaurantReview->save()) {
+
+            //send out an email to all of us project devs when a review is submitted
+            if (Yii::$app->mailer->compose(
+                ['html' => 'layouts/chowser'],
+                [
+                    'chowserLogo' => 'http://referral.umphysicians.com/images/UMHealth-logo-250w.gif',
+                    'content' => 'A new review for ' . $restaurant->name . ' has been submitted! Log in to the admin app now to validate and approve it.',
+                ])
+
+                //->setFrom([Yii::$app->params['POFormAdminEmail'] => Yii::$app->name])
+                ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name . ' Web App'])
+                ->setTo(Yii::$app->params['devEmails'])
+                //->setBcc(Yii::$app->params['adminEmail'])
+                ->setSubject(Yii::$app->name . ': Restaurant Review for ' . $restaurant->name)
+                ->send()) {
+
+                Yii::$app->session->setFlash('email-send-success');
+
+            } else {
+                Yii::$app->session->setFlash('email-send-failure');
+
+            }
+
+
+
             //redirect to some sort of like thank you or success page for when the RR is logged
             return $this->render('thank-you', [
                 'restaurant' => $restaurant,

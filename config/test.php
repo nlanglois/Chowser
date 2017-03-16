@@ -11,7 +11,7 @@ return [
     'language' => 'en-US',
     'components' => [
         'db' => $dbParams,
-        'mailer' => [
+        'mail.php' => [
             'useFileTransport' => true,
         ],
         'urlManager' => [

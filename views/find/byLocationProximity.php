@@ -27,23 +27,37 @@ $this->title = 'Find by Location proximity';
 <?php
 
     $restaurantLocations = Restaurant::find()
-        ->select('name, coordinates, photo')
+        ->select('id, name, coordinates, photo')
         ->Where(['status' => 'Y'])
         ->asArray()
         ->all();
     // SELECT name, coordinates FROM Restaurant WHERE status = 'Y'
 
-   // echo VarDumper::dumpAsString($restaurantLocations, 10, true);
+    foreach($restaurantLocations as $key => $array) {
+
+        $restaurantHours = \app\models\RestaurantHours::find()
+            ->select('dayOfWeek, open, close')
+            ->where(['restId' => $array['id']])
+            ->orderBy('id')
+            ->asArray()
+            ->all();
+
+        $restaurantLocations[$key]['hours'] = $restaurantHours;
+    }
+
+//    echo VarDumper::dumpAsString($restaurantLocations, 10, true);
 ?>
 
 
-
-<div id="map" style="width: 100%; height: 600px;"></div>
+<div id="map" style=" margin: 0 auto; width: 75%; height: 900px;"></div>
 
 
 <script type="text/javascript">
+
     // This drops an array of jSON objects into the JS locations variable from PHP
     var locations = <?= Json::encode($restaurantLocations) ?>;
+
+    console.log(JSON.stringify(locations));
 
 //        var locations = [
 //            ['Bondi Beach', -33.890542, 151.274856, 4],
@@ -70,6 +84,16 @@ $this->title = 'Find by Location proximity';
         var lat = coordinates[0];
         var lon = coordinates[1];
 
+        var hoursOfOperation = "";
+        for (h = 0; h < locations[i].hours.length; h++) {
+
+            var day = locations[i].hours[h].dayOfWeek;
+            var open = locations[i].hours[h].open;
+            var close = locations[i].hours[h].close;
+
+            hoursOfOperation += day + ": " + open + " - " + close + "<br />";
+        }
+
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lon),
             map: map,
@@ -79,9 +103,15 @@ $this->title = 'Find by Location proximity';
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                infowindow.setContent("<img style='width: 200px' src='<?= Yii::getAlias('@web') ?>/uploads/restaurant/" + locations[i].photo + "'/> <br>" + locations[i].name );
+                infowindow.setContent(
+                    "<img style='width: 200px;' src='<?= Yii::getAlias('@web') ?>/uploads/restaurant/" + locations[i].photo + "' /><br>"
+                    + locations[i].name + "<br>"
+                    + "Hours of operation: <br>"
+                    + hoursOfOperation
+                );
                 infowindow.open(map, marker);
             }
         })(marker, i));
     }
+
 </script>

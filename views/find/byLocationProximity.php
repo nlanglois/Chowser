@@ -85,7 +85,7 @@ $this->title = 'Find by Location proximity';
         var lon = coordinates[1];
 
         var hoursOfOperation = "";
-        for (h = 0; h < locations[i].hours.length; h++) {
+        for (var h = 0; h < locations[i].hours.length; h++) {
 
             var day = locations[i].hours[h].dayOfWeek;
             var open = locations[i].hours[h].open;

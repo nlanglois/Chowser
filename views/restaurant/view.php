@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p><?php
             $restaurant = \app\models\Restaurant::findOne($model->id);
             $mealTypes = $restaurant->mealTypes;
-
+            $restaurantHours = $restaurant->restaurantHours;
             /*
             print "<pre>";
                 print_r($mealTypes);
@@ -60,6 +60,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
             'name',
             'description:html',
+            [
+                'label' => 'Hours of Operation',
+                'value' => Restaurant::getOperationHours($model->id),
+            ],
             'street1',
             'street2',
             'city',

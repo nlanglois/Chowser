@@ -114,5 +114,5 @@ $this->title = 'Find by Location proximity';
             }
         })(marker, i));
     }
-
+console.log(hoursOfOperation)
 </script>

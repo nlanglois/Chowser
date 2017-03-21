@@ -31,6 +31,10 @@ class Restaurant extends ActiveRecord
     public $mealTypes_field;
     public $upload_file;
 
+    public $restaurantHours;
+
+
+
     /**
      * @inheritdoc
      */
@@ -303,4 +307,48 @@ class Restaurant extends ActiveRecord
         return $this->hasMany(MealType::className(), ['id' => 'mealTypeID'])
             ->via('restaurantMeals');
     }
+
+
+
+
+
+    static public function getOperationHours($restId)
+    {
+        $restaurantHours = \app\models\RestaurantHours::find()
+            ->select('dayOfWeek, open, close')
+            ->where(['restId' => $restId])
+            ->orderBy('id')
+            ->asArray()
+            ->all();
+
+        //print "<pre>";
+        //return print_r($restaurantHours);
+        //print "</pre>";
+
+
+
+        $output = "<table class='restHours'>";
+
+            $output .= "<tr>";
+                $output .= "<th>Day</th>";
+                $output .= "<th>Opens</th>";
+                $output .= "<th>Closes</th>";
+            $output .= "</tr>";
+
+        foreach($restaurantHours as $key => $dayOfWeekArray)
+        {
+            $output .= "<tr>";
+                foreach($dayOfWeekArray as $key => $value)
+                {
+                    $output .= "<td>" . $value . "</td>";
+                }
+            $output .= "</tr>";
+        }
+        $output .= "</table>";
+
+        return $output;
+
+    }
+
+
 }

@@ -31,8 +31,24 @@ class FindController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => LocationType::find(),
         ]);
-        return $this->render('byLocationType');
+        return $this->render('byLocationType', [
+            'dataProvider' => $dataProvider,
+            ]);
     }
+
+    public function actionLocationtypedetail($id)
+    {
+        $LocationTypeRestaurant = new ActiveDataProvider([
+            'query' => LocationType::find()
+                ->where(['locationTypeID' => $id])
+        ]);
+
+        return $this->render('locationTypeDetail', [
+            'type' => $this->findLocationType($id),
+            'restaurant' => $LocationTypeRestaurant,
+        ]);
+    }
+
 
 
 
@@ -108,6 +124,8 @@ class FindController extends Controller
 
 
 
+
+
     /**
      * Finds the Restaurant model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -132,5 +150,15 @@ class FindController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    protected function findLocationType($id)
+    {
+        if (($model = LocationType::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
 
 }

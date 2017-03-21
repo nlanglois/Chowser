@@ -15,10 +15,10 @@ $this->title = $restaurant->name;
     <h1><?= $restaurant->name ?></h1>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <img src="<?= (Yii::getAlias('@web') . '/' . $restaurant->getUploadedFilePath()); ?>"class="img-responsive" />
         </div>
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <div class="description">
                     <h2>Description: </h2>
                     <p><?= $restaurant->description ?></p>

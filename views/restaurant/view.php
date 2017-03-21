@@ -4,12 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\ArrayHelper;
 use app\models\Restaurant;
+use app\models\RestaurantHours;
 use app\components\MyHelpers;
 use yii\grid\GridView;
 
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Restaurant */
+/* @var $hour app\models\RestaurantHours */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Restaurants', 'url' => ['index']];
@@ -33,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p><?php
             $restaurant = \app\models\Restaurant::findOne($model->id);
+
             $mealTypes = $restaurant->mealTypes;
 
             /*
@@ -69,6 +72,10 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'label' => 'Restaurant Location',
                 'value' => '<iframe width="50%" height="250" frameborder="0" style="border:0" src="https://maps.google.com/maps?q=' .  $restaurant->street1. "," .$restaurant->street2. "," . $restaurant->city. "," . $restaurant->state . "," . $restaurant->zip . '&output=embed"></iframe>',
+            ],
+            [
+              'label' => 'Restaurant Hours',
+              'value' => 'Restaurant',
             ],
             [
                 'label' => 'Types of meals served here',

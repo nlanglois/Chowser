@@ -50,4 +50,6 @@ class RestaurantHours extends ActiveRecord
             'close' => 'Closes',
         ];
     }
+
+
 }

@@ -138,3 +138,11 @@ div#restaurant-mealtypes_field label {
     width: 14.285714285714285714285714285714%;
     *width: 14.285714285714285714285714285714%;
 }
+
+
+
+
+
+table.restHours td {
+    padding: 5px;
+}

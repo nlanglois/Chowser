@@ -1,12 +1,13 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\tabs\TabsX;
 use yii\jui\Tabs;
 use yii\helpers\Url;
 use app\models\RestaurantReview;
+use app\models\Restaurant;
 
 $this->title = $restaurant->name;
+
 
 ?>
 
@@ -23,6 +24,11 @@ $this->title = $restaurant->name;
                     <h2>Description: </h2>
                     <p><?= $restaurant->description ?></p>
                 <iframe width="100%" height="200" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://maps.google.it/maps?q=<?php echo $restaurant->street1. "," .$restaurant->street2. " " .$restaurant->city. "," .$restaurant->state. " " .$restaurant->zip ?>&output=embed"></iframe>
+            </div>
+
+            <div>
+                <h2>Hours of Operation:</h2>
+                <p><?= Restaurant::getOperationHours($restaurant->id) ?></p>
             </div>
         </div>
     </div>

@@ -44,6 +44,7 @@ $this->title = 'Find by Location proximity';
 
         $restaurantLocations[$key]['hours'] = $restaurantHours;
     }
+    // SELECT dayOfWeek, open, close FROM RestaurantHours WHERE the array restId = an array for 'id'
 
 //    echo VarDumper::dumpAsString($restaurantLocations, 10, true);
 ?>
@@ -113,5 +114,5 @@ $this->title = 'Find by Location proximity';
             }
         })(marker, i));
     }
-
+console.log(hoursOfOperation)
 </script>

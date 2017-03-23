@@ -75,7 +75,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'coordinates',
             [
                 'label' => 'Restaurant Location',
-                'value' => '<iframe width="50%" height="250" frameborder="0" style="border:0" src="https://maps.google.com/maps?q=' .  $restaurant->street1. "," .$restaurant->street2. "," . $restaurant->city. "," . $restaurant->state . "," . $restaurant->zip . '&output=embed"></iframe>',
+                //'value' => '<iframe width="50%" height="250" frameborder="0" style="border:0" src="https://maps.google.com/maps?q=' .  $restaurant->street1. "," .$restaurant->street2. "," . $restaurant->city. "," . $restaurant->state . "," . $restaurant->zip . '&output=embed"></iframe>',
+                'value' => '<img src="http://maps.googleapis.com/maps/api/staticmap?center=' . $restaurant->coordinates . '&zoom=11&size=250x150&sensor=false">',
+                'raw' => true,
             ],
             [
               'label' => 'Restaurant Hours',

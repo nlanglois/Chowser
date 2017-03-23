@@ -30,10 +30,39 @@ class RestaurantHours extends ActiveRecord
     public function rules()
     {
         return [
-            [['dayOfWeek', 'open', 'close'], 'required', 'message' => 'Required'],
-            [['restId'], 'integer'],
-            [['restId'], 'safe'],
-            [['dayOfWeek', 'open', 'close'], 'string', 'max' => 255],
+
+            /*
+            [
+                [
+                    'dayOfWeek',
+                    'open',
+                    'close',
+                ], 'required',
+                'message' => 'Required',
+            ],
+            */
+
+            [
+                [
+                    'restId',
+                ], 'integer',
+            ],
+
+            [
+                [
+                    'restId',
+                ], 'safe',
+            ],
+
+            [
+                [
+                    'dayOfWeek',
+                    'open',
+                    'close',
+                ], 'string',
+                'max' => 255,
+            ],
+
         ];
     }
 

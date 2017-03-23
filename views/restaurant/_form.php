@@ -8,6 +8,7 @@ use dosamigos\tinymce\TinyMce;
 use kartik\select2\Select2;
 use yii\web\JsExpression;
 use yii\widgets\MaskedInput;
+use pigolab\locationpicker\CoordinatesPicker;
 
 
 /* @var $this yii\web\View */
@@ -128,17 +129,17 @@ use yii\widgets\MaskedInput;
     <!-- Attempting to implement a jQuery lat/lon chooser for Restaurants -->
     <?php
     echo $form->field($model, 'coordinates')
-        ->widget('\pigolab\locationpicker\CoordinatesPicker' , [
-            'key' => 'AIzaSyDS3U06rV-UvA_mpjRSfn59CuL77MqUf6Q',   // require , Put your google map api key
-            'valueTemplate' => '{latitude},{longitude}' , // Optional , this is default result format
+        ->widget('pigolab\locationpicker\CoordinatesPicker', [
+            'key' => 'AIzaSyDS3U06rV-UvA_mpjRSfn59CuL77MqUf6Q',  // required, your google map api key
+            'valueTemplate' => '{latitude},{longitude}' , // optional, this is default result format
             'options' => [
                 'style' => 'width: 100%; height: 400px',  // map canvas width and height
             ] ,
-            'enableSearchBox' => true , // Optional , default is true
+            'enableSearchBox' => true , // optional, default is true
             'searchBoxOptions' => [ // searchBox html attributes
-                'style' => 'width: 300px;', // Optional , default width and height defined in css coordinates-picker.css
+                'style' => 'width: 300px;', // optional, default width and height defined in css coordinates-picker.css
             ],
-            'searchBoxPosition' => new JsExpression('google.maps.ControlPosition.TOP_LEFT'), // optional , default is TOP_LEFT
+            'searchBoxPosition' => new JsExpression('google.maps.ControlPosition.TOP_LEFT'), // optional, default is TOP_LEFT
             'mapOptions' => [
                 // google map options
                 // visit https://developers.google.com/maps/documentation/javascript/controls for other options
@@ -153,6 +154,10 @@ use yii\widgets\MaskedInput;
                 // jquery-location-picker options
                 'radius'    => 300,
                 'addressFormat' => 'street_number',
+//                'inputBinding' => [
+//                    'coordinatesInput' => new JsExpression("$('#"  .Html::getInputId($model, "coordinates").  "')"),
+//                ],
+
             ]
         ]);
     ?>

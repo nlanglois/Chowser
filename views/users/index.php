@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'lName',
             'city',
             'state',
+            // 'username',
             // 'password',
             // 'status',
 

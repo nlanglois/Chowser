@@ -66,8 +66,6 @@ AppAssetBackEnd::register($this);
 
             ],
 
-
-            /*)
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -80,7 +78,7 @@ AppAssetBackEnd::register($this);
                 . Html::endForm()
                 . '</li>'
             )
-            */
+
         ],
     ]);
     NavBar::end();

@@ -28,6 +28,22 @@ class LocationTypeController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+
+
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'only' => ['index','create','update','view'],
+                'rules' => [
+                    // allow authenticated users
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    // everything else is denied
+                ],
+            ],
+
+
         ];
     }
 

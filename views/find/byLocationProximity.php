@@ -46,11 +46,11 @@ $this->title = 'Find by Location proximity';
     }
     // SELECT dayOfWeek, open, close FROM RestaurantHours WHERE the array restId = an array for 'id'
 
-//    echo VarDumper::dumpAsString($restaurantLocations, 10, true);
+  // echo VarDumper::dumpAsString($restaurantLocations, 10, true);
 ?>
 
 
-<div id="map" style=" margin: 0 auto; width: 75%; height: 900px;"></div>
+<div id="map" style=" margin: 0 auto; width: 75%; height: 300px;"></div>
 
 
 <script type="text/javascript">
@@ -106,9 +106,10 @@ $this->title = 'Find by Location proximity';
             return function() {
                 infowindow.setContent(
                     "<img style='width: 200px;' src='<?= Yii::getAlias('@web') ?>/uploads/restaurant/" + locations[i].photo + "' /><br>"
-                    + locations[i].name + "<br>"
+                    +"<a href='<?= Yii::getAlias('@web') ?>/find/restaurantdetail/"+ locations[i].id +"'/>" + locations[i].name + "</a><br>"
                     + "Hours of operation: <br>"
                     + hoursOfOperation
+
                 );
                 infowindow.open(map, marker);
             }

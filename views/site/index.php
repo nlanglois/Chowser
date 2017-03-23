@@ -11,7 +11,7 @@ $this->title = 'My Yii Application';
     <div class="jumbotron">
 
         <?php
-            if (Yii::$app->user->isGuest == true) {
+            if (Yii::$app->user->isGuest) {
                 Html::tag('p', "User not logged in.");
             } else {
                 Html::tag('h1', 'Félicitations, ' . Yii::$app->user->identity->username . '!');

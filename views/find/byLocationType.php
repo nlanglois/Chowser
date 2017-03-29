@@ -21,7 +21,7 @@ $this->title = 'Find by Location Type';
     {
      print Html::a(
         Html::tag('h3', $locationType->locationTypeName, ['class' => 'col-sm-4'])
-             , ['locationTypeDetail', 'id' => $locationType->id]
+             , ['locationtypedetail', 'id' => $locationType->id]
      );
     }
 

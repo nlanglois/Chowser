@@ -13,13 +13,11 @@ use yii\filters\VerbFilter;
  * MealController implements the CRUD actions for Meal model.
  */
 class MealController extends Controller
-
 {
     /**
      * @inheritdoc
      */
     public function behaviors()
-
     {
         return [
             'verbs' => [
@@ -27,23 +25,21 @@ class MealController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
-
-
-                'access' => [
-                    'class' => \yii\filters\AccessControl::className(),
-                    'only' => ['index','create','update','view'],
-                    'rules' => [
-                        // allow authenticated users
-                        [
-                            'allow' => true,
-                            'roles' => ['@'],
-                        ],
-                        // everything else is denied
-                    ],
-                ],
-
-
             ],
+
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'only' => ['index','create','update','view'],
+                'rules' => [
+                    // allow authenticated users
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    // everything else is denied
+                ],
+            ],
+
         ];
     }
 

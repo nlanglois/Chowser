@@ -29,7 +29,6 @@ class MealTypeController extends Controller
                 ],
             ],
 
-
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'only' => ['index','create','update','view'],
@@ -42,7 +41,6 @@ class MealTypeController extends Controller
                     // everything else is denied
                 ],
             ],
-
 
         ];
     }

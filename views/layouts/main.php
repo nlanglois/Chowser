@@ -62,9 +62,10 @@ AppAssetBackEnd::register($this);
                     ['label' => 'All meal types', 'url' => ['meal-type/index']],
                     ['label' => 'All meat types', 'url' => ['meat/index']],
                 ],
-
-
             ],
+
+            ['label' => 'Manage users', 'url' => ['/users/index']],
+
 
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]

@@ -49,8 +49,8 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'id' => 'ID',
-            'fName' => 'F Name',
-            'lName' => 'L Name',
+            'fName' => 'First name',
+            'lName' => 'Last name',
             'city' => 'City',
             'state' => 'State',
             'password' => 'Password',
@@ -66,7 +66,7 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     public static function findIdentityByAccessToken($token, $type = null){
-        throw new NotSupportedException();//I don't implement this method because I don't have any access token column in my database
+        throw new NotSupportedException();  //I don't implement this method because I don't have any access token column in the database
     }
 
     public function getId(){
@@ -74,7 +74,7 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     public function getAuthKey(){
-        return $this->authKey;//Here I return a value of my authKey column
+        return $this->authKey;  //Here I could return a value of my authKey column
     }
 
     public function validateAuthKey($authKey){

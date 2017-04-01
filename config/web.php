@@ -54,7 +54,7 @@ $config = [
                 '<controller:(find)>/by/<action:\w+>' => '<controller>/<action>',
                 //'find/restaurant/details/<id:\d+>' => 'find/restaurantDetail',
 
-                'admin/<controller:(restaurant|meal|location-type|meal-type|meat)>/<action:\w+>' => '<controller>/<action>',
+                'admin/<controller:(restaurant|meal|location-type|meal-type|meat|users)>/<action:\w+>' => '<controller>/<action>',
 
 
                 'meal-type' => 'mealType',

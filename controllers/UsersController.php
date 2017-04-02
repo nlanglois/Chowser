@@ -27,7 +27,6 @@ class UsersController extends Controller
                 ],
             ],
 
-
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'only' => ['index','create','update','view'],
@@ -40,7 +39,6 @@ class UsersController extends Controller
                     // everything else is denied
                 ],
             ],
-
 
         ];
     }
@@ -100,8 +98,15 @@ class UsersController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        //if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+            $model->password = \Yii::$app->security->generatePasswordHash($model->password);
+
+            if($model->save())
+                return $this->redirect(['view', 'id' => $model->id]);
+
+
         } else {
             return $this->render('update', [
                 'model' => $model,

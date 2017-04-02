@@ -30,8 +30,29 @@ class LoginForm extends Model
             [['username', 'password'], 'required'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
+
             // password is validated by validatePassword()
-            ['password', 'validatePassword'],
+            [
+                [
+                    'password',
+                ],
+                'validatePassword',
+            ],
+            [
+                [
+                    'password',
+                ],
+                'match',
+                'pattern'=>'$\S*(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$',
+                'message'=>'Password must have at least 1 uppercase and 1 number.',
+            ],
+            [
+                [
+                    'password',
+                ],
+                'string',
+                'min'=>6,
+            ],
         ];
     }
 
@@ -59,7 +80,7 @@ class LoginForm extends Model
      */
     public function login()
     {
-        if ($this->validate()) {
+        if ($this->validatePassword()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
         }
         return false;

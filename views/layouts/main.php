@@ -30,7 +30,7 @@ AppAssetBackEnd::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => 'Chowser',
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandUrl' => Yii::$app->homeUrl . "admin/home",
         'options' => [
             'class' => 'ch-navbar navbar-fixed-top',
         ],

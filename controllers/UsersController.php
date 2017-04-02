@@ -78,6 +78,7 @@ class UsersController extends Controller
     public function actionCreate()
     {
         $model = new Users();
+        $model->password = \Yii::$app->security->generatePasswordHash($model->password);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

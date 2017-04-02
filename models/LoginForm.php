@@ -38,23 +38,9 @@ class LoginForm extends Model
                 ],
                 'validatePassword',
             ],
-            [
-                [
-                    'password',
-                ],
-                'match',
-                'pattern'=>'$\S*(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$',
-                'message'=>'Password must have at least 1 uppercase and 1 number.',
-            ],
-            [
-                [
-                    'password',
-                ],
-                'string',
-                'min'=>6,
-            ],
         ];
     }
+
 
     /**
      * Validates the password.
@@ -76,11 +62,11 @@ class LoginForm extends Model
 
     /**
      * Logs in a user using the provided username and password.
-     * @return bool whether the user is logged in successfully
+     * @return boolean whether the user is logged in successfully
      */
     public function login()
     {
-        if ($this->validatePassword()) {
+        if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
         }
         return false;

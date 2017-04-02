@@ -18,9 +18,6 @@ use Yii;
 class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
 
-    public $authKey;
-
-
     /**
      * @inheritdoc
      */
@@ -37,7 +34,22 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             [['fName', 'lName', 'password', 'status'], 'required'],
             [['status'], 'integer'],
-            [['fName', 'lName', 'city', 'password'], 'string', 'max' => 250],
+            [['fName', 'lName', 'city', 'email', 'password'], 'string', 'max' => 255],
+            [
+                [
+                    'password',
+                ],
+                'match',
+                'pattern'=>'$\S*(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$',
+                'message'=>'Password must have at least 1 uppercase and 1 number.',
+            ],
+            [
+                [
+                    'password',
+                ],
+                'string',
+                'min' => 6,
+            ],
             [['state'], 'string', 'max' => 2],
         ];
     }
@@ -61,33 +73,42 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
 
 
-    public static function findIdentity($id){
-        return static::findOne($id);
+
+    public function getAuthKey() {
+        return static::findOne('AuthKey');
     }
 
-    public static function findIdentityByAccessToken($token, $type = null){
-        throw new NotSupportedException();  //I don't implement this method because I don't have any access token column in the database
+    public function validateAuthKey($authKey) {
+        return static::findOne(['AuthKey' => $authKey]);
     }
 
-    public function getId(){
+
+    public function getId() {
         return $this->id;
     }
 
-    public function getAuthKey(){
-        return $this->authKey;  //Here I could return a value of my authKey column
+    public static function findIdentity($id) {
+        return self::findOne($id);
     }
 
-    public function validateAuthKey($authKey){
-        return $this->authKey === $authKey;
+
+    public static function findIdentityByAccessToken($token, $type = null) {
+        return self::findOne(['access_token'=>$token]);
     }
 
     public static function findByUsername($username){
-        return self::findOne(['username'=>$username]);
+        return self::findOne(['username' => $username]);
     }
 
-    public function validatePassword($password){
-        return $this->password === $password;
-    }
+    public function validatePassword($password) {
+        // return $this->password_hash === $password;
 
+        return Yii::$app->getSecurity()->validatePassword(
+            $password,
+            \Yii::$app->security->generatePasswordHash($password)
+        );
+
+        // return $this->password === md5($password);
+    }
 
 }

@@ -96,12 +96,17 @@ class UsersController extends Controller
      */
     public function actionUpdate($id)
     {
+
+        $user = $this->findModel($id);
+
         $model = $this->findModel($id);
 
         //if ($model->load(Yii::$app->request->post()) && $model->save()) {
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
-            $model->password = \Yii::$app->security->generatePasswordHash($model->password);
+            if ($user->password != $model->password) {
+                $model->password = \Yii::$app->security->generatePasswordHash($model->password);
+            }
 
             if($model->save())
                 return $this->redirect(['view', 'id' => $model->id]);
